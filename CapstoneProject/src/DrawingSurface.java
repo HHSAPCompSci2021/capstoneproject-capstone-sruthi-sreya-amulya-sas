@@ -46,12 +46,12 @@ public class DrawingSurface extends PApplet {
 		else if (keyCode == KeyEvent.VK_DOWN) {
 			
 		} 
-			else if (keyCode == KeyEvent.VK_LEFT) {
-				
-			} 
-			else if (keyCode == KeyEvent.VK_RIGHT) {
-				
-			}
+		else if (keyCode == KeyEvent.VK_LEFT) {
+			
+		} 
+		else if (keyCode == KeyEvent.VK_RIGHT) {
+			
+		}
 	}	
 	
 	public void mouseDragged() {
