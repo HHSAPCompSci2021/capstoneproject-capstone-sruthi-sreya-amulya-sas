@@ -1,4 +1,4 @@
-package characters;
+package gameElements;
 
 public class Ghost {
 
