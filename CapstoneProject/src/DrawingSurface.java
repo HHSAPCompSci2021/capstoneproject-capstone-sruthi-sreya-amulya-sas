@@ -8,7 +8,6 @@ public class DrawingSurface extends PApplet {
 
 	
 
-	private int level, length;
 	
 	public DrawingSurface() {
 	
