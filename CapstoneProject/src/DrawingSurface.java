@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import processing.awt.PSurfaceAWT;
@@ -25,10 +26,19 @@ public class DrawingSurface extends PApplet {
 	// sequence and after the last line is read, the first 
 	// line is executed again.
 	public void draw() { 
-		background(255);   // Clear the screen with a white background
 		
-		textSize(12);
+		textSize(15);
 		fill(0);
+		
+		background(255, 192, 203);
+		text("Click the Space bar to start!", 150, 230);
+		
+		
+		
+		if (keyCode == KeyEvent.VK_SPACE) {
+			background(0, 180, 0);
+		} 
+		
 			
 	}
 	
@@ -55,6 +65,10 @@ public class DrawingSurface extends PApplet {
 	}	
 	
 	public void mouseDragged() {
+		
+	}
+	
+	public void mouseClicked() {
 		
 	}
 
