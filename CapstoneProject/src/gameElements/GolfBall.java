@@ -1,6 +1,10 @@
 package gameElements;
 
+import processing.core.PApplet;
+import processing.core.PImage;
+
 public class GolfBall {
+	
 	private int x, y;
 	
 	public int getX() {
@@ -17,6 +21,13 @@ public class GolfBall {
 	
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	public void draw(PApplet p) {
+		PImage img = new PImage();
+		img = p.loadImage("images/golfball.gif");
+		img.resize(20, 20);
+		p.image(img, x, y);
 	}
 	
 }

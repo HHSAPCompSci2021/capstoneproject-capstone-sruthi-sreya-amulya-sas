@@ -70,7 +70,7 @@ public class DrawingSurface extends PApplet {
 			background(0, 180, 0);
 		} 
 		
-//		l1.draw(this);
+		l1.draw(this);
 
 	}
 	
