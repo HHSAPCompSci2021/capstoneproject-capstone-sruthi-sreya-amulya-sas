@@ -1,9 +1,16 @@
 package levels;
 
+import gameElements.GolfBall;
 import processing.core.PApplet;
 
 public class LevelOne extends Level {
 
+	private GolfBall ball;
+	
+	public LevelOne() {
+		ball = new GolfBall();
+	}
+	
 	public void draw(PApplet marker) {
 		marker.fill(255);
 		marker.line(50, 50, 150, 50);

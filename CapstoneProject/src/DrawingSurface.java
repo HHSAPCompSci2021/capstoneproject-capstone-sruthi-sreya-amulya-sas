@@ -1,19 +1,29 @@
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import levels.LevelOne;
-import processing.awt.PSurfaceAWT;
+import gameElements.*;
+import levels.*;
 import processing.core.PApplet;
 import processing.event.MouseEvent;
 
 public class DrawingSurface extends PApplet {
 
 	private LevelOne l1;
+	private LevelTwo l2;
+	private LevelThree l3;
+	private LevelFour l4;
+	private LevelFive l5;
+	private LevelSix l6;
+	private GolfBall ball;
 
 	
 	public DrawingSurface() {
 		l1 = new LevelOne();
-
+		l2 = new LevelTwo();
+		l3 = new LevelThree();
+		l4 = new LevelFour();
+		l5 = new LevelFive();
+		l6 = new LevelSix();
+		ball = new GolfBall();
 	}
 	
 	// The statements in the setup() function 
@@ -30,8 +40,6 @@ public class DrawingSurface extends PApplet {
 		
 		textSize(15);
 		fill(0);
-
-		l1.draw(this);
 		
 		background(255, 192, 203);
 		text("Click the Space bar to start!", 150, 230);
@@ -61,36 +69,35 @@ public class DrawingSurface extends PApplet {
 		if (keyCode == KeyEvent.VK_ENTER) {
 			background(0, 180, 0);
 		} 
-	}
-	
-	
+		
+//		l1.draw(this);
 
-	public void mouseWheel(MouseEvent event) {
-		  
 	}
-	
-	public void keyPressed() {
-
-		if (keyCode == KeyEvent.VK_UP) {
-			
-		} 
-		else if (keyCode == KeyEvent.VK_DOWN) {
-			
-		} 
-		else if (keyCode == KeyEvent.VK_LEFT) {
-			
-		} 
-		else if (keyCode == KeyEvent.VK_RIGHT) {
-			
-		}
-	}	
 	
 	public void mouseDragged() {
-		
+		ball.setX(mouseX);
+		ball.setY(mouseY);
 	}
 	
 	public void mouseClicked() {
 		
 	}
+
+//	public void keyPressed() {
+//
+//		if (keyCode == KeyEvent.VK_UP) {
+//			
+//		} 
+//		else if (keyCode == KeyEvent.VK_DOWN) {
+//			
+//		} 
+//		else if (keyCode == KeyEvent.VK_LEFT) {
+//			
+//		} 
+//		else if (keyCode == KeyEvent.VK_RIGHT) {
+//			
+//		}
+//	}	
+//	
 
 }
