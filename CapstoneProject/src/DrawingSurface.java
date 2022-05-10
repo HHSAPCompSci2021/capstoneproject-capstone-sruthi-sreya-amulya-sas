@@ -39,7 +39,7 @@ public class DrawingSurface extends PApplet {
 		if (keyCode == KeyEvent.VK_SPACE) {
 			background(0, 180, 0);
 		} 
-		textSize(5);
+		textSize(12);
 		fill(0);
 		
 		background(255, 192, 203);
