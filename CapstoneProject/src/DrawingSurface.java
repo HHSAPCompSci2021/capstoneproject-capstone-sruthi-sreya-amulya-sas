@@ -77,6 +77,7 @@ public class DrawingSurface extends PApplet {
 	public void mouseDragged() {
 		ball.setX(mouseX);
 		ball.setY(mouseY);
+		ball.move(mouseX, mouseY);
 	}
 	
 	public void mouseClicked() {
