@@ -1,16 +1,17 @@
 import java.awt.event.KeyEvent;
 
+import levels.LevelOne;
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 import processing.event.MouseEvent;
 
 public class DrawingSurface extends PApplet {
 
-	
+	private LevelOne l1;
 
 	
 	public DrawingSurface() {
-	
+		l1 = new LevelOne();
 
 	}
 	
@@ -29,7 +30,7 @@ public class DrawingSurface extends PApplet {
 		
 		textSize(12);
 		fill(0);
-			
+		l1.draw(this);
 	}
 	
 	
