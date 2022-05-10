@@ -1,5 +1,5 @@
 package gameElements;
 
 public class GolfBall {
-private int x, y;
+	private int x, y;
 }
