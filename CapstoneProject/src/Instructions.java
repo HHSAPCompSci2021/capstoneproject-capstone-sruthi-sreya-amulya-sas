@@ -12,10 +12,15 @@ public class Instructions {
 	public void draw(PApplet marker) {
 //		marker.textSize(12);
 //		marker.fill(0);
+		
+		
 		PImage img = new PImage();
 		img = marker.loadImage("images/instructions.gif");
 		img.resize(600, 600);
 		marker.image(img, 0, 0);
+		
+		
+		
 //		surface.background(255, 192, 203);
 //		surface.text("Instructions:\n 1. Press the \"START\" to start the game.\nThere will be two buttons to click, one is to start the game at level one and the other one is the instructions on how to play the game and the objectives."
 //				+ "\n2. Once the player starts, they will use the cursor to pull back the golf ball."
