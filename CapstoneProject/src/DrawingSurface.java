@@ -29,6 +29,7 @@ public class DrawingSurface extends PApplet {
 		ball = new GolfBall();
 		rules = new Instructions();
 		homeScreen = new HomeScreen();
+		switchScreen = 0;
 	}
 	
 	// The statements in the setup() function 
@@ -50,7 +51,8 @@ public class DrawingSurface extends PApplet {
 //		text("Click the Space bar to start!", 150, 230);
 
 		if(switchScreen == 0 && keyCode == KeyEvent.VK_ENTER) { 
-			rules.draw(this);switchScreen = 1;
+			rules.draw(this);
+			switchScreen = 1;
 		}
 		else if (switchScreen == 1 && keyCode == KeyEvent.VK_ENTER) { 
 //			switchScreen = 2;
