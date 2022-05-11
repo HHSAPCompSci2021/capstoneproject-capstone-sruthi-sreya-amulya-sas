@@ -1,9 +1,9 @@
 import java.awt.event.KeyEvent;
 
 import gameElements.*;
-import levels.*;
 import processing.core.PApplet;
 import processing.event.MouseEvent;
+import screens.*;
 
 public class DrawingSurface extends PApplet {
 
@@ -75,9 +75,9 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public void mouseDragged() {
+		ball.move(mouseX, mouseY);
 		ball.setX(mouseX);
 		ball.setY(mouseY);
-		ball.move(mouseX, mouseY);
 	}
 	
 	public void mouseClicked() {
