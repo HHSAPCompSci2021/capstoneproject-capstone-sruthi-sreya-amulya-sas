@@ -2,18 +2,18 @@ import java.awt.event.KeyEvent;
 
 import processing.core.PApplet;
 
-public class Instructions {
+public class Instructions extends PApplet {
 
 	public  Instructions() {
 		
 	}
 	
-	public void draw(PApplet surface) {
-		surface.textSize(12);
-		surface.fill(0);
+	public void draw() {
+		textSize(4);
+		fill(0);
 		
-		surface.background(255, 192, 203);
-		surface.text("Instructions:\n 1. Press the \"START\" to start the game.\nThere will be two buttons to click, one is to start the game at level one and the other one is the instructions on how to play the game and the objectives."
+		background(255, 192, 203);
+		text("Instructions:\n 1. Press the \"START\" to start the game.\nThere will be two buttons to click, one is to start the game at level one and the other one is the instructions on how to play the game and the objectives."
 				+ "\n2. Once the player starts, they will use the cursor to pull back the golf ball."
 				+ "\n3. They will then release the ball in a direction that will aid them in getting the ball to where the hole is located. By using the zoom in and out button located in the bottom right corner you can zoom in and out to view the entire golf course and find where the hole is."
 				+ "\n4.The player will have 7 chances to complete each level, and as the difficulty level increases, there will be more obstacles as well."
@@ -22,12 +22,12 @@ public class Instructions {
 				+ "\nIf you happen to hit a ghost, you will be sent to level 1, but first, it will ask if you want to pay 5 coins to continue playing from the level you are at."
 				+ "\nWhile playing the game, aim for hitting coins while also getting the ball in the hole, because these coins can be used to set your personal high score for the game as well as save yourself if you hit a ghost in level three."
 				+ "\nIf you get lost or confused at any point in the game, there will be a navigation bar at the top right so that you can refer back to the instructions.\n"
-				+ "", 20, 30);
+				+ "", 150, 230);
 		
 		
 		
-		if (surface.keyCode == KeyEvent.VK_SPACE) {
-			surface.background(0, 180, 0);
+		if (keyCode == KeyEvent.VK_ENTER) {
+			background(0, 180, 0);
 		} 
 		
 	}
