@@ -1,11 +1,11 @@
-package levels;
+package screens;
 
 import java.util.ArrayList;
 
 import gameElements.Ghost;
 import processing.core.PApplet;
 
-public class LevelThree extends Level {
+public class LevelFive extends Level {
 
 	private ArrayList<Ghost> ghosts;
 	

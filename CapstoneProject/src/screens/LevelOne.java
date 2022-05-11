@@ -1,4 +1,4 @@
-package levels;
+package screens;
 
 import gameElements.GolfBall;
 import processing.core.PApplet;

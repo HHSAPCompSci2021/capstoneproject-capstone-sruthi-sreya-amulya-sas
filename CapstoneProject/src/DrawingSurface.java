@@ -1,9 +1,9 @@
 import java.awt.event.KeyEvent;
 
 import gameElements.*;
-import levels.*;
 import processing.core.PApplet;
 import processing.event.MouseEvent;
+import screens.*;
 
 public class DrawingSurface extends PApplet {
 
@@ -15,6 +15,7 @@ public class DrawingSurface extends PApplet {
 	private LevelSix l6;
 	private GolfBall ball;
 	private Instructions rules;
+	private HomeScreen homeScreen;
 
 	
 	public DrawingSurface() {
@@ -26,6 +27,7 @@ public class DrawingSurface extends PApplet {
 		l6 = new LevelSix();
 		ball = new GolfBall();
 		rules = new Instructions();
+		homeScreen = new HomeScreen();
 	}
 	
 	// The statements in the setup() function 
@@ -43,18 +45,21 @@ public class DrawingSurface extends PApplet {
 		textSize(15);
 		fill(0);
 		
-		background(255, 192, 203);
-		text("Click the Space bar to start!", 150, 230);
+//		background(255, 192, 203);
+//		text("Click the Space bar to start!", 150, 230);
 
-		rules.draw(this);
-		l1.draw(this);
+		homeScreen.draw(this);
+		if (keyCode == KeyEvent.VK_ENTER) {
+			rules.draw(this);
+		} 
+//		l1.draw(this);
 
 	}
 	
 	public void mouseDragged() {
+		ball.move(mouseX, mouseY);
 		ball.setX(mouseX);
 		ball.setY(mouseY);
-		ball.move(mouseX, mouseY);
 	}
 	
 	public void mouseClicked() {
