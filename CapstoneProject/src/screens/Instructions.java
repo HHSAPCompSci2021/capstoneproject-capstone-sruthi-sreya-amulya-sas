@@ -1,13 +1,17 @@
 package screens;
-import java.awt.event.KeyEvent;
 
 import processing.core.PApplet;
 import processing.core.PImage;
+import core.DrawingSurface;
 
 public class Instructions {
 	
-
+//	private DrawingSurface surface;
+//	private PImage img;
+	
+	
 	public  Instructions() {
+//		this.surface = surface;
 		
 	}
 	
@@ -15,7 +19,9 @@ public class Instructions {
 //		marker.textSize(12);
 //		marker.fill(0);
 		
-		
+//		img = surface.loadImage("images/instructions.gif");
+//		img.resize(600, 600);
+
 		PImage img = new PImage();
 		img = marker.loadImage("images/instructions.gif");
 		img.resize(600, 600);

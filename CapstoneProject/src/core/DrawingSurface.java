@@ -50,24 +50,35 @@ public class DrawingSurface extends PApplet {
 		
 //		background(255, 192, 203);
 //		text("Click the Space bar to start!", 150, 230);
-
-		if (switchScreen == 1 && keyCode != KeyEvent.VK_ENTER) {
+		
+		if (switchScreen == 0) {
+			homeScreen.draw(this);
+		} else if (switchScreen == 1) {
+			background(255);
 			rules.draw(this);
+		} else if (switchScreen == 2) {
+			background(255);
+			l1.draw(this);
 		}
-		else if(switchScreen == 0 && keyCode == KeyEvent.VK_ENTER) { 
-			rules.draw(this);
+		
+		if (keyCode == KeyEvent.VK_ENTER) {
+			switchScreen++;
+			keyCode = 0;
+		}
+		/*
+		if(switchScreen == 0 && keyCode == KeyEvent.VK_ENTER) { 
+			rules.draw();
 			switchScreen = 1;
 		}
-		else if (switchScreen == 1 && keyCode == KeyEvent.VK_ENTER) { 
-//			switchScreen = 2;
-//			if(switchScreen == 1 && keyCode == KeyEvent.VK_SPACE) {
+		else if (switchScreen == 1 && keyCode != KeyEvent.VK_ENTER) {
+			rules.draw();
+		}
+		else if (switchScreen == 1 && keyCode == KeyEvent.VK_ENTER) {
 			background(255);
-			
 			l1.draw(this);
-			//}
 		}
 		else homeScreen.draw(this);
-
+		 */
 
 	}
 	
