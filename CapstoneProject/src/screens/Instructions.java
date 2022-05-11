@@ -1,9 +1,11 @@
+package screens;
 import java.awt.event.KeyEvent;
 
 import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Instructions {
+	
 
 	public  Instructions() {
 		
