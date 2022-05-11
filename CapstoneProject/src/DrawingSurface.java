@@ -35,7 +35,7 @@ public class DrawingSurface extends PApplet {
 	// The statements in the setup() function 
 	// execute once when the program begins
 	public void setup() {
-		
+		homeScreen.draw(this);
 	}
 	
 	// The statements in draw() are executed until the 
@@ -50,7 +50,10 @@ public class DrawingSurface extends PApplet {
 //		background(255, 192, 203);
 //		text("Click the Space bar to start!", 150, 230);
 
-		if(switchScreen == 0 && keyCode == KeyEvent.VK_ENTER) { 
+		if (switchScreen == 1 && keyCode != KeyEvent.VK_ENTER) {
+			rules.draw(this);
+		}
+		else if(switchScreen == 0 && keyCode == KeyEvent.VK_ENTER) { 
 			rules.draw(this);
 			switchScreen = 1;
 		}
