@@ -53,12 +53,12 @@ public class DrawingSurface extends PApplet {
 			rules.draw(this);switchScreen = 1;
 		}
 		else if (switchScreen == 1 && keyCode == KeyEvent.VK_ENTER) { 
-			switchScreen = 2;
-			if(switchScreen == 1 && keyCode == KeyEvent.VK_ENTER) {
+//			switchScreen = 2;
+//			if(switchScreen == 1 && keyCode == KeyEvent.VK_SPACE) {
 			background(255);
 			
 			l1.draw(this);
-			}
+			//}
 		}
 		else homeScreen.draw(this);
 
