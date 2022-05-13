@@ -83,8 +83,20 @@ public class GolfBall {
 		}
 		if (r2.intersects(temp)) {
 			System.out.println("l2");
+//			this.move((int)(150 + x_diff), (int)(getY() + y_diff));
+			
 			this.setY((int)(getY() + y_diff));
 			this.setX((int)(150 + x_diff));
+//			System.out.println(("is " + this.getX()));
+			
+//			System.out.println((int)(150 + x_diff));
+//			System.out.println(x_diff);
+
+			
+//			this.setX((int)(30));
+//			this.setY((int)(30));
+
+			
 			return true;
 
 		}
@@ -103,8 +115,18 @@ public class GolfBall {
 		}
 		if (r5.intersects(temp)) {
 			System.out.println("l5");
-			this.setX((int)(250 + x_diff));
+//			this.setX((int)(250 + x_diff));
+			this.setX((int)(100 - x_diff));
+			
+			System.out.println(getX()-50 - x_diff);
+
 			this.setY((int)(getY() + y_diff));
+			if(y_diff < 0)
+				this.setY((int)(getY() + y_diff));
+			else 
+				this.setY((int)(getY() - y_diff));
+			
+			System.out.println(y_diff);
 			return true;
 		}
 		if (r6.intersects(temp)) {
@@ -118,6 +140,7 @@ public class GolfBall {
 	public void setVX(double x) {
 		vx = x;
 	}
+	
 	
 	public void act() {
 		double x = c.getX();
@@ -140,5 +163,16 @@ public class GolfBall {
 		double b = Math.abs(y1 - y2) + 1;
 		double c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
 		return (int) c;
+	}
+	
+	public boolean goal(PApplet marker) {
+		Rectangle temp = new Rectangle(90, 90, 10, 10);
+		Rectangle circle = new Rectangle(x,y,diameter,diameter);
+
+		if(temp.intersects(circle)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
