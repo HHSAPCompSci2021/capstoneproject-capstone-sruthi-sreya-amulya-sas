@@ -63,7 +63,7 @@ public class DrawingSurface extends PApplet {
 	// The statements in the setup() function 
 	// execute once when the program begins
 	public void setup() {
-		homeScreen.draw(this);
+		homeScreen.draw();
 	}
 	
 	
@@ -75,7 +75,7 @@ public class DrawingSurface extends PApplet {
 
 		
 		if (switchScreen == 0) {
-			homeScreen.draw(this);
+			homeScreen.draw();
 		} else if (switchScreen == 1) {
 			background(255);
 			rules.draw();

@@ -53,11 +53,6 @@ public class GolfBall {
 		c.draw(marker);
 	}
 	
-	public void move(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
-	
 	public boolean bounce(PApplet surface, double x_diff, double y_diff) {
 		Line l = new Line(50, 50, 150, 50); // right
 		Line l2 = new Line(150, 50, 150, 150); // down
