@@ -1,11 +1,18 @@
 package gameElements;
 
+import core.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
 
 public class GolfBall {
 	
 	private int x, y;
+	private DrawingSurface surface;
+	private PImage img;
+
+	public GolfBall(DrawingSurface surface) {
+		this.surface = surface;
+	}
 	
 	public int getX() {
 		return x;
@@ -23,11 +30,10 @@ public class GolfBall {
 		this.y = y;
 	}
 	
-	public void draw(PApplet p) {
-		PImage img = new PImage();
-		img = p.loadImage("images/golfball.gif");
+	public void draw() {
+		img = surface.loadImage("images/golfball.gif");
 		img.resize(20, 20);
-		p.image(img, x, y);
+		surface.image(img, 250, 220);
 	}
 	
 	public void move(int x, int y) {

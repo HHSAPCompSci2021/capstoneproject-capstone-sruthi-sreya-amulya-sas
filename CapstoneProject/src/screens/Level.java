@@ -10,6 +10,7 @@ public abstract class Level {
 	
 	private ArrayList<Coin> coins;
 	
+	
 	public Level() {
 		coins = new ArrayList<Coin>();
 	}

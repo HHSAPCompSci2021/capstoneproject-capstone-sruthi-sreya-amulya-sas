@@ -27,8 +27,8 @@ public class DrawingSurface extends PApplet {
 		l4 = new LevelFour();
 		l5 = new LevelFive();
 		l6 = new LevelSix();
-		ball = new GolfBall();
-		rules = new Instructions();
+		ball = new GolfBall(this);
+		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
 		switchScreen = 0;
 	}
@@ -55,10 +55,11 @@ public class DrawingSurface extends PApplet {
 			homeScreen.draw(this);
 		} else if (switchScreen == 1) {
 			background(255);
-			rules.draw(this);
+			rules.draw();
 		} else if (switchScreen == 2) {
 			background(255);
 			l1.draw(this);
+			ball.draw();
 		}
 		
 		if (keyCode == KeyEvent.VK_ENTER) {

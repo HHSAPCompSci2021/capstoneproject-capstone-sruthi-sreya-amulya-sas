@@ -5,10 +5,10 @@ import processing.core.PApplet;
 
 public class LevelOne extends Level {
 
-	private GolfBall ball;
+//	private GolfBall ball;
 	
 	public LevelOne() {
-		ball = new GolfBall();
+//		ball = new GolfBall();
 	}
 	
 	public void draw(PApplet marker) {
@@ -24,10 +24,10 @@ public class LevelOne extends Level {
 		marker.fill(0);
 		marker.circle(90, 90, 10);
 		marker.pop();
-		ball.setX(260);
-		ball.setY(220);
+//		ball.setX(260);
+//		ball.setY(220);
 
-		ball.draw(marker);
+//		ball.draw();
 	}
 
 	@Override

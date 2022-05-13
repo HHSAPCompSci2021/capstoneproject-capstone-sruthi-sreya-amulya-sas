@@ -6,26 +6,22 @@ import core.DrawingSurface;
 
 public class Instructions {
 	
-//	private DrawingSurface surface;
-//	private PImage img;
+	private DrawingSurface surface;
+	private PImage img;
 	
 	
-	public  Instructions() {
-//		this.surface = surface;
+	public  Instructions(DrawingSurface surface) {
+		this.surface = surface;
 		
 	}
 	
-	public void draw(PApplet marker) {
+	public void draw() {
 //		marker.textSize(12);
 //		marker.fill(0);
 		
-//		img = surface.loadImage("images/instructions.gif");
-//		img.resize(600, 600);
-
-		PImage img = new PImage();
-		img = marker.loadImage("images/instructions.gif");
+		img = surface.loadImage("images/instructions.gif");
 		img.resize(600, 600);
-		marker.image(img, 0, 0);
+		surface.image(img, 0, 0);
 		
 		
 		
