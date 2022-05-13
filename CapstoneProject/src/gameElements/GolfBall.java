@@ -19,32 +19,52 @@ public class GolfBall {
 //	private PImage img;
 //	private Circle c;
 
+	/**
+	 * Assigns values to the x and y coordinates of the golf ball and sets the diameter of the golf ball
+	 */
 	public GolfBall() {
 //		this.surface = surface;
 		x = 260;
 		y = 220;
 		diameter = 15;
-		
-		this.vx = 0;
-		this.vy = 2;
 	}
 	
+	/**
+	 * Gets the x coordinate of the golf ball
+	 * @return the x coordinate of the golf ball
+	 */
 	public int getX() {
 		return x;
 	}
 	
+	/**
+	 * Gets the y coordinate of the golf ball
+	 * @return the y coordinate of the golf ball
+	 */
 	public int getY() {
 		return y;
 	}
 	
+	/**
+	 * Sets the x coordinate of the golf ball to the new x value passed in as a parameter
+	 * @param x new x coordinate of the golf ball
+	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 	
+	/**
+	 * Sets the y coordinate of the golf ball to the new y value passed in as a parameter
+	 * @param y new y coordinate of the golf ball
+	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 	
+	/**
+	 * Draws the golf ball at (x,y)
+	 * @param p PApplet object used to draw the golf ball
+	 */
 	public void draw(PApplet marker) {
 //		img = surface.loadImage("images/golfball.gif");
 //		img.resize(20, 20);
@@ -53,7 +73,13 @@ public class GolfBall {
 		c.draw(marker);
 	}
 	
-	public boolean bounce(PApplet surface, double x_diff, double y_diff) {
+	/**
+	 * Checks whether or not the golf ball bumps into a boundary, and if it does, it bounces off the boundary
+	 * @param x_diff the difference in y by which the y coordinate of the golf ball is changing
+	 * @param y_diff the difference in y by which the y coordinate of the golf ball is changing
+	 * @return true or false depending on whether or not the golf ball intersects a boundary line
+	 */
+	public boolean bounce(double x_diff, double y_diff) {
 		Line l = new Line(50, 50, 150, 50); // right
 		Line l2 = new Line(150, 50, 150, 150); // down
 		Line l3 = new Line(150, 150, 300, 150); // right
@@ -132,27 +158,14 @@ public class GolfBall {
 		return false; 
 	}
 	
-	public void setVX(double x) {
-		vx = x;
-	}
-	
-	
-	public void act() {
-		double x = c.getX();
-		double y = c.getY();
-		
-		
-		x += vx;
-		y += vy;
-		
-		c.setPoint(x,y);
-	}
-	
-
-	public void setVY(double y) {
-		vy = y;
-	}
-	
+	/**
+	 * Calculates the distance between two points
+	 * @param x1 starting x coordinate
+	 * @param y1 starting y coordinate
+	 * @param x2 ending x coordinate
+	 * @param y2 ending y coordinate
+	 * @return the distance between two points
+	 */
 	public int getDistance(double x1, double y1, double x2, double y2) {
 		double a = Math.abs(x1 - x2) + 1;
 		double b = Math.abs(y1 - y2) + 1;
@@ -160,7 +173,11 @@ public class GolfBall {
 		return (int) c;
 	}
 	
-	public boolean goal(PApplet marker) {
+	/**
+	 * Determines if the golf ball fell in the hole
+	 * @return true or false depending on if the golf ball intersected the hole
+	 */
+	public boolean goal() {
 		Rectangle temp = new Rectangle(90, 90, 10, 10);
 		Rectangle circle = new Rectangle(x,y,diameter,diameter);
 
@@ -170,7 +187,12 @@ public class GolfBall {
 			return false;
 		}
 	}
-	public boolean coinIntersects(PApplet marker) {
+	
+	/**
+	 * Determines if the golf ball hit a coin
+	 * @return true or false depending on if the golf ball hit a coin
+	 */
+	public boolean coinIntersects() {
 		Rectangle temp = new Rectangle(100,150,20,20);
 		Rectangle r = new Rectangle(x,y, diameter, diameter);
 		Rectangle temp2 = new Rectangle(200,200, 20, 20); 

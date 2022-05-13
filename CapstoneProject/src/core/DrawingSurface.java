@@ -34,7 +34,9 @@ public class DrawingSurface extends PApplet {
 	
 //	private boolean released;
 	
-	
+	/**
+	 * Creates new Levels, GolfBalls, Coins, Instructions, and a HomeScreen
+	 */
 	public DrawingSurface() {
 		l1 = new LevelOne();
 		l2 = new LevelTwo();
@@ -60,13 +62,17 @@ public class DrawingSurface extends PApplet {
 //		released = false;
 	}
 	
-	// The statements in the setup() function 
-	// execute once when the program begins
+	/** The statements in the setup() function 
+	execute once when the program begins**/
 	public void setup() {
 		homeScreen.draw();
 	}
 	
-	
+	/**
+	 * This method draws the different screens based on where the user is in the game. When the user begins 
+	 * the game, there is a home screen and instructions following it. When they finish a level, the screen 
+	 * switches to the next level.
+	 */
 	public void draw() { 
 		
 		textSize(15);
@@ -91,15 +97,15 @@ public class DrawingSurface extends PApplet {
 			coin1.draw(this);
 //			fill(255,255,0);
 			coin2.draw(this);
-			if(ball.coinIntersects(this)){
+			if(ball.coinIntersects()){
 				fill(0);
-				text("you hit ball", 200, 200);
+				text("you hit coin", 200, 200);
 				textSize(20);
 			}
 //				fill(0);
 //				text("you hit ball", 100, 100);
 //				textSize(20);
-			if (ball.goal(this)) {
+			if (ball.goal()) {
 				textSize(50);
 				fill(0);
 				text("Good job!", 150, 250);
@@ -119,12 +125,12 @@ public class DrawingSurface extends PApplet {
 			coin1.draw(this);
 //			fill(255,255,0);
 			coin2.draw(this);
-			if(ball2.coinIntersects(this)){
+			if(ball2.coinIntersects()){
 				fill(0);
-				text("you hit ball", 200, 200);
+				text("you hit coin", 200, 200);
 				textSize(20);
 			}
-			if (ball2.goal(this)) {
+			if (ball2.goal()) {
 				textSize(50);
 				fill(0);
 				text("Good job!", 150, 250);
@@ -145,12 +151,12 @@ public class DrawingSurface extends PApplet {
 			coin1.draw(this);
 //			fill(255,255,0);
 			coin2.draw(this);
-			if(ball3.coinIntersects(this)){
+			if(ball3.coinIntersects()){
 				fill(0);
-				text("you hit ball", 200, 200);
+				text("you hit coin", 200, 200);
 				textSize(20);
 			}
-			if (ball3.goal(this)) {
+			if (ball3.goal()) {
 				textSize(50);
 				fill(0);
 				text("Good job!", 150, 250);
@@ -169,12 +175,12 @@ public class DrawingSurface extends PApplet {
 			coin1.draw(this);
 //			fill(255,255,0);
 			coin2.draw(this);
-			if(ball4.coinIntersects(this)){
+			if(ball4.coinIntersects()){
 				fill(0);
-				text("you hit ball", 200, 200);
+				text("you hit coin", 200, 200);
 				textSize(20);
 			}
-			if (ball4.goal(this)) {
+			if (ball4.goal()) {
 				textSize(50);
 				fill(0);
 				text("Good job!", 150, 250);
@@ -193,12 +199,12 @@ public class DrawingSurface extends PApplet {
 			coin1.draw(this);
 //			fill(255,255,0);
 			coin2.draw(this);
-			if(ball5.coinIntersects(this)){
+			if(ball5.coinIntersects()){
 				fill(0);
-				text("you hit ball", 200, 200);
+				text("you hit coin", 200, 200);
 				textSize(20);
 			}
-			if (ball5.goal(this)) {
+			if (ball5.goal()) {
 				textSize(50);
 				fill(0);
 				text("Good job!", 150, 250);
@@ -217,12 +223,12 @@ public class DrawingSurface extends PApplet {
 			coin1.draw(this);
 //			fill(255,255,0);
 			coin2.draw(this);
-			if(ball6.coinIntersects(this)){
+			if(ball6.coinIntersects()){
 				fill(0);
-				text("you hit ball", 200, 200);
+				text("you hit coin", 200, 200);
 				textSize(20);
 			}
-			if (ball6.goal(this)) {
+			if (ball6.goal()) {
 				textSize(50);
 				fill(0);
 				text("CONGRATS!!", 150, 250);
@@ -239,6 +245,9 @@ public class DrawingSurface extends PApplet {
 
 	}
 	
+	/**
+	 * This method draws a line to help the user aim the golfball in a certain direction.
+	 */
 	public void mouseDragged() {
 		if (level.equals("Level 1")) {
 			Line l = new Line(ball.getX(), ball.getY(), mouseX, mouseY);
@@ -267,6 +276,10 @@ public class DrawingSurface extends PApplet {
 
 	}
 	
+	/**
+	 * This method records the x and y coordinate of the cursor when the mouse is released in order to make the 
+	 * golf ball move in that direction. Also, when the ball hits the boundary of the golf course, it bounces off. 
+	 */
 	public void mouseReleased() {
 		
 		ArrayList<Point> points = new ArrayList<Point>();
@@ -284,10 +297,10 @@ public class DrawingSurface extends PApplet {
 			double y_diff = (double)(ball.getY() - y)/(dist * 1.5/10);
 			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball.bounce(this, x_diff, y_diff)) {
+				if (!ball.bounce(x_diff, y_diff)) {
 					ball.setX((int)(ball.getX() + x_diff));
 					ball.setY((int)(ball.getY() + y_diff));
-					ball.goal(this);
+					ball.goal();
 				}
 			}
 		}
@@ -302,10 +315,10 @@ public class DrawingSurface extends PApplet {
 			double y_diff = (double)(ball2.getY() - y)/(dist * 1.5/10);
 			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball2.bounce(this, x_diff, y_diff)) {
+				if (!ball2.bounce(x_diff, y_diff)) {
 					ball2.setX((int)(ball2.getX() + x_diff));
 					ball2.setY((int)(ball2.getY() + y_diff));
-					ball2.goal(this);
+					ball2.goal();
 				}
 			}
 		}
@@ -320,10 +333,10 @@ public class DrawingSurface extends PApplet {
 			double y_diff = (double)(ball3.getY() - y)/(dist * 1.5/10);
 			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball3.bounce(this, x_diff, y_diff)) {
+				if (!ball3.bounce(x_diff, y_diff)) {
 					ball3.setX((int)(ball3.getX() + x_diff));
 					ball3.setY((int)(ball3.getY() + y_diff));
-					ball3.goal(this);
+					ball3.goal();
 				}
 			}
 		}
@@ -338,10 +351,10 @@ public class DrawingSurface extends PApplet {
 			double y_diff = (double)(ball4.getY() - y)/(dist * 1.5/10);
 			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball4.bounce(this, x_diff, y_diff)) {
+				if (!ball4.bounce(x_diff, y_diff)) {
 					ball4.setX((int)(ball4.getX() + x_diff));
 					ball4.setY((int)(ball4.getY() + y_diff));
-					ball4.goal(this);
+					ball4.goal();
 				}
 			}
 		}
@@ -356,10 +369,10 @@ public class DrawingSurface extends PApplet {
 			double y_diff = (double)(ball5.getY() - y)/(dist * 1.5/10);
 			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball5.bounce(this, x_diff, y_diff)) {
+				if (!ball5.bounce(x_diff, y_diff)) {
 					ball5.setX((int)(ball5.getX() + x_diff));
 					ball5.setY((int)(ball5.getY() + y_diff));
-					ball5.goal(this);
+					ball5.goal();
 				}
 			}
 		}
@@ -374,10 +387,10 @@ public class DrawingSurface extends PApplet {
 			double y_diff = (double)(ball6.getY() - y)/(dist * 1.5/10);
 			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball6.bounce(this, x_diff, y_diff)) {
+				if (!ball6.bounce(x_diff, y_diff)) {
 					ball6.setX((int)(ball6.getX() + x_diff));
 					ball6.setY((int)(ball6.getY() + y_diff));
-					ball6.goal(this);
+					ball6.goal();
 				}
 			}
 		}
@@ -393,10 +406,10 @@ public class DrawingSurface extends PApplet {
 		double y_diff = (double)(ball.getY() - y)/(dist * 1.5/10);
 		boolean check = false; 
 		for (int i = 0; i < dist * 1.5/10; i++) {
-			if (!ball.bounce(this, x_diff, y_diff)) {
+			if (!ball.bounce(x_diff, y_diff)) {
 				ball.setX((int)(ball.getX() + x_diff));
 				ball.setY((int)(ball.getY() + y_diff));
-				ball.goal(this);
+				ball.goal();
 			}
 			
 			
@@ -449,21 +462,10 @@ public class DrawingSurface extends PApplet {
 		
 	}
 	
-	public void mouseClicked() {
-		if(mouseX <= 100) {
-			this.frameResized(400, 400);
-		}
-	}
-	
 	
 //	public void mouseReleased() {
 //		released = true;
 //	}
 	
-
-	public void switchScreen(int i) {
-		switchScreen = i;
-	}
-
 
 }

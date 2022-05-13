@@ -8,12 +8,17 @@ public class Instructions {
 	private DrawingSurface surface;
 	private PImage img;
 	
-	
+	/**
+	 * Instantiates new DrawingSurface and PImage objects
+	 */
 	public  Instructions(DrawingSurface surface) {
 		this.surface = surface;
-		
+		img = new PImage();
 	}
 	
+	/**
+	 * Draws the home screen
+	 */
 	public void draw() {
 
 		img = surface.loadImage("images/instructions.gif");
