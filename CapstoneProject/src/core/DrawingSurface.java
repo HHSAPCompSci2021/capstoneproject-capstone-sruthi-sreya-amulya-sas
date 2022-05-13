@@ -27,7 +27,7 @@ public class DrawingSurface extends PApplet {
 		l4 = new LevelFour();
 		l5 = new LevelFive();
 		l6 = new LevelSix();
-		ball = new GolfBall(this);
+		ball = new GolfBall();
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
 		switchScreen = 0;
@@ -59,7 +59,7 @@ public class DrawingSurface extends PApplet {
 		} else if (switchScreen == 2) {
 			background(255);
 			l1.draw(this);
-			ball.draw();
+			ball.draw(this);
 		}
 		
 		if (keyCode == KeyEvent.VK_ENTER) {
@@ -87,6 +87,7 @@ public class DrawingSurface extends PApplet {
 		ball.move(mouseX, mouseY);
 		ball.setX(mouseX);
 		ball.setY(mouseY);
+		
 	}
 	
 	public void mouseClicked() {
