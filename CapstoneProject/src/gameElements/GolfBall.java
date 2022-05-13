@@ -165,12 +165,14 @@ public class GolfBall {
 		return (int) c;
 	}
 	
-	public boolean goal() {
-		Rectangle temp = new Rectangle(90, 90, 90+10, 90+10);
-		if(temp.intersects(c)) {
+	public boolean goal(PApplet marker) {
+		Rectangle temp = new Rectangle(90, 90, 10, 10);
+		Rectangle circle = new Rectangle(x,y,diameter,diameter);
+
+		if(temp.intersects(circle)) {
 			return true;
-		}
-		else
+		} else {
 			return false;
+		}
 	}
 }
