@@ -102,6 +102,8 @@ public class DrawingSurface extends PApplet {
 				ball.setX((int)(ball.getX() + x_diff));
 				ball.setY((int)(ball.getY() + y_diff));
 			}
+			
+			
 //			if (check == false && ball.bounce(this) == 1) {
 //				y_diff *= -1;
 //				check = true;
@@ -120,6 +122,8 @@ public class DrawingSurface extends PApplet {
 //				check = true;
 //			}
 		}
+		
+		
 		
 		
 		/*
@@ -147,6 +151,12 @@ public class DrawingSurface extends PApplet {
 //		}
 		
 		
+	}
+	
+	public void mouseClicked() {
+		if(mouseX <= 100) {
+			this.frameResized(400, 400);
+		}
 	}
 	
 	
