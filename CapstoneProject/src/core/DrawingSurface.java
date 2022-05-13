@@ -119,7 +119,7 @@ public class DrawingSurface extends PApplet {
 				fill(0);
 				text("Good job!", 150, 250);
 				textSize(20);
-				text("Click enter to go to the next level!", 150, 300);
+				text("Click enter to go to the next level!!", 150, 300);
 			}
 		}else if (switchScreen == 5) {
 			background(255);
