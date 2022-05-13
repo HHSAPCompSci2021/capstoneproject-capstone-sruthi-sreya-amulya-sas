@@ -1,7 +1,11 @@
 package gameElements;
 
 
+import java.awt.Point;
+import java.util.ArrayList;
+
 import ameduri.shapes.Circle;
+import ameduri.shapes.Rectangle;
 import ameduri.shapes.Line;
 import processing.core.PApplet;
 
@@ -54,8 +58,7 @@ public class GolfBall {
 		this.y = y;
 	}
 	
-	public void bounce(PApplet surface) {
-		System.out.println("intersected");
+	public boolean bounce(PApplet surface, double x_diff, double y_diff) {
 		Line l = new Line(50, 50, 150, 50); // right
 		Line l2 = new Line(150, 50, 150, 150); // down
 		Line l3 = new Line(150, 150, 300, 150); // right
@@ -63,14 +66,53 @@ public class GolfBall {
 		Line l5 = new Line(300, 250, 50, 250); // left
 		Line l6 = new Line(50, 250, 50, 50); // up
 		
-		double min, max;
+		Rectangle r = new Rectangle(50, 50, 100, 0);
+		Rectangle r2 = new Rectangle(150, 50, 0, 100); // down
+		Rectangle r3 = new Rectangle(150, 150, 150, 0); // right
+		Rectangle r4 = new Rectangle(300, 150, 0, 100); // down
+		Rectangle r5 = new Rectangle(50, 250, 250, 0); // left
+		Rectangle r6 = new Rectangle(50, 50, 0, 200); // up
+		
+		Rectangle temp = new Rectangle(x, y, diameter,diameter);
+		if (r.intersects(temp)) {
+			System.out.println("l");
+			this.setY((int)(50 + y_diff));
+			this.setX((int)(getX() + x_diff));
+			return true;
 
-		if (l.intersects(c)) {
-			min = 2;
-			max = 5;
-			vx = (min + (int)(Math.random() * ((max - min) + 1)));
-			vy = -1*(min + (int)(Math.random() * ((max - min) + 1)));
 		}
+		if (r2.intersects(temp)) {
+			System.out.println("l2");
+			this.setY((int)(getY() + y_diff));
+			this.setX((int)(150 + x_diff));
+			return true;
+
+		}
+		if (r3.intersects(temp)) {
+			System.out.println("l3");
+			this.setY((int)(150 + y_diff));
+			this.setX((int)(getX() + x_diff));
+			return true;
+
+		}
+		if (r4.intersects(temp)) {
+			System.out.println("l4");
+			this.setX((int)(300 + x_diff));
+			this.setY((int)(getY() + y_diff));
+			return true;
+		}
+		if (r5.intersects(temp)) {
+			System.out.println("l5");
+			this.setX((int)(250 + x_diff));
+			this.setY((int)(getY() + y_diff));
+			return true;
+		}
+		if (r6.intersects(temp)) {
+			this.setX((int)(50 + x_diff));
+			this.setY((int)(getY() + y_diff));
+			return true;
+		}
+		return false; 
 	}
 	
 	public void setVX(double x) {
@@ -93,9 +135,9 @@ public class GolfBall {
 		vy = y;
 	}
 	
-	public int getDistance(int x1, int y1, int x2, int y2) {
-		int a = Math.abs(x1 - x2) + 1;
-		int b = Math.abs(y1 - y2) + 1;
+	public int getDistance(double x1, double y1, double x2, double y2) {
+		double a = Math.abs(x1 - x2) + 1;
+		double b = Math.abs(y1 - y2) + 1;
 		double c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
 		return (int) c;
 	}

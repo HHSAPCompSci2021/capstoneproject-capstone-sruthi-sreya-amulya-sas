@@ -20,7 +20,7 @@ public class DrawingSurface extends PApplet {
 	private Instructions rules;
 	private HomeScreen homeScreen;
 	private int switchScreen;
-	private int x,y;
+	private double x,y;
 	
 //	private boolean released;
 	
@@ -74,7 +74,55 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public void mouseDragged() {
+		Line l = new Line(ball.getX(), ball.getY(), mouseX, mouseY);
+		l.draw(this);
+	}
+	
+	public void mouseReleased() {
 		
+		ArrayList<Point> points = new ArrayList<Point>();
+
+		x = mouseX;
+		y = mouseY;
+		Line l = new Line(ball.getX(), ball.getY(), x, y);
+		l.draw(this);
+
+//		double dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
+//		for (int i = 0; i < dist * 1.5/10; i++) {
+//			ball.setX(ball.getX() - )
+//		}
+		
+		
+		double dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
+		double x_diff = (double)(ball.getX() - x)/(dist * 1.5 /10);
+		double y_diff = (double)(ball.getY() - y)/(dist * 1.5/10);
+		boolean check = false; 
+		for (int i = 0; i < dist * 1.5/10; i++) {
+			if (!ball.bounce(this, x_diff, y_diff)) {
+				ball.setX((int)(ball.getX() + x_diff));
+				ball.setY((int)(ball.getY() + y_diff));
+			}
+//			if (check == false && ball.bounce(this) == 1) {
+//				y_diff *= -1;
+//				check = true;
+//			}
+//			
+//			if (check == false && ball.bounce(this) == 2) {
+//				ball.setX((int)(ball.getX() + x_diff));
+//				x_diff *= -1;
+//				check = true;
+//			}	
+//			if (check == false && ball.bounce(this) == 3) {
+//				ball.setX((int)(ball.getX() + x_diff));
+//				ball.setY((int)(ball.getY() + y_diff));
+//				y_diff *= -1;
+//				x_diff *= -1;
+//				check = true;
+//			}
+		}
+		
+		
+		/*
 		ArrayList<Point> points = new ArrayList<Point>();
 //		while(released == false) {
 			x = mouseX;
@@ -89,6 +137,7 @@ public class DrawingSurface extends PApplet {
 			ball.setY(points.get(i).y);
 			ball.draw(this);
 		}
+		*/
 //		int dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
 //		if (dist >= 50) {
 //			ball.setVX(4);
