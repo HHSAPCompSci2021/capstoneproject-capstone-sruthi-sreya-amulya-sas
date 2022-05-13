@@ -31,6 +31,7 @@ public class DrawingSurface extends PApplet {
 	private double x,y;
 	
 	private String level;
+	private int coinCount;
 	
 //	private boolean released;
 	
@@ -58,6 +59,7 @@ public class DrawingSurface extends PApplet {
 		switchScreen = 0;
 		
 		level = "";
+		coinCount = 0;
 		
 //		released = false;
 	}
