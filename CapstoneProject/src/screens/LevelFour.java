@@ -14,5 +14,13 @@ public class LevelFour extends Level {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void zoomIn() {
+		
+	}
+	
+	public void zoomOut() {
+		
+	}
 
 }

@@ -34,10 +34,5 @@ public class Coin {
 		img.resize(20, 20);
 		p.image(img, x, y);
 	}
-	
-	public void move(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
-	
+		
 }

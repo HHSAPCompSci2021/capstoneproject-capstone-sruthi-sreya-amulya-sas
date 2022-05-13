@@ -16,5 +16,9 @@ public abstract class Level {
 	
 	public abstract void draw(PApplet marker);
 	
+	public abstract void zoomIn();
+	
+	public abstract void zoomOut();
+	
 	
 }

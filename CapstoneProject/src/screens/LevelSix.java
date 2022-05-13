@@ -15,4 +15,16 @@ public class LevelSix extends Level {
 		
 	}
 
+	@Override
+	public void zoomIn() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void zoomOut() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -30,4 +30,16 @@ public class LevelOne extends Level {
 		ball.draw(marker);
 	}
 
+	@Override
+	public void zoomIn() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void zoomOut() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
