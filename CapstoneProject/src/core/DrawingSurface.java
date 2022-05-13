@@ -1,9 +1,11 @@
 package core;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
+import ameduri.shapes.Line;
 import gameElements.*;
 import processing.core.PApplet;
-import processing.event.MouseEvent;
 import screens.*;
 
 public class DrawingSurface extends PApplet {
@@ -18,7 +20,10 @@ public class DrawingSurface extends PApplet {
 	private Instructions rules;
 	private HomeScreen homeScreen;
 	private int switchScreen;
-
+	private int x,y;
+	
+//	private boolean released;
+	
 	
 	public DrawingSurface() {
 		l1 = new LevelOne();
@@ -31,6 +36,8 @@ public class DrawingSurface extends PApplet {
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
 		switchScreen = 0;
+		
+//		released = false;
 	}
 	
 	// The statements in the setup() function 
@@ -39,17 +46,13 @@ public class DrawingSurface extends PApplet {
 		homeScreen.draw(this);
 	}
 	
-	// The statements in draw() are executed until the 
-	// program is stopped. Each statement is executed in 
-	// sequence and after the last line is read, the first 
-	// line is executed again.
+	
 	public void draw() { 
 		
 		textSize(15);
 		fill(0);
 		
-//		background(255, 192, 203);
-//		text("Click the Space bar to start!", 150, 230);
+
 		
 		if (switchScreen == 0) {
 			homeScreen.draw(this);
@@ -66,53 +69,46 @@ public class DrawingSurface extends PApplet {
 			switchScreen++;
 			keyCode = 0;
 		}
-		/*
-		if(switchScreen == 0 && keyCode == KeyEvent.VK_ENTER) { 
-			rules.draw();
-			switchScreen = 1;
-		}
-		else if (switchScreen == 1 && keyCode != KeyEvent.VK_ENTER) {
-			rules.draw();
-		}
-		else if (switchScreen == 1 && keyCode == KeyEvent.VK_ENTER) {
-			background(255);
-			l1.draw(this);
-		}
-		else homeScreen.draw(this);
-		 */
+		
 
 	}
 	
 	public void mouseDragged() {
-		ball.move(mouseX, mouseY);
-		ball.setX(mouseX);
-		ball.setY(mouseY);
+		
+		ArrayList<Point> points = new ArrayList<Point>();
+//		while(released == false) {
+			x = mouseX;
+			y = mouseY;
+			points.add(new Point(x,y));
+			Line l = new Line(ball.getX(), ball.getY(), x, y);
+			l.draw(this);
+//		}
+		
+		for (int i = 0; i < points.size(); i++) {
+			ball.setX(points.get(i).x);
+			ball.setY(points.get(i).y);
+			ball.draw(this);
+		}
+//		int dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
+//		if (dist >= 50) {
+//			ball.setVX(4);
+//			ball.setVY(4);
+//		} else {
+//			ball.setVX(2);
+//		}
+		
 		
 	}
 	
-	public void mouseClicked() {
-		
-	}
 	
+//	public void mouseReleased() {
+//		released = true;
+//	}
+	
+
 	public void switchScreen(int i) {
 		switchScreen = i;
 	}
 
-//	public void keyPressed() {
-//
-//		if (keyCode == KeyEvent.VK_UP) {
-//			
-//		} 
-//		else if (keyCode == KeyEvent.VK_DOWN) {
-//			
-//		} 
-//		else if (keyCode == KeyEvent.VK_LEFT) {
-//			
-//		} 
-//		else if (keyCode == KeyEvent.VK_RIGHT) {
-//			
-//		}
-//	}	
-//	
 
 }
