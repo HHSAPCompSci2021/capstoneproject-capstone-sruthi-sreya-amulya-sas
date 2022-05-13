@@ -24,11 +24,11 @@ public class LevelOne extends Level {
 
 	
 	public void zoomIn() {
-		
+		// code to resize
 	}
 
 	public void zoomOut() {
-		
+		// code to resize
 	}
 
 }

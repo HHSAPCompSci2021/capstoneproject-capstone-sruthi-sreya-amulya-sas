@@ -1,5 +1,6 @@
 package gameElements;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 
 import ameduri.shapes.Circle;
@@ -61,6 +62,7 @@ public class Coin {
 	public void draw(PApplet p) {
 		
 		Circle coin = new Circle(x, y, diameter);
+		coin.setFillColor(Color.YELLOW);
 		coin.draw(p);
 	}
 	

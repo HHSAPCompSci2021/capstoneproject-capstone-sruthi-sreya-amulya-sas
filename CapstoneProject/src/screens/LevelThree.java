@@ -24,17 +24,20 @@ public class LevelThree extends Level {
 		marker.circle(90, 90, 10);
 		marker.pop();
 		
+		Ghost g = new Ghost(100,100);
+		g.draw(marker);
+		
 	}
 
 	@Override
 	public void zoomIn() {
-		// TODO Auto-generated method stub
+		// code to resize
 		
 	}
 
 	@Override
 	public void zoomOut() {
-		// TODO Auto-generated method stub
+		// code to resize
 		
 	}
 

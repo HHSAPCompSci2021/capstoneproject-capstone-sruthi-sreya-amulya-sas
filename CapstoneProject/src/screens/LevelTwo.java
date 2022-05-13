@@ -22,15 +22,13 @@ public class LevelTwo extends Level{
 		
 	}
 
-	@Override
 	public void zoomIn() {
-		// TODO Auto-generated method stub
+		// code to resize
 		
 	}
 
-	@Override
 	public void zoomOut() {
-		// TODO Auto-generated method stub
+		// code to resize
 		
 	}
 

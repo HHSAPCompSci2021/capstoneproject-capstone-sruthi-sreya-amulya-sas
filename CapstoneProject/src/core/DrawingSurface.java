@@ -77,10 +77,6 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() { 
 		
-		textSize(15);
-		fill(0);
-		
-
 		
 		if (switchScreen == 0) {
 			homeScreen.draw(this);
@@ -95,14 +91,15 @@ public class DrawingSurface extends PApplet {
 			text(level, 150, 50);
 			l1.draw(this);
 			ball.draw(this);
-//			fill(255,255,0);
+			
 			coin1.draw(this);
-//			fill(255,255,0);
 			coin2.draw(this);
+			
 			if(ball.coinIntersects()){
-				fill(0);
-				text("you hit coin", 200, 200);
-				textSize(20);
+				coinCount++;
+//				fill(0);
+//				text("you hit coin", 200, 200);
+//				textSize(20);
 			}
 //				fill(0);
 //				text("you hit ball", 100, 100);
@@ -115,6 +112,7 @@ public class DrawingSurface extends PApplet {
 				text("Click enter to go to the next level!", 150, 300);
 			}
 		} else if (switchScreen == 3) {
+			
 			background(255);
 			textSize(50);
 			fill(0);
@@ -128,9 +126,7 @@ public class DrawingSurface extends PApplet {
 //			fill(255,255,0);
 			coin2.draw(this);
 			if(ball2.coinIntersects()){
-				fill(0);
-				text("you hit coin", 200, 200);
-				textSize(20);
+				coinCount++;
 			}
 			if (ball2.goal()) {
 				textSize(50);
@@ -154,9 +150,7 @@ public class DrawingSurface extends PApplet {
 //			fill(255,255,0);
 			coin2.draw(this);
 			if(ball3.coinIntersects()){
-				fill(0);
-				text("you hit coin", 200, 200);
-				textSize(20);
+				coinCount++;
 			}
 			if (ball3.goal()) {
 				textSize(50);
@@ -178,9 +172,7 @@ public class DrawingSurface extends PApplet {
 //			fill(255,255,0);
 			coin2.draw(this);
 			if(ball4.coinIntersects()){
-				fill(0);
-				text("you hit coin", 200, 200);
-				textSize(20);
+				coinCount++;
 			}
 			if (ball4.goal()) {
 				textSize(50);
@@ -202,9 +194,7 @@ public class DrawingSurface extends PApplet {
 //			fill(255,255,0);
 			coin2.draw(this);
 			if(ball5.coinIntersects()){
-				fill(0);
-				text("you hit coin", 200, 200);
-				textSize(20);
+				coinCount++;
 			}
 			if (ball5.goal()) {
 				textSize(50);
@@ -226,9 +216,7 @@ public class DrawingSurface extends PApplet {
 //			fill(255,255,0);
 			coin2.draw(this);
 			if(ball6.coinIntersects()){
-				fill(0);
-				text("you hit coin", 200, 200);
-				textSize(20);
+				coinCount++;
 			}
 			if (ball6.goal()) {
 				textSize(50);
@@ -237,6 +225,7 @@ public class DrawingSurface extends PApplet {
 				textSize(20);
 				text("YOU HAVE COMPLETED ALL THE LEVELS!!", 150, 300);
 			}
+			
 		}
 		
 		if (keyCode == KeyEvent.VK_ENTER) {
@@ -244,7 +233,9 @@ public class DrawingSurface extends PApplet {
 			keyCode = 0;
 		}
 		
-
+		fill(0);
+		textSize(20);
+		text("Coins: " + Integer.toString(coinCount), 50, 40);
 	}
 	
 	/**

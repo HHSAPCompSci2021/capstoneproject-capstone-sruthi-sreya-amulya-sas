@@ -55,7 +55,7 @@ private int x, y;
 	 */
 	public void draw(PApplet p) {
 		PImage img = new PImage();
-		img = p.loadImage("images/coin.gif");
+		img = p.loadImage("images/ghost.gif");
 		img.resize(20, 20);
 		p.image(img, x, y);
 	}
