@@ -22,6 +22,8 @@ public class DrawingSurface extends PApplet {
 	private GolfBall ball4;
 	private GolfBall ball5;
 	private GolfBall ball6;
+	private Coin coin1;
+	private Coin coin2;
 
 	private Instructions rules;
 	private HomeScreen homeScreen;
@@ -46,6 +48,8 @@ public class DrawingSurface extends PApplet {
 		ball4 = new GolfBall();
 		ball5 = new GolfBall();
 		ball6 = new GolfBall();
+		coin1 = new Coin(100,150);
+		coin2 = new Coin(200,200);
 
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
@@ -83,6 +87,18 @@ public class DrawingSurface extends PApplet {
 			text(level, 150, 50);
 			l1.draw(this);
 			ball.draw(this);
+//			fill(255,255,0);
+			coin1.draw(this);
+//			fill(255,255,0);
+			coin2.draw(this);
+			if(ball.coinIntersects(this)){
+				fill(0);
+				text("you hit ball", 200, 200);
+				textSize(20);
+			}
+//				fill(0);
+//				text("you hit ball", 100, 100);
+//				textSize(20);
 			if (ball.goal(this)) {
 				textSize(50);
 				fill(0);
@@ -98,6 +114,16 @@ public class DrawingSurface extends PApplet {
 			text(level, 150, 50);
 			l2.draw(this);
 			ball2.draw(this);
+			
+			fill(255,255,0);
+			coin1.draw(this);
+//			fill(255,255,0);
+			coin2.draw(this);
+			if(ball2.coinIntersects(this)){
+				fill(0);
+				text("you hit ball", 200, 200);
+				textSize(20);
+			}
 			if (ball2.goal(this)) {
 				textSize(50);
 				fill(0);
@@ -105,6 +131,7 @@ public class DrawingSurface extends PApplet {
 				textSize(20);
 				text("Click enter to go to the next level!", 150, 300);
 			}
+			
 		}
 		else if (switchScreen == 4) {
 			background(255);
@@ -114,6 +141,15 @@ public class DrawingSurface extends PApplet {
 			text(level, 150, 50);
 			l3.draw(this);
 			ball3.draw(this);
+			fill(255,255,0);
+			coin1.draw(this);
+//			fill(255,255,0);
+			coin2.draw(this);
+			if(ball3.coinIntersects(this)){
+				fill(0);
+				text("you hit ball", 200, 200);
+				textSize(20);
+			}
 			if (ball3.goal(this)) {
 				textSize(50);
 				fill(0);
@@ -129,6 +165,15 @@ public class DrawingSurface extends PApplet {
 			text(level, 150, 50);
 			l4.draw(this);
 			ball4.draw(this);
+			fill(255,255,0);
+			coin1.draw(this);
+//			fill(255,255,0);
+			coin2.draw(this);
+			if(ball4.coinIntersects(this)){
+				fill(0);
+				text("you hit ball", 200, 200);
+				textSize(20);
+			}
 			if (ball4.goal(this)) {
 				textSize(50);
 				fill(0);
@@ -144,6 +189,15 @@ public class DrawingSurface extends PApplet {
 			text(level, 150, 50);
 			l5.draw(this);
 			ball5.draw(this);
+			fill(255,255,0);
+			coin1.draw(this);
+//			fill(255,255,0);
+			coin2.draw(this);
+			if(ball5.coinIntersects(this)){
+				fill(0);
+				text("you hit ball", 200, 200);
+				textSize(20);
+			}
 			if (ball5.goal(this)) {
 				textSize(50);
 				fill(0);
@@ -159,6 +213,15 @@ public class DrawingSurface extends PApplet {
 			text(level, 150, 50);
 			l6.draw(this);
 			ball6.draw(this);
+			fill(255,255,0);
+			coin1.draw(this);
+//			fill(255,255,0);
+			coin2.draw(this);
+			if(ball6.coinIntersects(this)){
+				fill(0);
+				text("you hit ball", 200, 200);
+				textSize(20);
+			}
 			if (ball6.goal(this)) {
 				textSize(50);
 				fill(0);

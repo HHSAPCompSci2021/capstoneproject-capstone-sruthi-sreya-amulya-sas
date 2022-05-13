@@ -2,10 +2,10 @@ package gameElements;
 
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import ameduri.shapes.Circle;
-import ameduri.shapes.Rectangle;
 import ameduri.shapes.Line;
 import processing.core.PApplet;
 
@@ -173,6 +173,24 @@ public class GolfBall {
 			return true;
 		} else {
 			return false;
+		}
+	}
+	public boolean coinIntersects(PApplet marker) {
+		Rectangle temp = new Rectangle(100,150,20,20);
+		Rectangle r = new Rectangle(x,y, diameter, diameter);
+		Rectangle temp2 = new Rectangle(200,200, 20, 20); 
+		
+//		marker.rect(100,150,20,20);
+//		marker.rect(200, 200, 20, 20);
+//		marker.rect(x, y, diameter, diameter);
+		
+		
+		if(r.intersects(temp) || r.intersects(temp2)) {
+//			System.out.println("coin");
+			return true;
+		} else {
+		return false;
+		
 		}
 	}
 }

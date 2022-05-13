@@ -1,15 +1,20 @@
 package gameElements;
 
+import java.awt.Rectangle;
+
+import ameduri.shapes.Circle;
 import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Coin {
 
-	private int x, y;
+	
+	private int x, y, diameter;
 	
 	public Coin (int x1, int y1) {
 		x = x1;
 		y = y1;
+		diameter = 10;
 	}
 	
 	public int getX() {
@@ -29,10 +34,11 @@ public class Coin {
 	}
 	
 	public void draw(PApplet p) {
-		PImage img = new PImage();
-		img = p.loadImage("images/coin.gif");
-		img.resize(20, 20);
-		p.image(img, x, y);
+		
+		Circle coin = new Circle(x, y, diameter);
+		coin.draw(p);
 	}
+	
+
 		
 }
