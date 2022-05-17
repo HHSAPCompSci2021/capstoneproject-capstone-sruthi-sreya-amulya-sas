@@ -2,11 +2,6 @@ package core;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
-import javax.xml.soap.Text;
-
-import java.awt.Toolkit;
-
 import ameduri.shapes.Line;
 import gameElements.*;
 import processing.core.PApplet;
@@ -45,10 +40,7 @@ public class DrawingSurface extends PApplet {
 	private boolean zoomOut = false;
 	private float panSpeed;
 	private double zoomSpeed;
-	
-	
-//	private boolean released;
-	
+		
 	/**
 	 * Creates new Levels, GolfBalls, Coins, Instructions, and a HomeScreen
 	 */
@@ -70,6 +62,7 @@ public class DrawingSurface extends PApplet {
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
 		switchScreen = 0;
+		
 		scale = 0;
 		xPan = 0;
 		yPan = 0;
@@ -77,13 +70,13 @@ public class DrawingSurface extends PApplet {
 		coinCount = 0;
 		
 		seconds = 0;
+		
 		zoom = 1;
 		zoomIn = false;
 		zoomOut = false;
 		panSpeed = 5;
 		zoomSpeed = 1.03;
 		
-//		released = false;
 	}
 	
 	/** The statements in the setup() function 
@@ -102,16 +95,16 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() { 
 				
-		translate(width/2, height/2);
-		scale(scale);
-		translate(xPan, yPan);
+//		translate(width/2, height/2);
+//		scale(scale);
+//		translate(xPan, yPan);
 		if (switchScreen == 0) {
 			homeScreen.draw(this);
 			scale(zoom);
 		} else if (switchScreen == 1) {
 			background(255);
 			rules.draw();
-		} else if (switchScreen == 2) {
+		} else if (switchScreen == 2) {// LEVEL 1 --------------------------------------
 			background(255);
 //			if (keyCode == KeyEvent.VK_LEFT) {
 //				zoom += 0.01;
@@ -130,18 +123,12 @@ public class DrawingSurface extends PApplet {
 			coin1.draw(this);
 			coin2.draw(this);
 			
-			
-			
 			if(ball.coinIntersects()){
 				coinCount++;
 				fill(0);
 				text("You hit coin!", 200, 400);
 				textSize(10);
-//				System.out.print("hi");
 			}
-//				fill(0);
-//				text("you hit ball", 100, 100);
-//				textSize(20);
 			if (ball.goal()) {
 				textSize(50);
 				fill(0);
@@ -149,7 +136,7 @@ public class DrawingSurface extends PApplet {
 				textSize(20);
 				text("Click enter to go to the next level!", 150, 300);
 			}
-		} else if (switchScreen == 3) {
+		} else if (switchScreen == 3) { // LEVEL 2 --------------------------------------
 			
 			background(255);
 			textSize(50);
@@ -161,7 +148,6 @@ public class DrawingSurface extends PApplet {
 			
 			fill(255,255,0);
 			coin1.draw(this);
-//			fill(255,255,0);
 			coin2.draw(this);
 			if(ball2.coinIntersects()){
 				coinCount++;
@@ -175,10 +161,7 @@ public class DrawingSurface extends PApplet {
 			}
 			
 		}
-		else if (switchScreen == 4) {
-			
-
-			
+		else if (switchScreen == 4) { // LEVEL 3 --------------------------------------
 			background(255);
 			textSize(50);
 			fill(0);
@@ -188,29 +171,18 @@ public class DrawingSurface extends PApplet {
 			
 			
 			textSize(15);
-			if (time.countUp(this) == 3) {
-
-				
-				fill(0);
-//				System.out.print("hi");
-			}
-			if (time.countUp(this) <= 5 && seconds != 5) {
+			if (time.countUp(this) <= 5) {
 				fill(0);
 				text(time.getTime(), 20, 20);
 			} else {
-//				System.out.println("hi");
-
 				fill(0);
-				seconds = 5;
-//				System.out.println(seconds);
-				text(Integer.toString(seconds), 20, 20);
+				text("5.000", 20, 20);
+//				seconds = 5;
 			}
-//			System.out.println(seconds);
 
 			ball3.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
-//			fill(255,255,0);
 			coin2.draw(this);
 			if(ball3.coinIntersects()){
 				coinCount++;
@@ -222,7 +194,7 @@ public class DrawingSurface extends PApplet {
 				textSize(20);
 				text("Click enter to go to the next level!!", 150, 300);
 			}
-		}else if (switchScreen == 5) {
+		}else if (switchScreen == 5) { // LEVEL 4 --------------------------------------
 			background(255);
 			textSize(50);
 			fill(0);
@@ -232,7 +204,6 @@ public class DrawingSurface extends PApplet {
 			ball4.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
-//			fill(255,255,0);
 			coin2.draw(this);
 			if(ball4.coinIntersects()){
 				coinCount++;
@@ -244,7 +215,7 @@ public class DrawingSurface extends PApplet {
 				textSize(20);
 				text("Click enter to go to the next level!", 150, 300);
 			}
-		}else if (switchScreen == 6) {
+		}else if (switchScreen == 6) { // LEVEL 5 --------------------------------------
 			background(255);
 			textSize(50);
 			fill(0);
@@ -254,7 +225,6 @@ public class DrawingSurface extends PApplet {
 			ball5.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
-//			fill(255,255,0);
 			coin2.draw(this);
 			if(ball5.coinIntersects()){
 				coinCount++;
@@ -266,7 +236,7 @@ public class DrawingSurface extends PApplet {
 				textSize(20);
 				text("Click enter to go to the next level!", 150, 300);
 			}
-		}else if (switchScreen == 7) {
+		}else if (switchScreen == 7) { // LEVEL 6 --------------------------------------
 			background(255);
 			textSize(50);
 			fill(0);
@@ -276,7 +246,6 @@ public class DrawingSurface extends PApplet {
 			ball6.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
-//			fill(255,255,0);
 			coin2.draw(this);
 			if(ball6.coinIntersects()){
 				coinCount++;
@@ -453,11 +422,6 @@ public class DrawingSurface extends PApplet {
 				}
 			}
 		}
-
-//		double dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
-//		for (int i = 0; i < dist * 1.5/10; i++) {
-//			ball.setX(ball.getX() - )
-//		}
 		
 		
 		double dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
@@ -475,14 +439,8 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public int getSeconds() {
-//		System.out.println(seconds);
 		return seconds;
 	}
-	
-	
-//	public void mouseReleased() {
-//		released = true;
-//	}
 	
 
 }

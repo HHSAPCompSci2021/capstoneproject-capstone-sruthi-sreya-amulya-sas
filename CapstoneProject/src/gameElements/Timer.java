@@ -23,5 +23,9 @@ public class Timer {
 		time += 1/marker.frameRate;
 		return time;
 	}
+	
+	public void countDown(PApplet marker) {
+		time -= 1/marker.frameRate;
+	}
 
 }

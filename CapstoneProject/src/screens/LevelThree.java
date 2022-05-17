@@ -7,7 +7,9 @@ import processing.core.PApplet;
 
 public class LevelThree extends Level {
 
-	private ArrayList<Ghost> ghosts;
+	private Ghost g;
+	private Ghost g2;
+
 //	private final int ghost1X1, ghost1Y1, ghost1X2, ghost1Y2, ghost1X3, ghost1Y3;
 ////	private final int ghost2X1, ghost2Y1, ghost2X2, ghost2Y2, ghost2X3, ghost2Y3;
 	
@@ -52,8 +54,8 @@ public class LevelThree extends Level {
 //		Ghost g = new Ghost(ghost1X1, ghost1Y1);
 //		Ghost g2 = new Ghost(ghost2X1, ghost2Y1);
 		
-		Ghost g = new Ghost();
-		Ghost g2 = new Ghost();
+		g = new Ghost();
+		g2 = new Ghost();
 		
 		
 //		g.draw(marker);

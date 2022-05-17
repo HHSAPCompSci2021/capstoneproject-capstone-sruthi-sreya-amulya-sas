@@ -8,11 +8,10 @@ public class Ghost {
 	
 	private int x;
 	private int y;
-	
-//	private final int x1 = (int) (Math.random()*500);
-//	private final int y1 = (int) (Math.random()*500);
+	private int prevX;
+	private int prevY;
 
-	private DrawingSurface sec;
+	private DrawingSurface surface;
 	
 	/**
 	 * Assigns values to the x and y coordinates of the ghost.
@@ -20,22 +19,19 @@ public class Ghost {
 	 * @param y1 y coordinate of the ghost
 	 */
 	public Ghost() {
-		sec = new DrawingSurface();
-		int x1 = 0;
-		int y1 = 0;
-		int seconds = sec.getSeconds();
-//		System.out.println(seconds);
-		if (seconds < 5) {
+//		surface = new DrawingSurface();
+//		prevX = 0;
+//		prevY = 0;
+//		int seconds = surface.getSeconds();
+//		if (seconds != 5) {
 			x = (int) (Math.random() * 500);
 			y = (int) (Math.random() * 500);
-			x1 = x;
-			y1 = y;
-		} else {
-			System.out.println(seconds);
-			x = x1;
-			y = y1;
-		}
-		
+//			prevX = x;
+//			prevY = y;
+//		} else {
+//			x = prevX;
+//			y = prevY;
+//		}
 	}	
 	
 	/**
