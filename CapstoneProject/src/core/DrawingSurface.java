@@ -37,6 +37,8 @@ public class DrawingSurface extends PApplet {
 	private String level;
 	private int coinCount;
 	
+	private int seconds;
+	
 //	private boolean released;
 	
 	/**
@@ -64,6 +66,7 @@ public class DrawingSurface extends PApplet {
 		level = "";
 		coinCount = 0;
 		
+		seconds = 0;
 //		released = false;
 	}
 	
@@ -146,6 +149,9 @@ public class DrawingSurface extends PApplet {
 			
 		}
 		else if (switchScreen == 4) {
+			
+
+			
 			background(255);
 			textSize(50);
 			fill(0);
@@ -155,14 +161,25 @@ public class DrawingSurface extends PApplet {
 			
 			
 			textSize(15);
-			if (time.countUp(this) <= 5) {
+			if (time.countUp(this) == 3) {
+
+				
+				fill(0);
+//				System.out.print("hi");
+			}
+			if (time.countUp(this) <= 5 && seconds != 5) {
 				fill(0);
 				text(time.getTime(), 20, 20);
 			} else {
+//				System.out.println("hi");
+
 				fill(0);
-				text("5", 20, 20);
+				seconds = 5;
+//				System.out.println(seconds);
+				text(Integer.toString(seconds), 20, 20);
 			}
-			
+//			System.out.println(seconds);
+
 			ball3.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
@@ -424,55 +441,13 @@ public class DrawingSurface extends PApplet {
 				ball.setY((int)(ball.getY() + y_diff));
 				ball.goal();
 			}
-			
-			
-//			if (check == false && ball.bounce(this) == 1) {
-//				y_diff *= -1;
-//				check = true;
-//			}
-//			
-//			if (check == false && ball.bounce(this) == 2) {
-//				ball.setX((int)(ball.getX() + x_diff));
-//				x_diff *= -1;
-//				check = true;
-//			}	
-//			if (check == false && ball.bounce(this) == 3) {
-//				ball.setX((int)(ball.getX() + x_diff));
-//				ball.setY((int)(ball.getY() + y_diff));
-//				y_diff *= -1;
-//				x_diff *= -1;
-//				check = true;
-//			}
-		}
+		}	
 		
-		
-		
-		
-		/*
-		ArrayList<Point> points = new ArrayList<Point>();
-//		while(released == false) {
-			x = mouseX;
-			y = mouseY;
-			points.add(new Point(x,y));
-			Line l = new Line(ball.getX(), ball.getY(), x, y);
-			l.draw(this);
-//		}
-		
-		for (int i = 0; i < points.size(); i++) {
-			ball.setX(points.get(i).x);
-			ball.setY(points.get(i).y);
-			ball.draw(this);
-		}
-		*/
-//		int dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
-//		if (dist >= 50) {
-//			ball.setVX(4);
-//			ball.setVY(4);
-//		} else {
-//			ball.setVX(2);
-//		}
-		
-		
+	}
+	
+	public int getSeconds() {
+//		System.out.println(seconds);
+		return seconds;
 	}
 	
 	

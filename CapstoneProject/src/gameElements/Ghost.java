@@ -1,11 +1,18 @@
 package gameElements;
 
+import core.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Ghost {
+	
+	private int x;
+	private int y;
+	
+//	private final int x1 = (int) (Math.random()*500);
+//	private final int y1 = (int) (Math.random()*500);
 
-private int x, y;
+	private DrawingSurface sec;
 	
 	/**
 	 * Assigns values to the x and y coordinates of the ghost.
@@ -13,8 +20,22 @@ private int x, y;
 	 * @param y1 y coordinate of the ghost
 	 */
 	public Ghost() {
-		x = (int) (Math.random() * 500);
-		y = (int) (Math.random() * 500);
+		sec = new DrawingSurface();
+		int x1 = 0;
+		int y1 = 0;
+		int seconds = sec.getSeconds();
+//		System.out.println(seconds);
+		if (seconds < 5) {
+			x = (int) (Math.random() * 500);
+			y = (int) (Math.random() * 500);
+			x1 = x;
+			y1 = y;
+		} else {
+			System.out.println(seconds);
+			x = x1;
+			y = y1;
+		}
+		
 	}	
 	
 	/**
