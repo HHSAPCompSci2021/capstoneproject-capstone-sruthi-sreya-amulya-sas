@@ -97,9 +97,10 @@ public class DrawingSurface extends PApplet {
 			
 			if(ball.coinIntersects()){
 				coinCount++;
-//				fill(0);
-//				text("you hit coin", 200, 200);
-//				textSize(20);
+				fill(0);
+				text("You hit coin!", 200, 400);
+				textSize(10);
+//				System.out.print("hi");
 			}
 //				fill(0);
 //				text("you hit ball", 100, 100);

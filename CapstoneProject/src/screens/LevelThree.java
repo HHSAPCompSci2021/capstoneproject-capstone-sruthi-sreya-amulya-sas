@@ -27,6 +27,7 @@ public class LevelThree extends Level {
 		Ghost g = new Ghost(100,100);
 		g.draw(marker);
 		
+		
 	}
 
 	@Override
