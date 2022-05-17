@@ -24,9 +24,14 @@ public class LevelThree extends Level {
 		marker.circle(90, 90, 10);
 		marker.pop();
 		
-		Ghost g = new Ghost(100,100);
-		g.draw(marker);
+		//for (int i = 0; i % 10 == 0 && i < 100) {
+		Ghost g = new Ghost();
+		Ghost g2 = new Ghost();
 		
+		g.draw(marker);
+		g2.draw(marker);
+		//}
+
 		
 	}
 

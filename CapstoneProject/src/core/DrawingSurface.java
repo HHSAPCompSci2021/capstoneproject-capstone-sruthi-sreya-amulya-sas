@@ -2,6 +2,7 @@ package core;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.awt.Toolkit;
 
 import ameduri.shapes.Line;
 import gameElements.*;
@@ -24,11 +25,12 @@ public class DrawingSurface extends PApplet {
 	private GolfBall ball6;
 	private Coin coin1;
 	private Coin coin2;
-
+	private Timer time;
 	private Instructions rules;
 	private HomeScreen homeScreen;
 	private int switchScreen;
 	private double x,y;
+	private int ground;
 	
 	private String level;
 	private int coinCount;
@@ -53,9 +55,10 @@ public class DrawingSurface extends PApplet {
 		ball6 = new GolfBall();
 		coin1 = new Coin(100,150);
 		coin2 = new Coin(200,200);
-
+		ground = 0;
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
+	    time = new Timer();
 		switchScreen = 0;
 		
 		level = "";
@@ -94,6 +97,8 @@ public class DrawingSurface extends PApplet {
 			
 			coin1.draw(this);
 			coin2.draw(this);
+			
+			
 			
 			if(ball.coinIntersects()){
 				coinCount++;

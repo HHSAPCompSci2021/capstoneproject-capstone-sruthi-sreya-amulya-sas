@@ -23,7 +23,7 @@ public class LevelFour extends Level {
 		marker.fill(0);
 		marker.circle(90, 90, 10);
 		marker.pop();
-		Ghost g = new Ghost(100,100);
+		Ghost g = new Ghost();
 		g.draw(marker);
 	}
 	

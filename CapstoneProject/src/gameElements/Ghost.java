@@ -12,11 +12,19 @@ private int x, y;
 	 * @param x1 x coordinate of the ghost
 	 * @param y1 y coordinate of the ghost
 	 */
-	public Ghost (int x1, int y1) {
-		x = x1;
-		y = y1;
-	}
+//	public Ghost (int x1, int y1) {
+//		x = x1;
+//		y = y1;
+//	}
+
+	public Ghost() {
+		x = (int) (Math.random() * 500);
+		y = (int) (Math.random() * 500);
+	}	
 	
+	private void setRandomCoordinates() {
+		
+	}
 	/**
 	 * Gets the x coordinate of the ghost
 	 * @return the x coordinate of the ghost
@@ -56,7 +64,7 @@ private int x, y;
 	public void draw(PApplet p) {
 		PImage img = new PImage();
 		img = p.loadImage("images/ghost.gif");
-		img.resize(20, 20);
+		img.resize(40, 40);
 		p.image(img, x, y);
 	}
 }
