@@ -63,6 +63,13 @@ public class GolfBall {
 		this.y = y;
 	}
 	
+	public void setVX(int x) {
+		this.vx = x;
+	}
+	
+	public void setVY(int y) {
+		this.vy = y;
+	}
 	/**
 	 * Draws the golf ball at (x,y)
 	 * @param p PApplet object used to draw the golf ball
@@ -72,6 +79,7 @@ public class GolfBall {
 //		img.resize(20, 20);
 //		surface.image(img, 250, 220);
 		c = new Circle(x, y, diameter);
+		
 		c.draw(marker);
 	}
 	
@@ -82,23 +90,27 @@ public class GolfBall {
 	 * @return true or false depending on whether or not the golf ball intersects a boundary line
 	 */
 	public boolean bounce(double x_diff, double y_diff) {
-		Line l = new Line(50, 50, 150, 50); // right
-		Line l2 = new Line(150, 50, 150, 150); // down
-		Line l3 = new Line(150, 150, 300, 150); // right
-		Line l4 = new Line(300, 150, 300, 250); // down
-		Line l5 = new Line(300, 250, 50, 250); // left
-		Line l6 = new Line(50, 250, 50, 50); // up
+		/*Line invis1= new Line(50, 50, 150, 50); // right
+		Line invis2 = new Line(150, 50, 150, 150); // down
+		Line invis3 = new Line(150, 150, 300, 150); // right
+		Line invis4 = new Line(300, 150, 300, 250); // down
+		Line invis5 = new Line(300, 250, 50, 250); // left
+		Line invis6 = new Line(50, 250, 50, 50); // up
+		*/
 		
-		Rectangle r = new Rectangle(50, 50, 100, 0);
+
+		Rectangle r = new Rectangle(50, 50, 100, 0); //right
 		Rectangle r2 = new Rectangle(150, 50, 0, 100); // down
 		Rectangle r3 = new Rectangle(150, 150, 150, 0); // right
 		Rectangle r4 = new Rectangle(300, 150, 0, 100); // down
 		Rectangle r5 = new Rectangle(50, 250, 250, 0); // left
 		Rectangle r6 = new Rectangle(50, 50, 0, 200); // up
-		
 		Rectangle temp = new Rectangle(x, y, diameter,diameter);
+		
 		if (r.intersects(temp)) {
 			System.out.println("l");
+			
+			
 			this.setY((int)(50 + y_diff));
 			this.setX((int)(getX() + x_diff));
 			return true;
@@ -124,6 +136,8 @@ public class GolfBall {
 
 		}
 		if (r3.intersects(temp)) {
+				vx -= -0.2;
+				vy += -0.2;
 			System.out.println("l3");
 			this.setY((int)(150 + y_diff));
 			this.setX((int)(getX() + x_diff));
@@ -213,4 +227,9 @@ public class GolfBall {
 		
 		}
 	}
+	
+//	public boolean bounceOff() {
+//		
+//	}
+	
 }

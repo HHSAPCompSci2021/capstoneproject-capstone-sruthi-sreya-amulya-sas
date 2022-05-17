@@ -33,11 +33,19 @@ public class DrawingSurface extends PApplet {
 	private HomeScreen homeScreen;
 	private int switchScreen;
 	private double x,y;
+	private float xPan ,yPan;
 	
 	private String level;
 	private int coinCount;
+	private float scale;
 	
 	private int seconds;
+	private int zoom;
+	private boolean zoomIn = false;
+	private boolean zoomOut = false;
+	private float panSpeed;
+	private double zoomSpeed;
+	
 	
 //	private boolean released;
 	
@@ -62,11 +70,19 @@ public class DrawingSurface extends PApplet {
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
 		switchScreen = 0;
-		
+		scale = 0;
+		xPan = 0;
+		yPan = 0;
 		level = "";
 		coinCount = 0;
 		
 		seconds = 0;
+		zoom = 1;
+		zoomIn = false;
+		zoomOut = false;
+		panSpeed = 5;
+		zoomSpeed = 1.03;
+		
 //		released = false;
 	}
 	
@@ -74,7 +90,8 @@ public class DrawingSurface extends PApplet {
 	execute once when the program begins**/
 	public void setup() {
 		homeScreen.draw(this);
-		
+//		smooth();
+		rectMode(CENTER);
 		time = new Timer(0);
 	}
 	
@@ -85,14 +102,24 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() { 
 				
-		
+		translate(width/2, height/2);
+		scale(scale);
+		translate(xPan, yPan);
 		if (switchScreen == 0) {
 			homeScreen.draw(this);
+			scale(zoom);
 		} else if (switchScreen == 1) {
 			background(255);
 			rules.draw();
 		} else if (switchScreen == 2) {
 			background(255);
+//			if (keyCode == KeyEvent.VK_LEFT) {
+//				zoom += 0.01;
+//			}
+//			if (keyCode == KeyEvent.VK_RIGHT) {
+//				zoom -= 0.01;
+//			}
+		
 			textSize(50);
 			fill(0);
 			level = "Level 1";
@@ -272,6 +299,8 @@ public class DrawingSurface extends PApplet {
 		fill(0);
 		textSize(20);
 		text("Coins: " + Integer.toString(coinCount), 50, 40);
+		
+		
 		
 	}
 	
