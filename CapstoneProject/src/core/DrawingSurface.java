@@ -2,6 +2,9 @@ package core;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
+import javax.xml.soap.Text;
+
 import java.awt.Toolkit;
 
 import ameduri.shapes.Line;
@@ -30,7 +33,6 @@ public class DrawingSurface extends PApplet {
 	private HomeScreen homeScreen;
 	private int switchScreen;
 	private double x,y;
-	private int ground;
 	
 	private String level;
 	private int coinCount;
@@ -55,10 +57,8 @@ public class DrawingSurface extends PApplet {
 		ball6 = new GolfBall();
 		coin1 = new Coin(100,150);
 		coin2 = new Coin(200,200);
-		ground = 0;
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
-	    time = new Timer();
 		switchScreen = 0;
 		
 		level = "";
@@ -71,6 +71,8 @@ public class DrawingSurface extends PApplet {
 	execute once when the program begins**/
 	public void setup() {
 		homeScreen.draw(this);
+		
+		time = new Timer(0);
 	}
 	
 	/**
@@ -79,7 +81,7 @@ public class DrawingSurface extends PApplet {
 	 * switches to the next level.
 	 */
 	public void draw() { 
-		
+				
 		
 		if (switchScreen == 0) {
 			homeScreen.draw(this);
@@ -150,6 +152,17 @@ public class DrawingSurface extends PApplet {
 			level = "Level 3";
 			text(level, 150, 50);
 			l3.draw(this);
+			
+			
+			textSize(15);
+			if (time.countUp(this) <= 5) {
+				fill(0);
+				text(time.getTime(), 20, 20);
+			} else {
+				fill(0);
+				text("5", 20, 20);
+			}
+			
 			ball3.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
@@ -242,6 +255,7 @@ public class DrawingSurface extends PApplet {
 		fill(0);
 		textSize(20);
 		text("Coins: " + Integer.toString(coinCount), 50, 40);
+		
 	}
 	
 	/**
