@@ -10,29 +10,12 @@ public class LevelThree extends Level {
 	private Ghost g;
 	private Ghost g2;
 
-//	private final int ghost1X1, ghost1Y1, ghost1X2, ghost1Y2, ghost1X3, ghost1Y3;
-////	private final int ghost2X1, ghost2Y1, ghost2X2, ghost2Y2, ghost2X3, ghost2Y3;
-	
 	public LevelThree() {
-//		ghost1X1 = (int) (Math.random() * 500);
-//		ghost1Y1 = (int) (Math.random() * 500);
-//		ghost1X2 = (int) (Math.random() * 500);
-//		ghost1Y2 = (int) (Math.random() * 500);
-//		ghost1X3 = (int) (Math.random() * 500);
-//		ghost1Y3 = (int) (Math.random() * 500);
-//		
-//		ghost2X1 = (int) (Math.random() * 500);
-//		ghost2Y1 = (int) (Math.random() * 500);
-//		ghost2X2 = (int) (Math.random() * 500);
-//		ghost2Y2 = (int) (Math.random() * 500);
-//		ghost2X3 = (int) (Math.random() * 500);
-//		ghost2Y3 = (int) (Math.random() * 500);
 		
+	g = new Ghost();
+	g2 = new Ghost();
 		
-		
-		
-//		ghost2X = (int) (Math.random() * 500);
-//		ghost2Y = (int) (Math.random() * 500);
+
 	}
 	
 	@Override
@@ -50,59 +33,24 @@ public class LevelThree extends Level {
 		marker.circle(90, 90, 10);
 		marker.pop();
 		
-		//for (int i = 0; i % 10 == 0 && i < 100) {
-//		Ghost g = new Ghost(ghost1X1, ghost1Y1);
-//		Ghost g2 = new Ghost(ghost2X1, ghost2Y1);
-		
-		g = new Ghost();
-		g2 = new Ghost();
-		
-		
-//		g.draw(marker);
-//
-//		g.setX(ghost1X2);
-//		g.setY(ghost1Y2);
-//		g.draw(marker);
-//
-//		g.setX(ghost1X3);
-//		g.setY(ghost1Y3);
-//		g.draw(marker);
+
 		
 		
 		
 		
 		
 
-//		for(int i = 0; i <= 3; i++) {
-//			
-//			g.setX((int)(Math.random()*500));
-//			g.setY((int)(Math.random()*500));
-//
-//			g2.setX((int)(Math.random()*500));
-//			g2.setY((int)(Math.random()*500));
-//		}
+
 
 		g.draw(marker);
 		g2.draw(marker);
 		
+		g.setX((int)(Math.random()*500));
+		g.setY((int)(Math.random()*500));
+		g2.setX((int)(Math.random()*500));
+		g2.setY((int)(Math.random()*500));
 		
-//		g.draw(marker);
 
-//		g.setX(ghost1X2);
-//		g.setY(ghost1Y2);
-//		g.draw(marker);
-
-//		g.setX(ghost1X3);
-//		g.setY(ghost1Y3);
-//		g.draw(marker);
-		
-//		g2.setX(ghost2X2);
-//		g2.setY(ghost2Y2);
-//		g2.draw(marker);
-
-//		g2.setX(ghost2X3);
-//		g2.setY(ghost2Y3);
-//		g2.draw(marker);
 		
 		
 	}

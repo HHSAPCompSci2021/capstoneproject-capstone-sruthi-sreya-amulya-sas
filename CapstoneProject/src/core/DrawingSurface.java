@@ -69,7 +69,8 @@ public class DrawingSurface extends PApplet {
 		level = "";
 		coinCount = 0;
 		
-		seconds = 0;
+//		seconds = 0;
+		System.out.println("seconds = " + seconds);
 		
 		zoom = 1;
 		zoomIn = false;
@@ -172,13 +173,18 @@ public class DrawingSurface extends PApplet {
 			
 			textSize(15);
 			if (time.countUp(this) <= 5) {
+//				seconds = 0;
 				fill(0);
 				text(time.getTime(), 20, 20);
 			} else {
+				System.out.print("entered");
 				fill(0);
 				text("5.000", 20, 20);
-//				seconds = 5;
+				seconds = 5;
+//				System.out.println(seconds);
 			}
+//			System.out.println(seconds);
+
 
 			ball3.draw(this);
 			fill(255,255,0);
