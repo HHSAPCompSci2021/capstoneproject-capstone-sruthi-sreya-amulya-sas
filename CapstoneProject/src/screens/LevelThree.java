@@ -1,22 +1,9 @@
 package screens;
 
-import java.util.ArrayList;
-
-import gameElements.Ghost;
 import processing.core.PApplet;
 
 public class LevelThree extends Level {
 
-	private Ghost g;
-	private Ghost g2;
-
-	public LevelThree() {
-		
-	g = new Ghost();
-	g2 = new Ghost();
-		
-
-	}
 	
 	@Override
 	public void draw(PApplet marker) {
@@ -32,26 +19,6 @@ public class LevelThree extends Level {
 		marker.fill(0);
 		marker.circle(90, 90, 10);
 		marker.pop();
-		
-
-		
-		
-		
-		
-		
-
-
-
-		g.draw(marker);
-		g2.draw(marker);
-		
-		g.setX((int)(Math.random()*500));
-		g.setY((int)(Math.random()*500));
-		g2.setX((int)(Math.random()*500));
-		g2.setY((int)(Math.random()*500));
-		
-
-		
 		
 	}
 

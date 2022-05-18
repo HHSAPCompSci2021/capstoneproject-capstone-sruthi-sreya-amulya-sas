@@ -1,6 +1,5 @@
 package gameElements;
 
-import core.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -13,7 +12,6 @@ public class Ghost {
 	private double xVel;
 	private double yVel;
 	private PImage image;
-
 	
 	
 	/**
@@ -21,23 +19,8 @@ public class Ghost {
 	 * @param x1 x coordinate of the ghost
 	 * @param y1 y coordinate of the ghost
 	 */
-	public Ghost() {
-//		surface = new DrawingSurface(); // create the drawing surface in a method and dont use a field bc the ghsots doesnt need to have a drawing surface
-//		prevX = 0;
-//		prevY = 0;
-//		int seconds = 0;
-//		if (seconds != 5) {
-//			System.out.print(seconds);
-//
-//			x = (int) (Math.random() * 500);
-//			y = (int) (Math.random() * 500);
-//			prevX = x;
-//			prevY = y;
-//		} else {
-//			System.out.print("hi");
-//			x = prevX;
-//			y = prevY;
-//		}
+	public Ghost(PApplet p) {
+		image = new PImage();
 	}	
 	
 	/**
@@ -77,36 +60,25 @@ public class Ghost {
 	 * @param p PApplet object used to draw the coin
 	 */
 	public void draw(PApplet p) {
-		PImage img = new PImage();
-//		img = p.loadImage("images/ghost.gif"); // don't load the image every time you draw make a variable to load and j use it in the method
-		img.resize(40, 40);
-		p.image(img, x, y);
+		image = p.loadImage("images/ghost.gif");
+		image.resize(40, 40);
+		p.image(image, x, y);
 	}
 	
 	public void stopGhosts() {
-		DrawingSurface surface = new DrawingSurface();
+		x = prevX;
+		y = prevY;
+	}
+	
+	public void moveGhosts() {
 		prevX = 0;
 		prevY = 0;
-		int seconds = surface.getSeconds();
-
-		if (seconds != 5) {
-			System.out.print(seconds);
-
-//			x = (int) (Math.random() * 500);
-//			y = (int) (Math.random() * 500);
-			prevX = x;
-			prevY = y;
-		} else {
-			System.out.print("hi");
-			x = prevX;
-			y = prevY;
-		}
+		x = (int) (Math.random() * 500);
+		y = (int) (Math.random() * 500);
+		prevX = x;
+		prevY = y;
 	}
-	/*public PImage setImage(PImage i) {
-		
-		return ;
-	}
-	*/
+	
 	
 	public void accelerate(double vx, double vy) {
 		this.xVel = vx;

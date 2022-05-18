@@ -6,10 +6,7 @@ import gameElements.Ghost;
 import processing.core.PApplet;
 
 public class LevelFive extends Level {
-
-	private ArrayList<Ghost> ghosts;
 	
-	@Override
 	public void draw(PApplet marker) {
 		marker.fill(255);
 		marker.line(50, 50, 150, 50); // horizontal (right)
@@ -23,8 +20,7 @@ public class LevelFive extends Level {
 		marker.fill(0);
 		marker.circle(90, 90, 10);
 		marker.pop();
-		Ghost g = new Ghost();
-		g.draw(marker);
+
 	}
 	
 	public void zoomIn() {

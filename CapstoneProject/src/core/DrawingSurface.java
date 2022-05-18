@@ -25,11 +25,18 @@ public class DrawingSurface extends PApplet {
 	private GolfBall ball6;
 	private Coin coin1;
 	private Coin coin2;
-	private Timer time;
+	private Timer time3;
+	private Timer time4;
+	private Timer time5;
+	private Timer time6;
+
 	private Instructions rules;
 	private HomeScreen homeScreen;
 	private int switchScreen;
 	private double x,y;
+	
+	private Ghost g1;
+	private Ghost g2;
 	
 	private String level;
 	private int coinCount;
@@ -62,7 +69,10 @@ public class DrawingSurface extends PApplet {
 		coinCount = 0;
 		
 		seconds = 0;
-		System.out.println("seconds = " + seconds);
+		
+		g1 = new Ghost(this);
+		g2 = new Ghost(this);
+//		System.out.println("seconds = " + seconds);
 		
 	}
 	
@@ -72,8 +82,11 @@ public class DrawingSurface extends PApplet {
 		homeScreen.draw(this);
 //		smooth();
 		rectMode(CENTER);
-		time = new Timer(0);
-		
+		time3 = new Timer(0);
+		time4 = new Timer(0);
+		time5 = new Timer(0);
+		time6 = new Timer(0);
+
 	}
 	
 	/**
@@ -146,18 +159,21 @@ public class DrawingSurface extends PApplet {
 			level = "Level 3";
 			text(level, 150, 50);
 			l3.draw(this);
-			
+			g1.draw(this);
+			g2.draw(this);
 			
 			textSize(15);
-			if (time.countUp(this) <= 5) {
-//				seconds = 0;
+			if (time3.countUp(this) <= 5) {
 				fill(0);
-				text(time.getTime(), 20, 20);
+				text(time3.getTime(), 20, 20);
+				g1.moveGhosts();
+				g2.moveGhosts();
 			} else {
-				System.out.print("entered");
 				fill(0);
 				text("5.000", 20, 20);
 				seconds = 5;
+				g1.stopGhosts();
+				g2.stopGhosts();
 			}
 
 
@@ -182,6 +198,26 @@ public class DrawingSurface extends PApplet {
 			level = "Level 4";
 			text(level, 150, 50);
 			l4.draw(this);
+			g1.draw(this);
+			g2.draw(this);
+
+			
+			textSize(15);
+			if (time4.countUp(this) <= 5) {
+				fill(0);
+				text(time4.getTime(), 20, 20);
+				g1.moveGhosts();
+				g2.moveGhosts();
+			} else {
+				fill(0);
+				text("5.000", 20, 20);
+				seconds = 5;
+				g1.stopGhosts();
+				g2.stopGhosts();
+			}
+			
+			
+			
 			ball4.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
@@ -203,6 +239,24 @@ public class DrawingSurface extends PApplet {
 			level = "Level 5";
 			text(level, 150, 50);
 			l5.draw(this);
+			g1.draw(this);
+			g2.draw(this);
+
+			
+			textSize(15);
+			if (time5.countUp(this) <= 5) {
+				fill(0);
+				text(time5.getTime(), 20, 20);
+				g1.moveGhosts();
+				g2.moveGhosts();
+			} else {
+				fill(0);
+				text("5.000", 20, 20);
+				seconds = 5;
+				g1.stopGhosts();
+				g2.stopGhosts();
+			}
+			
 			ball5.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
@@ -224,6 +278,24 @@ public class DrawingSurface extends PApplet {
 			level = "Level 6";
 			text(level, 150, 50);
 			l6.draw(this);
+			g1.draw(this);
+			g2.draw(this);
+
+			
+			textSize(15);
+			if (time6.countUp(this) <= 5) {
+				fill(0);
+				text(time6.getTime(), 20, 20);
+				g1.moveGhosts();
+				g2.moveGhosts();
+			} else {
+				fill(0);
+				text("5.000", 20, 20);
+				seconds = 5;
+				g1.stopGhosts();
+				g2.stopGhosts();
+			}
+			
 			ball6.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
