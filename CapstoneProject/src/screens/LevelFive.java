@@ -1,8 +1,5 @@
 package screens;
 
-import java.util.ArrayList;
-
-import gameElements.Ghost;
 import processing.core.PApplet;
 
 public class LevelFive extends Level {

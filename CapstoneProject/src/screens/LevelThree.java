@@ -4,8 +4,6 @@ import processing.core.PApplet;
 
 public class LevelThree extends Level {
 
-	
-	@Override
 	public void draw(PApplet marker) {
 		marker.fill(255);
 		marker.line(50, 50, 150, 50); // horizontal (right)
@@ -19,19 +17,19 @@ public class LevelThree extends Level {
 		marker.fill(0);
 		marker.circle(90, 90, 10);
 		marker.pop();
-		
+
 	}
 
 	@Override
 	public void zoomIn() {
 		// code to resize
-		
+
 	}
 
 	@Override
 	public void zoomOut() {
 		// code to resize
-		
+
 	}
 
 }

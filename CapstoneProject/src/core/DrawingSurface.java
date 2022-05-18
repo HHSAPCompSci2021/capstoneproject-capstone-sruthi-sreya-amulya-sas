@@ -163,7 +163,26 @@ public class DrawingSurface extends PApplet {
 			g2.draw(this);
 			
 			textSize(15);
-			if (time3.countUp(this) <= 5) {
+			float seconds = time3.countUp(this);
+			/*
+			if (seconds <= 3) {
+				fill(0);
+				text(time3.getTime(), 20, 20);
+				g1.moveGhosts();
+				g2.moveGhosts();
+			} else if (seconds <= 5) {
+				fill(0);
+				text(time3.getTime(), 20, 20);
+				g1.stopGhosts();
+				g2.stopGhosts();
+			} else {
+				fill(0);
+				text("5.000", 20, 20);
+				rect(0,0,1200,1200);
+			}
+			 */
+			
+			if (seconds <= 5) {
 				fill(0);
 				text(time3.getTime(), 20, 20);
 				g1.moveGhosts();
@@ -171,7 +190,6 @@ public class DrawingSurface extends PApplet {
 			} else {
 				fill(0);
 				text("5.000", 20, 20);
-				seconds = 5;
 				g1.stopGhosts();
 				g2.stopGhosts();
 			}
@@ -184,6 +202,10 @@ public class DrawingSurface extends PApplet {
 			if(ball3.coinIntersects()){
 				coinCount++;
 			}
+//			if (ball3.ghostIntersects(g1, g2)) {
+//				fill(255);
+//				text("YOU HIT GHOST", 150, 150);
+//			}
 			if (ball3.goal()) {
 				textSize(50);
 				fill(0);
