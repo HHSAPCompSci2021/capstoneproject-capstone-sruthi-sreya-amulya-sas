@@ -10,6 +10,9 @@ public class Ghost {
 	private int y;
 	private int prevX;
 	private int prevY;
+	private double xVel;
+	private double yVel;
+	private PImage image;
 
 	
 	
@@ -75,7 +78,7 @@ public class Ghost {
 	 */
 	public void draw(PApplet p) {
 		PImage img = new PImage();
-		img = p.loadImage("images/ghost.gif"); // dont load the image everytime you draw make a variable to load and j use it in the method
+//		img = p.loadImage("images/ghost.gif"); // don't load the image every time you draw make a variable to load and j use it in the method
 		img.resize(40, 40);
 		p.image(img, x, y);
 	}
@@ -99,4 +102,15 @@ public class Ghost {
 			y = prevY;
 		}
 	}
+	/*public PImage setImage(PImage i) {
+		
+		return ;
+	}
+	*/
+	
+	public void accelerate(double vx, double vy) {
+		this.xVel = vx;
+		this.yVel = vy;
+	}
+	
 }

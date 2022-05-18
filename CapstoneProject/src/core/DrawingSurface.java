@@ -2,6 +2,8 @@ package core;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
+import ameduri.shapes.Circle;
 import ameduri.shapes.Line;
 import gameElements.*;
 import processing.core.PApplet;
@@ -28,18 +30,12 @@ public class DrawingSurface extends PApplet {
 	private HomeScreen homeScreen;
 	private int switchScreen;
 	private double x,y;
-	private float xPan ,yPan;
 	
 	private String level;
 	private int coinCount;
-	private float scale;
 	
 	private int seconds;
 	private int zoom;
-	private boolean zoomIn = false;
-	private boolean zoomOut = false;
-	private float panSpeed;
-	private double zoomSpeed;
 		
 	/**
 	 * Creates new Levels, GolfBalls, Coins, Instructions, and a HomeScreen
@@ -62,21 +58,11 @@ public class DrawingSurface extends PApplet {
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
 		switchScreen = 0;
-		
-		scale = 0;
-		xPan = 0;
-		yPan = 0;
 		level = "";
 		coinCount = 0;
 		
-//		seconds = 0;
+		seconds = 0;
 		System.out.println("seconds = " + seconds);
-		
-		zoom = 1;
-		zoomIn = false;
-		zoomOut = false;
-		panSpeed = 5;
-		zoomSpeed = 1.03;
 		
 	}
 	
@@ -87,6 +73,7 @@ public class DrawingSurface extends PApplet {
 //		smooth();
 		rectMode(CENTER);
 		time = new Timer(0);
+		
 	}
 	
 	/**
@@ -95,10 +82,6 @@ public class DrawingSurface extends PApplet {
 	 * switches to the next level.
 	 */
 	public void draw() { 
-				
-//		translate(width/2, height/2);
-//		scale(scale);
-//		translate(xPan, yPan);
 		if (switchScreen == 0) {
 			homeScreen.draw(this);
 			scale(zoom);
@@ -107,12 +90,6 @@ public class DrawingSurface extends PApplet {
 			rules.draw();
 		} else if (switchScreen == 2) {// LEVEL 1 --------------------------------------
 			background(255);
-//			if (keyCode == KeyEvent.VK_LEFT) {
-//				zoom += 0.01;
-//			}
-//			if (keyCode == KeyEvent.VK_RIGHT) {
-//				zoom -= 0.01;
-//			}
 		
 			textSize(50);
 			fill(0);
@@ -181,9 +158,7 @@ public class DrawingSurface extends PApplet {
 				fill(0);
 				text("5.000", 20, 20);
 				seconds = 5;
-//				System.out.println(seconds);
 			}
-//			System.out.println(seconds);
 
 
 			ball3.draw(this);

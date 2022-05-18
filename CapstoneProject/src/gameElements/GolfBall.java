@@ -90,13 +90,14 @@ public class GolfBall {
 	 * @return true or false depending on whether or not the golf ball intersects a boundary line
 	 */
 	public boolean bounce(double x_diff, double y_diff) {
+		
 		/*Line invis1= new Line(50, 50, 150, 50); // right
 		Line invis2 = new Line(150, 50, 150, 150); // down
 		Line invis3 = new Line(150, 150, 300, 150); // right
 		Line invis4 = new Line(300, 150, 300, 250); // down
 		Line invis5 = new Line(300, 250, 50, 250); // left
-		Line invis6 = new Line(50, 250, 50, 50); // up
-		*/
+		Line invis6 = new Line(50, 250, 50, 50); // up */
+		
 		
 
 		Rectangle r = new Rectangle(50, 50, 100, 0); //right
@@ -107,6 +108,8 @@ public class GolfBall {
 		Rectangle r6 = new Rectangle(50, 50, 0, 200); // up
 		Rectangle temp = new Rectangle(x, y, diameter,diameter);
 		
+		
+//		if(temp.getX() - 50 <= )
 		if (r.intersects(temp)) {
 			System.out.println("l");
 			
@@ -122,16 +125,6 @@ public class GolfBall {
 			
 			this.setY((int)(getY() + y_diff));
 			this.setX((int)(150 + x_diff));
-//			System.out.println(("is " + this.getX()));
-			
-//			System.out.println((int)(150 + x_diff));
-//			System.out.println(x_diff);
-
-			
-//			this.setX((int)(30));
-//			this.setY((int)(30));
-
-			
 			return true;
 
 		}
