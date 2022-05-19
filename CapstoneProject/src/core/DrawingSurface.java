@@ -1,10 +1,12 @@
 package core;
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import ameduri.shapes.Circle;
 import ameduri.shapes.Line;
+import ameduri.shapes.Rectangle;
 import gameElements.*;
 import processing.core.PApplet;
 import screens.*;
@@ -43,6 +45,8 @@ public class DrawingSurface extends PApplet {
 	
 	private int seconds;
 	private int zoom;
+	
+	private Rectangle rect;
 		
 	/**
 	 * Creates new Levels, GolfBalls, Coins, Instructions, and a HomeScreen
@@ -72,6 +76,8 @@ public class DrawingSurface extends PApplet {
 		
 		g1 = new Ghost(this);
 		g2 = new Ghost(this);
+		
+		rect = new Rectangle(0,0,1200,1200);
 //		System.out.println("seconds = " + seconds);
 		
 	}
@@ -164,7 +170,7 @@ public class DrawingSurface extends PApplet {
 			
 			textSize(15);
 			float seconds = time3.countUp(this);
-			/*
+			
 			if (seconds <= 3) {
 				fill(0);
 				text(time3.getTime(), 20, 20);
@@ -178,21 +184,22 @@ public class DrawingSurface extends PApplet {
 			} else {
 				fill(0);
 				text("5.000", 20, 20);
-				rect(0,0,1200,1200);
+				rect.setFillColor(Color.BLACK);
+				rect.draw(this);
 			}
-			 */
+			 
 			
-			if (seconds <= 5) {
-				fill(0);
-				text(time3.getTime(), 20, 20);
-				g1.moveGhosts();
-				g2.moveGhosts();
-			} else {
-				fill(0);
-				text("5.000", 20, 20);
-				g1.stopGhosts();
-				g2.stopGhosts();
-			}
+//			if (seconds <= 5) {
+//				fill(0);
+//				text(time3.getTime(), 20, 20);
+//				g1.moveGhosts();
+//				g2.moveGhosts();
+//			} else {
+//				fill(0);
+//				text("5.000", 20, 20);
+//				g1.stopGhosts();
+//				g2.stopGhosts();
+//			}
 
 
 			ball3.draw(this);
@@ -202,10 +209,11 @@ public class DrawingSurface extends PApplet {
 			if(ball3.coinIntersects()){
 				coinCount++;
 			}
-//			if (ball3.ghostIntersects(g1, g2)) {
-//				fill(255);
-//				text("YOU HIT GHOST", 150, 150);
-//			}
+			if (ball3.ghostIntersects(g1, g2)) {
+				fill(0);
+				textSize(30);
+				text("YOU HIT GHOST", 150, 150);
+			}
 			if (ball3.goal()) {
 				textSize(50);
 				fill(0);
@@ -225,6 +233,27 @@ public class DrawingSurface extends PApplet {
 
 			
 			textSize(15);
+			float seconds = time4.countUp(this);
+			
+			if (seconds <= 3) {
+				fill(0);
+				text(time4.getTime(), 20, 20);
+				g1.moveGhosts();
+				g2.moveGhosts();
+			} else if (seconds <= 5) {
+				fill(0);
+				text(time4.getTime(), 20, 20);
+				g1.stopGhosts();
+				g2.stopGhosts();
+			} else {
+				fill(0);
+				text("5.000", 20, 20);
+				rect.moveBy(0, 0);
+				rect.setFillColor(Color.BLACK);
+				rect.draw(this);
+			}
+			
+			/*
 			if (time4.countUp(this) <= 5) {
 				fill(0);
 				text(time4.getTime(), 20, 20);
@@ -237,7 +266,7 @@ public class DrawingSurface extends PApplet {
 				g1.stopGhosts();
 				g2.stopGhosts();
 			}
-			
+			*/
 			
 			
 			ball4.draw(this);
@@ -266,6 +295,27 @@ public class DrawingSurface extends PApplet {
 
 			
 			textSize(15);
+			float seconds = time5.countUp(this);
+			
+			if (seconds <= 3) {
+				fill(0);
+				text(time5.getTime(), 20, 20);
+				g1.moveGhosts();
+				g2.moveGhosts();
+			} else if (seconds <= 5) {
+				fill(0);
+				text(time5.getTime(), 20, 20);
+				g1.stopGhosts();
+				g2.stopGhosts();
+			} else {
+				fill(0);
+				text("5.000", 20, 20);
+				rect.moveBy(0, 0);
+				rect.setFillColor(Color.BLACK);
+				rect.draw(this);
+			}
+
+			/*
 			if (time5.countUp(this) <= 5) {
 				fill(0);
 				text(time5.getTime(), 20, 20);
@@ -278,6 +328,7 @@ public class DrawingSurface extends PApplet {
 				g1.stopGhosts();
 				g2.stopGhosts();
 			}
+			*/
 			
 			ball5.draw(this);
 			fill(255,255,0);
@@ -305,6 +356,27 @@ public class DrawingSurface extends PApplet {
 
 			
 			textSize(15);
+			float seconds = time6.countUp(this);
+			
+			if (seconds <= 3) {
+				fill(0);
+				text(time6.getTime(), 20, 20);
+				g1.moveGhosts();
+				g2.moveGhosts();
+			} else if (seconds <= 5) {
+				fill(0);
+				text(time6.getTime(), 20, 20);
+				g1.stopGhosts();
+				g2.stopGhosts();
+			} else {
+				fill(0);
+				text("5.000", 20, 20);
+				rect.moveBy(0, 0);
+				rect.setFillColor(Color.BLACK);
+				rect.draw(this);
+			}
+
+			/*
 			if (time6.countUp(this) <= 5) {
 				fill(0);
 				text(time6.getTime(), 20, 20);
@@ -317,6 +389,7 @@ public class DrawingSurface extends PApplet {
 				g1.stopGhosts();
 				g2.stopGhosts();
 			}
+			*/
 			
 			ball6.draw(this);
 			fill(255,255,0);
@@ -385,6 +458,9 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void mouseReleased() {
 		
+		rect.setFillColor(Color.WHITE);
+		rect.moveBy(1200, 1200);
+		rect.draw(this);
 		ArrayList<Point> points = new ArrayList<Point>();
 
 		
