@@ -1,11 +1,9 @@
 package core;
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import ameduri.shapes.Circle;
 import ameduri.shapes.Line;
 import ameduri.shapes.Rectangle;
 import gameElements.*;
@@ -33,13 +31,12 @@ public class DrawingSurface extends PApplet {
 	private Timer time4;
 	private Timer time5;
 	private Timer time6;
-	
 	private int numTries;
 	private Instructions rules;
 	private HomeScreen homeScreen;
 	private int switchScreen;
 	private double x,y;
-	
+	private PImage zoomPicture;
 	private Ghost g1;
 	private Ghost g2;
 	
@@ -77,7 +74,7 @@ public class DrawingSurface extends PApplet {
 		coinCount = 0;
 		numTries = 0;
 		seconds = 0;
-		
+		zoomPicture = new PImage();
 		
 		g1 = new Ghost(this);
 		g2 = new Ghost(this);
@@ -130,13 +127,20 @@ public class DrawingSurface extends PApplet {
 			
 			coin1.draw(this);
 			coin2.draw(this);
-
-			if(ball.coinIntersects()){
-				coinCount = coin1.increaseCoins();
+			
+			/*if(ball.coinIntersects() && checkCoinIntersects == true) {
+				checkCoinIntersects = true;
+				System.out.print("hello");
+				coinCount++;
+				System.out.print("hi");
 				fill(0);
 				text("you hit coin!", 200, 400);
 				textSize(10);
 			}
+			else {
+				checkCoinIntersects = false;
+			}
+			*/
 			if (ball.goal()) {
 				textSize(50);
 				fill(0);
@@ -158,9 +162,9 @@ public class DrawingSurface extends PApplet {
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
-			if(ball2.coinIntersects()){
-				coinCount++;
-			}
+//			if(ball2.coinIntersects()){
+//				coinCount++;
+//			}
 			if (ball2.goal()) {
 				textSize(50);
 				fill(0);
@@ -195,10 +199,10 @@ public class DrawingSurface extends PApplet {
 //				}
 //			}
 			
-			if(numTries == 7) {
-				textSize(20);
-				text("You lost!", 150, 300);
-			}
+//			if(numTries == 7) {
+//				textSize(20);
+//				text("You lost!", 150, 300);
+//			}
 			textSize(15);
 			float seconds = time3.countUp(this);
 			
@@ -237,15 +241,10 @@ public class DrawingSurface extends PApplet {
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
-			if(ball3.coinIntersects()){
-				coinCount++;
-			}
+//			if(ball3.coinIntersects()){
+//				coinCount++;
+//			}
 
-			if (ball3.ghostIntersects(g1, g2)) {
-				fill(0);
-				textSize(30);
-				text("YOU HIT GHOST", 150, 150);
-			}
 			if (ball3.goal()) {
 				textSize(50);
 				fill(0);
@@ -263,6 +262,22 @@ public class DrawingSurface extends PApplet {
 			g1.draw(this);
 			g2.draw(this);
 
+			
+//			if(ball.ghostIntersects(g2, g1)) {
+//				numTries--;
+//				System.out.println(numTries);
+//				if(numTries <= 0) {
+//					g1.stopGhosts();
+//					g2.stopGhosts();
+//					textSize(50);
+//					fill(0);
+//					text("you lost", 150, 250);
+//					textSize(20);
+//					text("Click enter to retry level", 150, 300);
+//				}
+//			}
+			
+			
 			textSize(15);
 			float seconds = time4.countUp(this);
 			
@@ -304,8 +319,16 @@ public class DrawingSurface extends PApplet {
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
-			if(ball4.coinIntersects()){
-				coinCount++;
+//			if(ball4.coinIntersects()){
+//				coinCount++;
+//			}
+			if (ball3.ghostIntersects(g1, g2)) {
+				fill(0);
+				textSize(30);
+				text("YOU HIT GHOST", 150, 150);
+//				coinCount = 0;
+				numTries = 0;
+				text("Press \'S\' to restart Level", 200, 100);
 			}
 			if (ball4.goal()) {
 				textSize(50);
@@ -366,8 +389,16 @@ public class DrawingSurface extends PApplet {
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
-			if(ball5.coinIntersects()){
-				coinCount++;
+//			if(ball5.coinIntersects()){
+//				coinCount++;
+//			}
+			if (ball3.ghostIntersects(g1, g2)) {
+				fill(0);
+				textSize(30);
+				text("YOU HIT GHOST", 150, 150);
+//				coinCount = 0;
+				numTries = 0;
+				text("Press \'S\' to restart Level", 200, 100);
 			}
 			if (ball5.goal()) {
 				textSize(50);
@@ -427,8 +458,16 @@ public class DrawingSurface extends PApplet {
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
-			if(ball6.coinIntersects()){
-				coinCount++;
+//			if(ball6.coinIntersects()){
+//				coinCount++;
+//			}
+			if (ball3.ghostIntersects(g1, g2)) {
+				fill(0);
+				textSize(30);
+				text("YOU HIT GHOST", 150, 150);
+//				coinCount = 0;
+				numTries = 0;
+				text("Press \'S\' to restart Level", 200, 100);
 			}
 			if (ball6.goal()) {
 				textSize(50);
@@ -441,26 +480,41 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		
+		if(switchScreen > 1) {
+			zoomPicture = this.loadImage("images/fullscreen.gif");
+			zoomPicture.resize(20, 20);
+			this.image(zoomPicture, 570, 10);
+		}
+		
 		if (keyCode == KeyEvent.VK_ENTER) {
 			switchScreen++;
 			keyCode = 0;
 		}
 		
-		if (switchScreen != 0 && switchScreen != 1) {
+		if (switchScreen > 1) {
 			fill(0);
 			textSize(20);
 			text("Coins: " + Integer.toString(coinCount), 50, 40);
-
-			if (coinCount == 5) {
-				//stop();
-				textSize(10);
-				strokeWeight(10);
-				text("Use Chance!", 500, 20);
-			}
 		}
 		if(numTries == 7) {
 			textSize(20);
 			text("You lost!", 150, 300);
+			text("Press \'R\' restart", 150, 200);
+			//"hide" ball + debug
+			ball.setX(700); // out of screen
+			ball.setY(700); // out of screen
+			ball2.setX(700); // out of screen
+			ball2.setY(700); // out of screen
+			ball3.setX(700); // out of screen
+			ball3.setY(700); // out of screen
+			ball4.setX(700); // out of screen
+			ball4.setY(700); // out of screen
+			ball5.setX(700); // out of screen
+			ball5.setY(700); // out of screen
+			ball6.setX(700); // out of screen
+			ball6.setY(700); // out of screen
+			
+			
 		}
 		
 		
@@ -633,7 +687,6 @@ public class DrawingSurface extends PApplet {
 				ball.goal();
 			}
 		}	
-		
 	}
 	
 	public void keyPressed() {
@@ -660,6 +713,35 @@ public class DrawingSurface extends PApplet {
 			l6.scaleUp();
 //			System.out.println(l1.returnZ());
 
+		}
+		
+		if(keyCode == 'S') {
+			System.out.print("LEVEL");
+			numTries = 0;
+			ball3.setX(260);
+			ball3.setY(220);
+			ball4.setX(260);
+			ball4.setY(220);
+			ball5.setX(260);
+			ball5.setY(220);
+			ball6.setX(260);
+			ball6.setY(220);
+			time3 = new Timer(0);
+			time4 = new Timer(0);
+			time5 = new Timer(0);
+			time6 = new Timer(0);
+			g1.draw(this);
+			g2.draw(this);
+			g1.moveGhosts();
+			g2.moveGhosts();
+		}
+		
+		if(keyCode == 'R') {
+			System.out.println("you reset");
+			numTries = 0;
+//			coinCount = 0;
+			switchScreen = 0;
+			homeScreen.draw(this);
 		}
 //		}
 	}
