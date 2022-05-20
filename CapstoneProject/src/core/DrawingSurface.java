@@ -499,6 +499,8 @@ public class DrawingSurface extends PApplet {
 		if (keyCode == KeyEvent.VK_ENTER) {
 			switchScreen++;
 			keyCode = 0;
+			
+			numTries= 0;
 		}
 		
 		if (switchScreen > 1) {
@@ -518,7 +520,7 @@ public class DrawingSurface extends PApplet {
 			text("You lost!", 150, 300);
 			text("Press \'R\' restart", 150, 200);
 			//"hide" ball + debug
-			ball.setX(700); // out of screen
+			/*ball.setX(700); // out of screen
 			ball.setY(700); // out of screen
 			ball2.setX(700); // out of screen
 			ball2.setY(700); // out of screen
@@ -529,9 +531,12 @@ public class DrawingSurface extends PApplet {
 			ball5.setX(700); // out of screen
 			ball5.setY(700); // out of screen
 			ball6.setX(700); // out of screen
-			ball6.setY(700); // out of screen
+			ball6.setY(700); // out of screen */
+			ball.setRGB(255, 0, 0);
 			
-			
+		}
+		else {
+			ball.setRGB(0, 0, 0);
 		}
 		
 		
@@ -716,6 +721,7 @@ public class DrawingSurface extends PApplet {
 			text("you hit coin!", 200, 400);
 			textSize(10);
 		}
+	
 	}
 	
 	public void keyPressed() {

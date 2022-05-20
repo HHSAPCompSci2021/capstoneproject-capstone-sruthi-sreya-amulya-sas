@@ -15,6 +15,7 @@ public class GolfBall {
 	private int x, y, diameter;
 	private double vx, vy;
 	private Circle c;
+	private float r,g,b;
 
 //	private DrawingSurface surface;
 //	private PImage img;
@@ -253,5 +254,20 @@ public class GolfBall {
 //	public void intersects(Line l) {
 //		l.inter
 //	}
+	
+	public void setRGB(float a, float b, float c) {
+		r = a;
+		g = b;
+		this.b = c;
+	}
+	public float getR() {
+		return r;
+	}
+	public float getG() {
+		return g;
+	}
+	public float getB() {
+		return b;
+	}
 
 }
