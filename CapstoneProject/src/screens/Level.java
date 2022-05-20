@@ -23,15 +23,7 @@ public abstract class Level {
 	 */
 	public abstract void draw(PApplet marker);
 	
-	/**
-	 * Zooms into the golf course
-	 */
-	public abstract void zoomIn();
-	
-	/**
-	 * Zooms out to see the birds-eye view of the golf course
-	 */
-	public abstract void zoomOut();
+
 	
 	
 }

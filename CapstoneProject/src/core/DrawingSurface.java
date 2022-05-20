@@ -34,8 +34,6 @@ public class DrawingSurface extends PApplet {
 	private Timer time5;
 	private Timer time6;
 	
-	private double zoomIn;
-	private Rectangle r;
 	private int numTries;
 	private Instructions rules;
 	private HomeScreen homeScreen;
@@ -51,7 +49,6 @@ public class DrawingSurface extends PApplet {
 	private int seconds;
 	private int zoom;
 	
-	private PImage zoomPicture;
 	
 	private Rectangle rect;
 		
@@ -78,18 +75,15 @@ public class DrawingSurface extends PApplet {
 		switchScreen = 0;
 		level = "";
 		coinCount = 0;
-		zoomPicture = new PImage();
 		numTries = 0;
 		seconds = 0;
 		
-		zoomIn = 1;
 		
 		g1 = new Ghost(this);
 		g2 = new Ghost(this);
 		
 		rect = new Rectangle(0,0,1200,1200);
 		
-		r = new Rectangle(570, 10, 20, 20);
 		
 //		System.out.println("seconds = " + seconds);
 		
@@ -138,7 +132,7 @@ public class DrawingSurface extends PApplet {
 			coin2.draw(this);
 
 			if(ball.coinIntersects()){
-				coinCount++;
+				coinCount = coin1.increaseCoins();
 				fill(0);
 				text("you hit coin!", 200, 400);
 				textSize(10);
@@ -446,17 +440,13 @@ public class DrawingSurface extends PApplet {
 			
 		}
 		
-		if(switchScreen != 0 || switchScreen != 1) { 
-			zoomPicture = this.loadImage("images/fullscreen.gif");
-			zoomPicture.resize(20, 20);
-			this.image(zoomPicture, 570, 10);
-		}
+		
 		if (keyCode == KeyEvent.VK_ENTER) {
 			switchScreen++;
 			keyCode = 0;
 		}
 		
-		if (switchScreen != 0 || switchScreen != 1) {
+		if (switchScreen != 0 && switchScreen != 1) {
 			fill(0);
 			textSize(20);
 			text("Coins: " + Integer.toString(coinCount), 50, 40);
@@ -657,6 +647,7 @@ public class DrawingSurface extends PApplet {
 			l4.scaleDown();
 			l5.scaleDown();
 			l6.scaleDown();
+//			System.out.println(l1.returnZ());
 		}
 		
 		if(keyCode == 'Z') {
@@ -667,6 +658,8 @@ public class DrawingSurface extends PApplet {
 			l4.scaleUp();
 			l5.scaleUp();
 			l6.scaleUp();
+//			System.out.println(l1.returnZ());
+
 		}
 //		}
 	}

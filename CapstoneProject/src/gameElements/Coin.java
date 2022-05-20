@@ -11,6 +11,7 @@ public class Coin {
 
 	
 	private int x, y, diameter;
+	private int numCoins;
 	
 	/**
 	 * Assigns values to the x and y coordinates of the coin. The diameter is also assigned a value.
@@ -53,6 +54,11 @@ public class Coin {
 	 */
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	public int increaseCoins() {
+		numCoins++;
+		return numCoins;
 	}
 	
 	/**
