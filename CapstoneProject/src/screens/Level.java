@@ -1,29 +1,33 @@
 package screens;
 
-import java.util.ArrayList;
-
-import gameElements.Coin;
-import gameElements.Ghost;
 import processing.core.PApplet;
 
 public abstract class Level {
 	
-	private ArrayList<Coin> coins;
+	private boolean scale;
 	
 	/**
 	 * Instantiates new Coin ArrayList
 	 */
-	public Level() {
-		coins = new ArrayList<Coin>();
+	public Level(boolean scale) {
+		this.scale = scale;
 	}
-	
+
 	/**
 	 * 
 	 * @param marker PApplet object used to draw golf course
 	 */
 	public abstract void draw(PApplet marker);
 	
-
+	public abstract void scaleUp();
 	
+	public abstract void scaleDown();
 	
+	public boolean getScale() {
+		return scale;
+	}
+	
+	public void setScale(boolean b) {
+		scale = b;
+	}
 }

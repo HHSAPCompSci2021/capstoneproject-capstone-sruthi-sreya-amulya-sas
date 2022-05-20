@@ -11,9 +11,9 @@ public class LevelSix extends Level {
 	private Line l4;
 	private Line l5;
 	private Line l6;
-	private boolean scale;;
 	
 	public LevelSix() {
+		super(true);
 //		l1 = new Line(50, 50, 150, 50); // horizontal (right)
 //		l2 =  new Line(150, 50, 150, 150); // down
 //		l3 =  new Line(150, 150, 300, 150); // right
@@ -50,7 +50,7 @@ public class LevelSix extends Level {
 	
 	public void scaleUp() {
 
-		if(scale == true) {
+		if(getScale() == true) {
 		l1.setPoint2(l1.getX2()*1.5, l1.getY2());
 		
 		l2.setPoint(l2.getX() * 1.5, l2.getY());
@@ -63,7 +63,7 @@ public class LevelSix extends Level {
 		l5.setPoint(l5.getX() * 1.5, l5.getY() * 1.5);
 		
 		l6.setPoint(l6.getX(), l6.getY() * 1.5);
-		scale = false;
+		setScale(false);
 		}
 //		l6.setPoint2(l6.getX2(), l6.getY2() * 1.5);
 //		l1.resize(2);
@@ -77,14 +77,14 @@ public class LevelSix extends Level {
 	}
 	
 	public void scaleDown() {
-		if(scale == false) {
+		if(getScale() == false) {
 		l1 = new Line(50, 50, 150, 50); // horizontal (right)
 		l2 =  new Line(150, 50, 150, 150); // down
 		l3 =  new Line(150, 150, 300, 150); // right
 		l4 =  new Line(300, 150, 300, 250); // down
 		l5 =  new Line(300, 250, 50, 250); // left
 		l6 =  new Line(50, 250, 50, 50);
-		scale = true;
+		setScale(true);
 		}	
 		}
 		

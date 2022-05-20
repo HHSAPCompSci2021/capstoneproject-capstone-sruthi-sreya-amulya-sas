@@ -14,6 +14,7 @@ public class LevelFour extends Level {
 	private boolean scale;
 	
 	public LevelFour() {
+		super(true);
 //		l1 = new Line(50, 50, 150, 50); // horizontal (right)
 //		l2 =  new Line(150, 50, 150, 150); // down
 //		l3 =  new Line(150, 150, 300, 150); // right
