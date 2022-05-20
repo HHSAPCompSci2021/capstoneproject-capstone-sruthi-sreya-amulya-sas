@@ -123,10 +123,10 @@ public class DrawingSurface extends PApplet {
 		} else if (switchScreen == 2) {// LEVEL 1 --------------------------------------
 			background(255);
 			
-			zoomPicture = this.loadImage("images/fullscreen.gif");
+			/*zoomPicture = this.loadImage("images/fullscreen.gif");
 			zoomPicture.resize(20, 20);
 			this.image(zoomPicture, 570, 10);
-			
+			*/
 			textSize(50);
 			fill(0);
 			level = "Level 1";
@@ -140,7 +140,7 @@ public class DrawingSurface extends PApplet {
 			if(ball.coinIntersects()){
 				coinCount++;
 				fill(0);
-				text("You hit coin!", 200, 400);
+				text("you hit coin!", 200, 400);
 				textSize(10);
 			}
 			if (ball.goal()) {
@@ -446,19 +446,33 @@ public class DrawingSurface extends PApplet {
 			
 		}
 		
+		if(switchScreen != 0 || switchScreen != 1) { 
+			zoomPicture = this.loadImage("images/fullscreen.gif");
+			zoomPicture.resize(20, 20);
+			this.image(zoomPicture, 570, 10);
+		}
 		if (keyCode == KeyEvent.VK_ENTER) {
 			switchScreen++;
 			keyCode = 0;
 		}
 		
-		fill(0);
-		textSize(20);
-		text("Coins: " + Integer.toString(coinCount), 50, 40);
-		
+		if (switchScreen != 0 || switchScreen != 1) {
+			fill(0);
+			textSize(20);
+			text("Coins: " + Integer.toString(coinCount), 50, 40);
+
+			if (coinCount == 5) {
+				//stop();
+				textSize(10);
+				strokeWeight(10);
+				text("Use Chance!", 500, 20);
+			}
+		}
 		if(numTries == 7) {
 			textSize(20);
 			text("You lost!", 150, 300);
 		}
+		
 		
 		
 	}
