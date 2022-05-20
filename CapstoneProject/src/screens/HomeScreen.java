@@ -1,6 +1,5 @@
 package screens;
 
-import core.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
 

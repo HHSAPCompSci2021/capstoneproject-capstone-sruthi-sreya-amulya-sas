@@ -1,11 +1,6 @@
 package gameElements;
 
-import java.awt.Point;
-//import java.awt.Rectangle;
-import java.util.ArrayList;
-
 import ameduri.shapes.Circle;
-import ameduri.shapes.Line;
 import ameduri.shapes.Rectangle;
 
 import processing.core.PApplet;
