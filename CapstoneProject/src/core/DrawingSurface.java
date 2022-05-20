@@ -31,6 +31,7 @@ public class DrawingSurface extends PApplet {
 	private Timer time4;
 	private Timer time5;
 	private Timer time6;
+	private boolean checkCoinIntersects;
 	private int numTries;
 	private Instructions rules;
 	private HomeScreen homeScreen;
@@ -67,6 +68,7 @@ public class DrawingSurface extends PApplet {
 		ball6 = new GolfBall();
 		coin1 = new Coin(100,150);
 		coin2 = new Coin(200,200);
+		checkCoinIntersects = false;
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
 		switchScreen = 0;
@@ -245,6 +247,14 @@ public class DrawingSurface extends PApplet {
 //				coinCount++;
 //			}
 
+			if (ball3.ghostIntersects(g1, g2)) {
+				fill(0);
+				textSize(30);
+				text("YOU HIT GHOST", 150, 150);
+//				coinCount = 0;
+				numTries = 0;
+				text("Press \'S\' to restart Level", 200, 100);
+			}
 			if (ball3.goal()) {
 				textSize(50);
 				fill(0);
@@ -495,6 +505,13 @@ public class DrawingSurface extends PApplet {
 			fill(0);
 			textSize(20);
 			text("Coins: " + Integer.toString(coinCount), 50, 40);
+
+			if (coinCount == 5) {
+				//stop();
+				textSize(10);
+				strokeWeight(10);
+				text("Use Chance! Press \'S\' to use life line", 500, 20);
+			}
 		}
 		if(numTries == 7) {
 			textSize(20);
@@ -564,6 +581,7 @@ public class DrawingSurface extends PApplet {
 		ArrayList<Point> points = new ArrayList<Point>();
 
 		numTries++;
+		text("Number of Tries: " + numTries, 450, 30);
 		System.out.println(numTries);
 		
 		if (level.equals("Level 1")) {
@@ -687,6 +705,17 @@ public class DrawingSurface extends PApplet {
 				ball.goal();
 			}
 		}	
+		
+		
+		if(ball.coinIntersects()) {
+			checkCoinIntersects = true;
+//			System.out.print("hello");
+			coinCount++;
+//			System.out.print("hi");
+			fill(0);
+			text("you hit coin!", 200, 400);
+			textSize(10);
+		}
 	}
 	
 	public void keyPressed() {
@@ -716,7 +745,7 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		if(keyCode == 'S') {
-			System.out.print("LEVEL");
+//			System.out.print("LEVEL");
 			numTries = 0;
 			ball3.setX(260);
 			ball3.setY(220);
@@ -737,7 +766,7 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		if(keyCode == 'R') {
-			System.out.println("you reset");
+//			System.out.println("you reset");
 			numTries = 0;
 //			coinCount = 0;
 			switchScreen = 0;
