@@ -158,7 +158,7 @@ public class GolfBall {
 //			this.setX((int)(250 + x_diff));
 			this.setX((int) (100 - x_diff));
 
-			System.out.println(getX() - 50 - x_diff);
+//			System.out.println(getX() - 50 - x_diff);
 
 			this.setY((int) (getY() + y_diff));
 			if (y_diff < 0)
@@ -166,7 +166,7 @@ public class GolfBall {
 			else
 				this.setY((int) (getY() - y_diff));
 
-			System.out.println(y_diff);
+//			System.out.println(y_diff);
 			return true;
 		}
 		if (r6.intersects(temp)) {

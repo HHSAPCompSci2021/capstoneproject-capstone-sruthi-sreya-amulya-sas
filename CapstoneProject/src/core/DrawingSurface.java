@@ -36,7 +36,7 @@ public class DrawingSurface extends PApplet {
 	
 	private double zoomIn;
 	private Rectangle r;
-
+	private int numTries;
 	private Instructions rules;
 	private HomeScreen homeScreen;
 	private int switchScreen;
@@ -79,7 +79,7 @@ public class DrawingSurface extends PApplet {
 		level = "";
 		coinCount = 0;
 		zoomPicture = new PImage();
-		
+		numTries = 0;
 		seconds = 0;
 		
 		zoomIn = 1;
@@ -127,7 +127,6 @@ public class DrawingSurface extends PApplet {
 			zoomPicture.resize(20, 20);
 			this.image(zoomPicture, 570, 10);
 			
-			
 			textSize(50);
 			fill(0);
 			level = "Level 1";
@@ -137,7 +136,7 @@ public class DrawingSurface extends PApplet {
 			
 			coin1.draw(this);
 			coin2.draw(this);
-			
+
 			if(ball.coinIntersects()){
 				coinCount++;
 				fill(0);
@@ -151,6 +150,7 @@ public class DrawingSurface extends PApplet {
 				textSize(20);
 				text("Click enter to go to the next level!", 150, 300);
 			}
+			
 		} else if (switchScreen == 3) { // LEVEL 2 --------------------------------------
 			
 			background(255);
@@ -160,7 +160,7 @@ public class DrawingSurface extends PApplet {
 			text(level, 150, 50);
 			l2.draw(this);
 			ball2.draw(this);
-			
+
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
@@ -186,6 +186,25 @@ public class DrawingSurface extends PApplet {
 			g1.draw(this);
 			g2.draw(this);
 			
+
+//			if(ball.ghostIntersects(g2, g1)) {
+//				numTries--;
+//				System.out.println(numTries);
+//				if(numTries <= 0) {
+//					g1.stopGhosts();
+//					g2.stopGhosts();
+//					textSize(50);
+//					fill(0);
+//					text("You lost!", 150, 250);
+//					textSize(20);
+//					text("Click enter to retry level!", 150, 300);
+//				}
+//			}
+			
+			if(numTries == 7) {
+				textSize(20);
+				text("You lost!", 150, 300);
+			}
 			textSize(15);
 			float seconds = time3.countUp(this);
 			
@@ -227,6 +246,7 @@ public class DrawingSurface extends PApplet {
 			if(ball3.coinIntersects()){
 				coinCount++;
 			}
+
 			if (ball3.ghostIntersects(g1, g2)) {
 				fill(0);
 				textSize(30);
@@ -249,7 +269,6 @@ public class DrawingSurface extends PApplet {
 			g1.draw(this);
 			g2.draw(this);
 
-			
 			textSize(15);
 			float seconds = time4.countUp(this);
 			
@@ -301,6 +320,7 @@ public class DrawingSurface extends PApplet {
 				textSize(20);
 				text("Click enter to go to the next level!", 150, 300);
 			}
+
 		}else if (switchScreen == 6) { // LEVEL 5 --------------------------------------
 			background(255);
 			textSize(50);
@@ -362,6 +382,7 @@ public class DrawingSurface extends PApplet {
 				textSize(20);
 				text("Click enter to go to the next level!", 150, 300);
 			}
+
 		}else if (switchScreen == 7) { // LEVEL 6 --------------------------------------
 			background(255);
 			textSize(50);
@@ -371,7 +392,6 @@ public class DrawingSurface extends PApplet {
 			l6.draw(this);
 			g1.draw(this);
 			g2.draw(this);
-
 			
 			textSize(15);
 			float seconds = time6.countUp(this);
@@ -435,6 +455,10 @@ public class DrawingSurface extends PApplet {
 		textSize(20);
 		text("Coins: " + Integer.toString(coinCount), 50, 40);
 		
+		if(numTries == 7) {
+			textSize(20);
+			text("You lost!", 150, 300);
+		}
 		
 		
 	}
@@ -481,7 +505,8 @@ public class DrawingSurface extends PApplet {
 		rect.draw(this);
 		ArrayList<Point> points = new ArrayList<Point>();
 
-		
+		numTries++;
+		System.out.println(numTries);
 		
 		if (level.equals("Level 1")) {
 			x = mouseX;
@@ -611,7 +636,7 @@ public class DrawingSurface extends PApplet {
 		
 //		if(mouseX >= r.getX() && mouseX >= r.getY() + r.getWidth() && mouseY <= r.getY() && mouseY <= r.getY() + rect.getHeight()) {
 		if(keyCode == 'F') {
-			System.out.println("You're in!");
+//			System.out.println("You're in!");
 			l1.scaleDown();
 			l2.scaleDown();
 			l3.scaleDown();
@@ -621,7 +646,7 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		if(keyCode == 'Z') {
-			System.out.println("You're out!");
+//			System.out.println("You're out!");
 			l1.scaleUp();
 			l2.scaleUp();
 			l3.scaleUp();
