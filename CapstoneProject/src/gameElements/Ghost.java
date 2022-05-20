@@ -65,11 +65,17 @@ public class Ghost {
 		p.image(image, x, y);
 	}
 	
+	/**
+	 * Stops the ghosts from moving randomly
+	 */
 	public void stopGhosts() {
 		x = prevX;
 		y = prevY;
 	}
 	
+	/**
+	 * Makes the ghosts move randomly on the screen
+	 */
 	public void moveGhosts() {
 		prevX = 0;
 		prevY = 0;
@@ -79,7 +85,11 @@ public class Ghost {
 		prevY = y;
 	}
 	
-	
+	/**
+	 * Changes the velocity of the golf ball to make it move
+	 * @param vx the change in x of the x velocity
+	 * @param vy the change in y of the y velocity
+	 */
 	public void accelerate(double vx, double vy) {
 		this.xVel = vx;
 		this.yVel = vy;

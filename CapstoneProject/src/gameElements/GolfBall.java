@@ -233,6 +233,11 @@ public class GolfBall {
 		}
 	}
 
+	/**
+	 * Determines if the golf ball hit a ghost
+	 * 
+	 * @return true or false depending on if the golf ball hit a ghost
+	 */
 	public boolean ghostIntersects(Ghost one, Ghost two) {
 		Rectangle temp = new Rectangle(one.getX(), one.getY(), 40, 40);
 		Rectangle temp2 = new Rectangle(two.getX(), two.getY(), 40, 40);
@@ -255,17 +260,38 @@ public class GolfBall {
 //		l.inter
 //	}
 	
+	/**
+	 * This method is used to set the golf ball to an rgb color value
+	 * @param a the r value in rgb
+	 * @param b the g value in rgb
+	 * @param c the b value in rgb
+	 */
 	public void setRGB(float a, float b, float c) {
 		r = a;
 		g = b;
 		this.b = c;
 	}
+	
+	/**
+	 * Gets the r value in rgb
+	 * @return the r value in rgb
+	 */
 	public float getR() {
 		return r;
 	}
+	
+	/**
+	 * Gets the g value in rgb
+	 * @return the g value in rgb
+	 */
 	public float getG() {
 		return g;
 	}
+	
+	/**
+	 * Gets the b value in rgb
+	 * @return the b value in rgb
+	 */
 	public float getB() {
 		return b;
 	}

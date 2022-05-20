@@ -8,6 +8,10 @@ import processing.core.PApplet;
 
 public class Main {
 
+	/**
+	 * Runs the program
+	 * @param args used to run the program
+	 */
 	public static void main(String[] args) {
 		DrawingSurface drawing = new DrawingSurface();
 		PApplet.runSketch(new String[]{""}, drawing);
