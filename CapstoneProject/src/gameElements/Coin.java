@@ -56,6 +56,10 @@ public class Coin {
 		this.y = y;
 	}
 	
+	/**
+	 * Increments the number of coins
+	 * @return the new number of coins after incrementation
+	 */
 	public int increaseCoins() {
 		numCoins++;
 		return numCoins;
