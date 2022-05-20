@@ -249,5 +249,9 @@ public class GolfBall {
 //	public boolean bounceOff() {
 //		
 //	}
+	
+//	public void intersects(Line l) {
+//		l.inter
+//	}
 
 }

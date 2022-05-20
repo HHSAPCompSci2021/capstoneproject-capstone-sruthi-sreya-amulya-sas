@@ -1,5 +1,6 @@
 package core;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import ameduri.shapes.Line;
 import ameduri.shapes.Rectangle;
 import gameElements.*;
 import processing.core.PApplet;
+import processing.core.PImage;
 import screens.*;
 
 public class DrawingSurface extends PApplet {
@@ -31,6 +33,9 @@ public class DrawingSurface extends PApplet {
 	private Timer time4;
 	private Timer time5;
 	private Timer time6;
+	
+	private double zoomIn;
+	private Rectangle r;
 
 	private Instructions rules;
 	private HomeScreen homeScreen;
@@ -45,6 +50,8 @@ public class DrawingSurface extends PApplet {
 	
 	private int seconds;
 	private int zoom;
+	
+	private PImage zoomPicture;
 	
 	private Rectangle rect;
 		
@@ -71,13 +78,19 @@ public class DrawingSurface extends PApplet {
 		switchScreen = 0;
 		level = "";
 		coinCount = 0;
+		zoomPicture = new PImage();
 		
 		seconds = 0;
+		
+		zoomIn = 1;
 		
 		g1 = new Ghost(this);
 		g2 = new Ghost(this);
 		
 		rect = new Rectangle(0,0,1200,1200);
+		
+		r = new Rectangle(570, 10, 20, 20);
+		
 //		System.out.println("seconds = " + seconds);
 		
 	}
@@ -109,7 +122,12 @@ public class DrawingSurface extends PApplet {
 			rules.draw();
 		} else if (switchScreen == 2) {// LEVEL 1 --------------------------------------
 			background(255);
-		
+			
+			zoomPicture = this.loadImage("images/fullscreen.gif");
+			zoomPicture.resize(20, 20);
+			this.image(zoomPicture, 570, 10);
+			
+			
 			textSize(50);
 			fill(0);
 			level = "Level 1";
@@ -587,6 +605,31 @@ public class DrawingSurface extends PApplet {
 			}
 		}	
 		
+	}
+	
+	public void keyPressed() {
+		
+//		if(mouseX >= r.getX() && mouseX >= r.getY() + r.getWidth() && mouseY <= r.getY() && mouseY <= r.getY() + rect.getHeight()) {
+		if(keyCode == 'F') {
+			System.out.println("You're in!");
+			l1.scaleDown();
+			l2.scaleDown();
+			l3.scaleDown();
+			l4.scaleDown();
+			l5.scaleDown();
+			l6.scaleDown();
+		}
+		
+		if(keyCode == 'Z') {
+			System.out.println("You're out!");
+			l1.scaleUp();
+			l2.scaleUp();
+			l3.scaleUp();
+			l4.scaleUp();
+			l5.scaleUp();
+			l6.scaleUp();
+		}
+//		}
 	}
 	
 	public int getSeconds() {
