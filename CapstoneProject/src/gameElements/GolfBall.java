@@ -109,14 +109,6 @@ public class GolfBall{
 	 *         boundary line
 	 */
 	public boolean bounce(double x_diff, double y_diff) {
-		boolean intersects = ballIntersects();
-		if (intersects == true) {
-			// code to bounce
-		}
-		return false;
-	}
-	
-	public boolean ballIntersects() {
 		Line left = new Line(c.getX(), c.getY(), c.getX(), c.getY()+diameter);
 		Line right = new Line(c.getX()+diameter, c.getY(), c.getX()+diameter, c.getY()+diameter);
 		Line up = new Line(c.getX(), c.getY(), c.getX()+diameter, c.getY());
@@ -249,6 +241,7 @@ public class GolfBall{
 		}
 		return false;
 	}
+
 
 	/**
 	 * Calculates the distance between two points

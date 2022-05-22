@@ -36,6 +36,7 @@ public class DrawingSurface extends PApplet {
 	private HomeScreen homeScreen;
 	private int switchScreen;
 	private double x,y;
+	private double vx, vy;
 	private PImage zoomPicture;
 	private Ghost g1;
 	private Ghost g2;
@@ -70,6 +71,8 @@ public class DrawingSurface extends PApplet {
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
 		switchScreen = 0;
+		vx = 0.5;
+		vy = 0.5;
 		level = "";
 		coinCount = 0;
 		numTries = 0;
@@ -711,4 +714,8 @@ public class DrawingSurface extends PApplet {
 		return switchScreen;
 	}
 
+	public void accelerate(double vx, double vy)  {
+		this.vx = vx;
+		this.vy = vy;
+	}
 }
