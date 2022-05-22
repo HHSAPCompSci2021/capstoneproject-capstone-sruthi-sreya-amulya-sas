@@ -1,11 +1,21 @@
 package gameElements;
 
+import java.util.ArrayList;
+
+
 import ameduri.shapes.Circle;
+import ameduri.shapes.Line;
 import ameduri.shapes.Rectangle;
-
+import core.DrawingSurface;
 import processing.core.PApplet;
+import screens.LevelFive;
+import screens.LevelFour;
+import screens.LevelOne;
+import screens.LevelSix;
+import screens.LevelThree;
+import screens.LevelTwo;
 
-public class GolfBall {
+public class GolfBall{
 
 	private int x, y, diameter;
 	private double vx, vy;
@@ -99,6 +109,73 @@ public class GolfBall {
 	 *         boundary line
 	 */
 	public boolean bounce(double x_diff, double y_diff) {
+		boolean intersects = ballIntersects();
+		if (intersects == true) {
+			// code to bounce
+		}
+		return false;
+	}
+	
+	public boolean ballIntersects() {
+		Line left = new Line(c.getX(), c.getY(), c.getX(), c.getY()+diameter);
+		Line right = new Line(c.getX()+diameter, c.getY(), c.getX()+diameter, c.getY()+diameter);
+		Line up = new Line(c.getX(), c.getY(), c.getX()+diameter, c.getY());
+		Line down = new Line(c.getX(), c.getY()+diameter, c.getX()+diameter, c.getY()+diameter);
+		DrawingSurface surface = new DrawingSurface();
+		
+		if (surface.getScreen() == 2) {
+			LevelOne l1 = new LevelOne();
+			ArrayList<Line> lines = l1.getLines();
+			for (Line l : lines) {
+				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					return true;
+				}
+			}
+		} else if (surface.getScreen() == 3) {
+			LevelTwo l2 = new LevelTwo();
+			ArrayList<Line> lines = l2.getLines();
+			for (Line l : lines) {
+				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					return true;
+				}
+			}
+		} else if (surface.getScreen() == 4) {
+			LevelThree l3 = new LevelThree();
+			ArrayList<Line> lines = l3.getLines();
+			for (Line l : lines) {
+				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					return true;
+				}
+			}
+		} else if (surface.getScreen() == 5) {
+			LevelFour l4 = new LevelFour();
+			ArrayList<Line> lines = l4.getLines();
+			for (Line l : lines) {
+				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					return true;
+				}
+			}
+		} else if (surface.getScreen() == 6) {
+			LevelFive l5 = new LevelFive();
+			ArrayList<Line> lines = l5.getLines();
+			for (Line l : lines) {
+				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					return true;
+				}
+			}
+		} else if (surface.getScreen() == 7) {
+			LevelSix l6 = new LevelSix();
+			ArrayList<Line> lines = l6.getLines();
+			for (Line l : lines) {
+				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					return true;
+				}
+			}
+		} 
+		return false;
+	}
+	
+	public boolean bounce1(double x_diff, double y_diff) {
 
 		/*
 		 * Line invis1= new Line(50, 50, 150, 50); // right Line invis2 = new Line(150,

@@ -31,7 +31,6 @@ public class DrawingSurface extends PApplet {
 	private Timer time4;
 	private Timer time5;
 	private Timer time6;
-	private boolean checkCoinIntersects;
 	private int numTries;
 	private Instructions rules;
 	private HomeScreen homeScreen;
@@ -68,7 +67,6 @@ public class DrawingSurface extends PApplet {
 		ball6 = new GolfBall();
 		coin1 = new Coin(100,150);
 		coin2 = new Coin(200,200);
-		checkCoinIntersects = false;
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
 		switchScreen = 0;
@@ -84,7 +82,6 @@ public class DrawingSurface extends PApplet {
 		rect = new Rectangle(0,0,1200,1200);
 		
 		
-//		System.out.println("seconds = " + seconds);
 		
 	}
 	
@@ -92,7 +89,6 @@ public class DrawingSurface extends PApplet {
 	execute once when the program begins**/
 	public void setup() {
 		homeScreen.draw(this);
-//		smooth();
 		rectMode(CENTER);
 		time3 = new Timer(0);
 		time4 = new Timer(0);
@@ -116,10 +112,6 @@ public class DrawingSurface extends PApplet {
 		} else if (switchScreen == 2) {// LEVEL 1 --------------------------------------
 			background(255);
 			
-			/*zoomPicture = this.loadImage("images/fullscreen.gif");
-			zoomPicture.resize(20, 20);
-			this.image(zoomPicture, 570, 10);
-			*/
 			textSize(50);
 			fill(0);
 			level = "Level 1";
@@ -130,19 +122,6 @@ public class DrawingSurface extends PApplet {
 			coin1.draw(this);
 			coin2.draw(this);
 			
-			/*if(ball.coinIntersects() && checkCoinIntersects == true) {
-				checkCoinIntersects = true;
-				System.out.print("hello");
-				coinCount++;
-				System.out.print("hi");
-				fill(0);
-				text("you hit coin!", 200, 400);
-				textSize(10);
-			}
-			else {
-				checkCoinIntersects = false;
-			}
-			*/
 			if (ball.goal()) {
 				textSize(50);
 				fill(0);
@@ -164,9 +143,6 @@ public class DrawingSurface extends PApplet {
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
-//			if(ball2.coinIntersects()){
-//				coinCount++;
-//			}
 			if (ball2.goal()) {
 				textSize(50);
 				fill(0);
@@ -186,25 +162,6 @@ public class DrawingSurface extends PApplet {
 			g1.draw(this);
 			g2.draw(this);
 			
-
-//			if(ball.ghostIntersects(g2, g1)) {
-//				numTries--;
-//				System.out.println(numTries);
-//				if(numTries <= 0) {
-//					g1.stopGhosts();
-//					g2.stopGhosts();
-//					textSize(50);
-//					fill(0);
-//					text("You lost!", 150, 250);
-//					textSize(20);
-//					text("Click enter to retry level!", 150, 300);
-//				}
-//			}
-			
-//			if(numTries == 7) {
-//				textSize(20);
-//				text("You lost!", 150, 300);
-//			}
 			textSize(15);
 			float seconds = time3.countUp(this);
 			
@@ -243,15 +200,11 @@ public class DrawingSurface extends PApplet {
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
-//			if(ball3.coinIntersects()){
-//				coinCount++;
-//			}
 
 			if (ball3.ghostIntersects(g1, g2)) {
 				fill(0);
 				textSize(30);
 				text("YOU HIT GHOST", 150, 150);
-//				coinCount = 0;
 				numTries = 0;
 				text("Press \'S\' to restart Level", 200, 100);
 			}
@@ -272,21 +225,6 @@ public class DrawingSurface extends PApplet {
 			g1.draw(this);
 			g2.draw(this);
 
-			
-//			if(ball.ghostIntersects(g2, g1)) {
-//				numTries--;
-//				System.out.println(numTries);
-//				if(numTries <= 0) {
-//					g1.stopGhosts();
-//					g2.stopGhosts();
-//					textSize(50);
-//					fill(0);
-//					text("you lost", 150, 250);
-//					textSize(20);
-//					text("Click enter to retry level", 150, 300);
-//				}
-//			}
-			
 			
 			textSize(15);
 			float seconds = time4.countUp(this);
@@ -329,14 +267,11 @@ public class DrawingSurface extends PApplet {
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
-//			if(ball4.coinIntersects()){
-//				coinCount++;
-//			}
+
 			if (ball3.ghostIntersects(g1, g2)) {
 				fill(0);
 				textSize(30);
 				text("YOU HIT GHOST", 150, 150);
-//				coinCount = 0;
 				numTries = 0;
 				text("Press \'S\' to restart Level", 200, 100);
 			}
@@ -583,7 +518,6 @@ public class DrawingSurface extends PApplet {
 		rect.setFillColor(Color.WHITE);
 		rect.moveBy(1200, 1200);
 		rect.draw(this);
-		ArrayList<Point> points = new ArrayList<Point>();
 
 		numTries++;
 		text("Number of Tries: " + numTries, 450, 30);
@@ -598,7 +532,6 @@ public class DrawingSurface extends PApplet {
 			double dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
 			double x_diff = (double)(ball.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball.getY() - y)/(dist * 1.5/10);
-			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
 				if (!ball.bounce(x_diff, y_diff)) {
 					ball.setX((int)(ball.getX() + x_diff));
@@ -616,7 +549,6 @@ public class DrawingSurface extends PApplet {
 			double dist = ball2.getDistance(ball2.getX(), ball2.getY(), x, y);
 			double x_diff = (double)(ball2.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball2.getY() - y)/(dist * 1.5/10);
-			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
 				if (!ball2.bounce(x_diff, y_diff)) {
 					ball2.setX((int)(ball2.getX() + x_diff));
@@ -634,7 +566,6 @@ public class DrawingSurface extends PApplet {
 			double dist = ball3.getDistance(ball3.getX(), ball3.getY(), x, y);
 			double x_diff = (double)(ball3.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball3.getY() - y)/(dist * 1.5/10);
-			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
 				if (!ball3.bounce(x_diff, y_diff)) {
 					ball3.setX((int)(ball3.getX() + x_diff));
@@ -652,7 +583,6 @@ public class DrawingSurface extends PApplet {
 			double dist = ball4.getDistance(ball4.getX(), ball4.getY(), x, y);
 			double x_diff = (double)(ball4.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball4.getY() - y)/(dist * 1.5/10);
-			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
 				if (!ball4.bounce(x_diff, y_diff)) {
 					ball4.setX((int)(ball4.getX() + x_diff));
@@ -670,7 +600,6 @@ public class DrawingSurface extends PApplet {
 			double dist = ball5.getDistance(ball5.getX(), ball5.getY(), x, y);
 			double x_diff = (double)(ball5.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball5.getY() - y)/(dist * 1.5/10);
-			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
 				if (!ball5.bounce(x_diff, y_diff)) {
 					ball5.setX((int)(ball5.getX() + x_diff));
@@ -688,7 +617,6 @@ public class DrawingSurface extends PApplet {
 			double dist = ball6.getDistance(ball6.getX(), ball6.getY(), x, y);
 			double x_diff = (double)(ball6.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball6.getY() - y)/(dist * 1.5/10);
-			boolean check = false; 
 			for (int i = 0; i < dist * 1.5/10; i++) {
 				if (!ball6.bounce(x_diff, y_diff)) {
 					ball6.setX((int)(ball6.getX() + x_diff));
@@ -702,7 +630,6 @@ public class DrawingSurface extends PApplet {
 		double dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
 		double x_diff = (double)(ball.getX() - x)/(dist * 1.5 /10);
 		double y_diff = (double)(ball.getY() - y)/(dist * 1.5/10);
-		boolean check = false; 
 		for (int i = 0; i < dist * 1.5/10; i++) {
 			if (!ball.bounce(x_diff, y_diff)) {
 				ball.setX((int)(ball.getX() + x_diff));
@@ -713,7 +640,6 @@ public class DrawingSurface extends PApplet {
 		
 		
 		if(ball.coinIntersects()) {
-			checkCoinIntersects = true;
 //			System.out.print("hello");
 			coinCount++;
 //			System.out.print("hi");
@@ -780,10 +706,9 @@ public class DrawingSurface extends PApplet {
 		}
 //		}
 	}
-	
-	public int getSeconds() {
-		return seconds;
+		
+	public int getScreen() {
+		return switchScreen;
 	}
-	
 
 }

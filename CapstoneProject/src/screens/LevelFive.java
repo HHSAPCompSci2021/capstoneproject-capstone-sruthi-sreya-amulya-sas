@@ -1,5 +1,7 @@
 package screens;
 
+import java.util.ArrayList;
+
 import ameduri.shapes.Line;
 import processing.core.PApplet;
 
@@ -11,6 +13,7 @@ public class LevelFive extends Level {
 	private Line l4;
 	private Line l5;
 	private Line l6;
+	private ArrayList<Line> lines5;
 	
 	public LevelFive() {
 		super(true);
@@ -27,6 +30,18 @@ public class LevelFive extends Level {
 		l4 =  new Line(300, 150, 300, 250); // down
 		l5 =  new Line(300, 250, 50, 250); // left
 		l6 =  new Line(50, 250, 50, 50);
+		lines5 = new ArrayList<Line>();
+		lines5.add(l1);
+		lines5.add(l2);
+		lines5.add(l3);
+		lines5.add(l4);
+		lines5.add(l5);
+		lines5.add(l6);
+
+	}
+	
+	public ArrayList<Line> getLines() {
+		return lines5;
 	}
 	
 	public void draw(PApplet marker) {

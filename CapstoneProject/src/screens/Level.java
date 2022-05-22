@@ -5,6 +5,7 @@ import processing.core.PApplet;
 public abstract class Level {
 	
 	private boolean scale;
+
 	
 	/**
 	 * Instantiates new Coin ArrayList
@@ -44,4 +45,5 @@ public abstract class Level {
 	public void setScale(boolean b) {
 		scale = b;
 	}
+	
 }
