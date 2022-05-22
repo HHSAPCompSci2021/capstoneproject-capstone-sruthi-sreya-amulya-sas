@@ -1,8 +1,6 @@
 package core;
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 import ameduri.shapes.Line;
 import ameduri.shapes.Rectangle;
@@ -36,7 +34,6 @@ public class DrawingSurface extends PApplet {
 	private HomeScreen homeScreen;
 	private int switchScreen;
 	private double x,y;
-	private double vx, vy;
 	private PImage zoomPicture;
 	private Ghost g1;
 	private Ghost g2;
@@ -44,7 +41,6 @@ public class DrawingSurface extends PApplet {
 	private String level;
 	private int coinCount;
 	
-	private int seconds;
 	private int zoom;
 	
 	
@@ -71,12 +67,9 @@ public class DrawingSurface extends PApplet {
 		rules = new Instructions(this);
 		homeScreen = new HomeScreen();
 		switchScreen = 0;
-		vx = 0.5;
-		vy = 0.5;
 		level = "";
 		coinCount = 0;
 		numTries = 0;
-		seconds = 0;
 		zoomPicture = new PImage();
 		
 		g1 = new Ghost(this);
@@ -535,11 +528,14 @@ public class DrawingSurface extends PApplet {
 			double dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
 			double x_diff = (double)(ball.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball.getY() - y)/(dist * 1.5/10);
+			ball.act();
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball.bounce(x_diff, y_diff)) {
-					ball.setX((int)(ball.getX() + x_diff));
-					ball.setY((int)(ball.getY() + y_diff));
-					ball.goal();
+				if (!ball.bounce1(x_diff, y_diff)) { // change to bounce method, not bounce1
+//					ball.setX((int)(ball.getX() + x_diff));
+//					ball.setY((int)(ball.getY() + y_diff));
+//					ball.goal();
+					ball.setVX(x_diff);
+					ball.setVY(y_diff);
 				}
 			}
 		}
@@ -553,7 +549,7 @@ public class DrawingSurface extends PApplet {
 			double x_diff = (double)(ball2.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball2.getY() - y)/(dist * 1.5/10);
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball2.bounce(x_diff, y_diff)) {
+				if (!ball2.bounce1(x_diff, y_diff)) {
 					ball2.setX((int)(ball2.getX() + x_diff));
 					ball2.setY((int)(ball2.getY() + y_diff));
 					ball2.goal();
@@ -570,7 +566,7 @@ public class DrawingSurface extends PApplet {
 			double x_diff = (double)(ball3.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball3.getY() - y)/(dist * 1.5/10);
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball3.bounce(x_diff, y_diff)) {
+				if (!ball3.bounce1(x_diff, y_diff)) {
 					ball3.setX((int)(ball3.getX() + x_diff));
 					ball3.setY((int)(ball3.getY() + y_diff));
 					ball3.goal();
@@ -587,7 +583,7 @@ public class DrawingSurface extends PApplet {
 			double x_diff = (double)(ball4.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball4.getY() - y)/(dist * 1.5/10);
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball4.bounce(x_diff, y_diff)) {
+				if (!ball4.bounce1(x_diff, y_diff)) {
 					ball4.setX((int)(ball4.getX() + x_diff));
 					ball4.setY((int)(ball4.getY() + y_diff));
 					ball4.goal();
@@ -604,7 +600,7 @@ public class DrawingSurface extends PApplet {
 			double x_diff = (double)(ball5.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball5.getY() - y)/(dist * 1.5/10);
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball5.bounce(x_diff, y_diff)) {
+				if (!ball5.bounce1(x_diff, y_diff)) {
 					ball5.setX((int)(ball5.getX() + x_diff));
 					ball5.setY((int)(ball5.getY() + y_diff));
 					ball5.goal();
@@ -621,7 +617,7 @@ public class DrawingSurface extends PApplet {
 			double x_diff = (double)(ball6.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball6.getY() - y)/(dist * 1.5/10);
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball6.bounce(x_diff, y_diff)) {
+				if (!ball6.bounce1(x_diff, y_diff)) {
 					ball6.setX((int)(ball6.getX() + x_diff));
 					ball6.setY((int)(ball6.getY() + y_diff));
 					ball6.goal();
@@ -634,7 +630,7 @@ public class DrawingSurface extends PApplet {
 		double x_diff = (double)(ball.getX() - x)/(dist * 1.5 /10);
 		double y_diff = (double)(ball.getY() - y)/(dist * 1.5/10);
 		for (int i = 0; i < dist * 1.5/10; i++) {
-			if (!ball.bounce(x_diff, y_diff)) {
+			if (!ball.bounce1(x_diff, y_diff)) {
 				ball.setX((int)(ball.getX() + x_diff));
 				ball.setY((int)(ball.getY() + y_diff));
 				ball.goal();
@@ -714,8 +710,4 @@ public class DrawingSurface extends PApplet {
 		return switchScreen;
 	}
 
-	public void accelerate(double vx, double vy)  {
-		this.vx = vx;
-		this.vy = vy;
-	}
 }

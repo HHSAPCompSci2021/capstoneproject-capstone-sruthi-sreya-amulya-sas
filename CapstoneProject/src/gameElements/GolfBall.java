@@ -17,7 +17,7 @@ import screens.LevelTwo;
 
 public class GolfBall{
 
-	private int x, y, diameter;
+	private double x, y, diameter;
 	private double vx, vy;
 	private Circle c;
 	private float r,g,b;
@@ -35,6 +35,8 @@ public class GolfBall{
 		x = 260;
 		y = 220;
 		diameter = 15;
+		vx = 0;
+		vy = 0;
 	}
 
 	/**
@@ -42,7 +44,7 @@ public class GolfBall{
 	 * 
 	 * @return the x coordinate of the golf ball
 	 */
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 
@@ -51,7 +53,7 @@ public class GolfBall{
 	 * 
 	 * @return the y coordinate of the golf ball
 	 */
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 
@@ -61,7 +63,7 @@ public class GolfBall{
 	 * 
 	 * @param x new x coordinate of the golf ball
 	 */
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 
@@ -71,16 +73,8 @@ public class GolfBall{
 	 * 
 	 * @param y new y coordinate of the golf ball
 	 */
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
-	}
-
-	public void setVX(int x) {
-		this.vx = x;
-	}
-
-	public void setVY(int y) {
-		this.vy = y;
 	}
 
 	/**
@@ -108,12 +102,12 @@ public class GolfBall{
 	 * @return true or false depending on whether or not the golf ball intersects a
 	 *         boundary line
 	 */
-	public boolean bounce(double x_diff, double y_diff) {
+	public boolean bounce(double x_diff, double y_diff, DrawingSurface surface) {
 		Line left = new Line(c.getX(), c.getY(), c.getX(), c.getY()+diameter);
 		Line right = new Line(c.getX()+diameter, c.getY(), c.getX()+diameter, c.getY()+diameter);
 		Line up = new Line(c.getX(), c.getY(), c.getX()+diameter, c.getY());
 		Line down = new Line(c.getX(), c.getY()+diameter, c.getX()+diameter, c.getY()+diameter);
-		DrawingSurface surface = new DrawingSurface();
+		
 		
 		if (surface.getScreen() == 2) {
 			LevelOne l1 = new LevelOne();
@@ -360,5 +354,31 @@ public class GolfBall{
 	public float getB() {
 		return b;
 	}
+	
+	public void accelerate(double vx, double vy) {
+		this.vx += vx;
+		this.vy += vy;
+	}
+	
+	public void setVX(double x) {
+		this.vx = x;
+	}
+
+	public void setVY(double y) {
+		this.vy = y;
+	}
+
+	public void act() {
+		double x1 = x;
+		double y1 = y;
+		
+		
+		x1 += vx;
+		y1 += vy;
+		
+		setX(x1);
+		setY(y1);
+	}
+
 
 }
