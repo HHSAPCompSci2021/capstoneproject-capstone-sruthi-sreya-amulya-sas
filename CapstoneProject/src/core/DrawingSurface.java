@@ -525,6 +525,7 @@ public class DrawingSurface extends PApplet {
 			Line l = new Line(ball.getX(), ball.getY(), x, y);
 			l.draw(this);
 			
+			// USE FRAMERATE TO SLOW IT DOWN!
 			double dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
 			double x_diff = (double)(ball.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball.getY() - y)/(dist * 1.5/10);
