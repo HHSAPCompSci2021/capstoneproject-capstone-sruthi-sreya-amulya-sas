@@ -114,6 +114,13 @@ public class GolfBall{
 			ArrayList<Line> lines = l1.getLines();
 			for (Line l : lines) {
 				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					if (l.getX() == l.getX2()) {
+						vx = -vx;
+						act();
+					} else if (l.getY() == l.getY2()) {
+						vy = -vy;
+						act();
+					}
 					return true;
 				}
 			}
@@ -157,7 +164,7 @@ public class GolfBall{
 					return true;
 				}
 			}
-		} 
+		}
 		return false;
 	}
 	

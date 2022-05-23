@@ -17,12 +17,6 @@ public class LevelOne extends Level {
 	
 	public LevelOne() {
 		super(true);
-//		l1 = new Line(50, 50, 150, 50); // horizontal (right)
-//		l2 =  new Line(150, 50, 150, 150); // down
-//		l3 =  new Line(150, 150, 300, 150); // right
-//		l4 =  new Line(300, 150, 300, 250); // down
-//		l5 =  new Line(300, 250, 50, 250); // left
-//		l6 =  new Line(50, 250, 50, 50);
 		
 		l1 = new Line(50, 50, 150, 50); // horizontal (right)
 		l2 =  new Line(150, 50, 150, 150); // down

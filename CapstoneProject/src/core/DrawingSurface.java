@@ -529,15 +529,15 @@ public class DrawingSurface extends PApplet {
 			double dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
 			double x_diff = (double)(ball.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball.getY() - y)/(dist * 1.5/10);
-			ball.act();
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball.bounce1(x_diff, y_diff)) { // change to bounce method, not bounce1
+				if (!ball.bounce(x_diff, y_diff, this)) { // change to bounce method, not bounce1
 //					ball.setX((int)(ball.getX() + x_diff));
 //					ball.setY((int)(ball.getY() + y_diff));
 //					ball.goal();
 					ball.setVX(x_diff);
 					ball.setVY(y_diff);
-				} // else reverse x_diff or y_diff
+					ball.act();
+				}
 			}
 		}
 		else if (level.equals("Level 2")) {
