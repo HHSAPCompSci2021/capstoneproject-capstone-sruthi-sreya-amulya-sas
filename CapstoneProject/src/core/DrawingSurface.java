@@ -536,7 +536,7 @@ public class DrawingSurface extends PApplet {
 //					ball.goal();
 					ball.setVX(x_diff);
 					ball.setVY(y_diff);
-				}
+				} // else reverse x_diff or y_diff
 			}
 		}
 		else if (level.equals("Level 2")) {
