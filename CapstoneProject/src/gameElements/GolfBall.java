@@ -266,10 +266,9 @@ public class GolfBall{
 	 * @return true or false depending on if the golf ball intersected the hole
 	 */
 	public boolean goal() {
-		Rectangle temp = new Rectangle(90, 90, 10, 10);
-		Rectangle circle = new Rectangle(x, y, diameter, diameter);
+		Circle temp = new Circle(90, 90, 10);
 
-		if (temp.intersects(circle)) {
+		if (temp.intersects(c)) {
 			return true;
 		} else {
 			return false;

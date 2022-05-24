@@ -2,6 +2,8 @@ package core;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
+import javax.swing.Popup;
+
 import ameduri.shapes.Line;
 import ameduri.shapes.Rectangle;
 import gameElements.*;
@@ -34,7 +36,10 @@ public class DrawingSurface extends PApplet {
 	private HomeScreen homeScreen;
 	private int switchScreen;
 	private double x,y;
+	
 	private PImage zoomPicture;
+	private PImage popup;
+	
 	private Ghost g1;
 	private Ghost g2;
 	
@@ -42,7 +47,7 @@ public class DrawingSurface extends PApplet {
 	private int coinCount;
 	
 	private int zoom;
-	
+	private boolean intersects;
 	
 	private Rectangle rect;
 		
@@ -77,7 +82,9 @@ public class DrawingSurface extends PApplet {
 		
 		rect = new Rectangle(0,0,1200,1200);
 		
+		intersects = false;
 		
+		popup = new PImage();
 		
 	}
 	
@@ -177,19 +184,6 @@ public class DrawingSurface extends PApplet {
 				rect.setFillColor(Color.BLACK);
 				rect.draw(this);
 			}
-			 
-			
-//			if (seconds <= 5) {
-//				fill(0);
-//				text(time3.getTime(), 20, 20);
-//				g1.moveGhosts();
-//				g2.moveGhosts();
-//			} else {
-//				fill(0);
-//				text("5.000", 20, 20);
-//				g1.stopGhosts();
-//				g2.stopGhosts();
-//			}
 
 
 			ball3.draw(this);
@@ -198,11 +192,13 @@ public class DrawingSurface extends PApplet {
 			coin2.draw(this);
 
 			if (ball3.ghostIntersects(g1, g2)) {
+				intersects = true;
 				fill(0);
 				textSize(30);
-				text("YOU HIT GHOST", 150, 150);
+//				text("YOU HIT GHOST", 150, 150);
 				numTries = 0;
-				text("Press \'S\' to restart Level", 200, 100);
+				
+//				text("Press \'S\' to restart Level", 200, 100);
 			}
 			if (ball3.goal()) {
 				textSize(50);
@@ -210,6 +206,15 @@ public class DrawingSurface extends PApplet {
 				text("Good job!", 150, 250);
 				textSize(20);
 				text("Click enter to go to the next level!!", 150, 300);
+			}
+			
+			if (intersects == true && seconds > 3) {
+				if(ball.ghostIntersects(g2, g1)) {
+					popup = this.loadImage("images/You hit a ghost!.gif");
+					popup.resize(533, 300);
+					this.image(popup, 35, 70);
+					
+				}
 			}
 		}else if (switchScreen == 5) { // LEVEL 4 --------------------------------------
 			background(255);
@@ -427,6 +432,13 @@ public class DrawingSurface extends PApplet {
 			this.image(zoomPicture, 570, 10);
 		}
 		
+		if(switchScreen > 1) {
+			push();
+			fill(0);
+			textSize(30);
+			text("Coin: " + coinCount, 20, 35);
+			pop();
+		}
 		if (keyCode == KeyEvent.VK_ENTER) {
 			switchScreen++;
 			keyCode = 0;
@@ -434,19 +446,19 @@ public class DrawingSurface extends PApplet {
 			numTries= 0;
 		}
 		
-		if (switchScreen > 1) {
-			fill(0);
-			textSize(20);
-			text("Coins: " + Integer.toString(coinCount), 50, 40);
-
-			if (coinCount == 5) {
-				//stop();
-				textSize(10);
-				strokeWeight(10);
-				text("Use Chance! Press \'S\' to use life line", 500, 20);
-			}
-		}
-		if(numTries == 7) {
+//		if (switchScreen > 1) {
+//			fill(0);
+//			textSize(20);
+//			text("Coins: " + Integer.toString(coinCount), 50, 40);
+//
+//			if (coinCount == 5) {
+//				//stop();
+//				textSize(10);
+//				strokeWeight(10);
+//				text("Use Chance! Press \'S\' to use life line", 500, 20);
+//			}
+//		}
+		/*if(numTries == 7) {
 			textSize(20);
 			text("You lost!", 150, 300);
 			text("Press \'R\' restart", 150, 200);
@@ -462,7 +474,7 @@ public class DrawingSurface extends PApplet {
 			ball5.setX(700); // out of screen
 			ball5.setY(700); // out of screen
 			ball6.setX(700); // out of screen
-			ball6.setY(700); // out of screen */
+			ball6.setY(700); // out of screen 
 			ball.setRGB(255, 0, 0);
 			
 		}
@@ -470,7 +482,7 @@ public class DrawingSurface extends PApplet {
 			ball.setRGB(0, 0, 0);
 		}
 		
-		
+		*/
 		
 	}
 	
@@ -510,6 +522,7 @@ public class DrawingSurface extends PApplet {
 	 * golf ball move in that direction. Also, when the ball hits the boundary of the golf course, it bounces off. 
 	 */
 	public void mouseReleased() {
+
 		
 		rect.setFillColor(Color.WHITE);
 		rect.moveBy(1200, 1200);
@@ -520,6 +533,10 @@ public class DrawingSurface extends PApplet {
 		System.out.println(numTries);
 		
 		if (level.equals("Level 1")) {
+			if(ball.coinIntersects()) {
+				coinCount++;
+			}
+
 			x = mouseX;
 			y = mouseY;
 			Line l = new Line(ball.getX(), ball.getY(), x, y);
@@ -541,6 +558,10 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 		else if (level.equals("Level 2")) {
+			if(ball2.coinIntersects()) {
+				coinCount++;
+			}
+
 			x = mouseX;
 			y = mouseY;
 			Line l = new Line(ball2.getX(), ball2.getY(), x, y);
@@ -558,6 +579,10 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 		else if (level.equals("Level 3")) {
+			if(ball3.coinIntersects()) {
+				coinCount++;
+			}
+
 			x = mouseX;
 			y = mouseY;
 			Line l = new Line(ball3.getX(), ball3.getY(), x, y);
@@ -575,6 +600,10 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 		else if (level.equals("Level 4")) {
+			if(ball4.coinIntersects()) {
+				coinCount++;
+			}
+
 			x = mouseX;
 			y = mouseY;
 			Line l = new Line(ball4.getX(), ball4.getY(), x, y);
@@ -592,6 +621,10 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 		else if (level.equals("Level 5")) {
+			if(ball5.coinIntersects()) {
+				coinCount++;
+			}
+
 			x = mouseX;
 			y = mouseY;
 			Line l = new Line(ball5.getX(), ball5.getY(), x, y);
@@ -609,6 +642,10 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 		else if (level.equals("Level 6")) {
+			if(ball6.coinIntersects()) {
+				coinCount++;
+			}
+
 			x = mouseX;
 			y = mouseY;
 			Line l = new Line(ball6.getX(), ball6.getY(), x, y);
@@ -639,14 +676,6 @@ public class DrawingSurface extends PApplet {
 		}	
 		
 		
-		if(ball.coinIntersects()) {
-//			System.out.print("hello");
-			coinCount++;
-//			System.out.print("hi");
-			fill(0);
-			text("you hit coin!", 200, 400);
-			textSize(10);
-		}
 	
 	}
 	
@@ -703,6 +732,28 @@ public class DrawingSurface extends PApplet {
 //			coinCount = 0;
 			switchScreen = 0;
 			homeScreen.draw(this);
+		}
+		
+		if(keyCode == '1') {
+
+			coinCount -= 5;
+			switchScreen = 4;
+			
+			
+//			popup = null;
+//			popup = new PImage();
+//			popup = this.loadImage("images/transparent.png");
+//			popup.resize(10, 10);
+//			this.image(popup, 35, 70);
+			
+					
+			
+		}
+		if(keyCode == '2') {
+
+			switchScreen = 2;
+			ball.setX(260);
+			ball.setY(220);
 		}
 //		}
 	}
