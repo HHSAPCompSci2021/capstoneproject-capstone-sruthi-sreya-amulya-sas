@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import ameduri.shapes.Line;
+import ameduri.shapes.Rectangle;
 import processing.core.PApplet;
 
 public class LevelFive extends Level {
@@ -14,7 +15,14 @@ public class LevelFive extends Level {
 	private Line l4;
 	private Line l5;
 	private Line l6;
+	private Rectangle l7;
+	private Rectangle l8;
+	private Rectangle l9;
+	private Rectangle l10;
+
 	private ArrayList<Line> lines5;
+	private ArrayList<Rectangle> redLines5;
+
 	
 	public LevelFive() {
 		super(true);
@@ -25,14 +33,25 @@ public class LevelFive extends Level {
 //		l5 =  new Line(300, 250, 50, 250); // left
 //		l6 =  new Line(50, 250, 50, 50);
 		
+
 		l1 = new Line(50, 50, 150, 50); // horizontal (right)
 		l2 =  new Line(150, 50, 150, 150); // down
 		l3 =  new Line(150, 150, 300, 150); // right
 		l4 =  new Line(300, 150, 300, 250); // down
 		l5 =  new Line(300, 250, 50, 250); // left
 		l6 =  new Line(50, 250, 50, 50);
+		l7 = new Rectangle(200,230,0,30);
+		l8 = new Rectangle(90,200, 75, 0);
+		l9 = new Rectangle(90,60,75,0);
+		l10 = new Rectangle(200,229,10,30);
+
 		l2.setStrokeColor(Color.RED);
 		l4.setStrokeColor(Color.RED);
+		l7.setStrokeColor(Color.RED);
+		l8.setStrokeColor(Color.RED);
+		l9.setStrokeColor(Color.RED);
+		l10.setStrokeColor(Color.RED);
+
 		lines5 = new ArrayList<Line>();
 		lines5.add(l1);
 		lines5.add(l2);
@@ -40,11 +59,20 @@ public class LevelFive extends Level {
 		lines5.add(l4);
 		lines5.add(l5);
 		lines5.add(l6);
+		redLines5 = new ArrayList<Rectangle>();
+		redLines5.add(l7);
+		redLines5.add(l8);
+		redLines5.add(l9);
+		redLines5.add(l10);
 
 	}
 	
 	public ArrayList<Line> getLines() {
 		return lines5;
+	}
+	
+	public ArrayList<Rectangle> getRedLines() {
+		return redLines5;
 	}
 	
 	public void draw(PApplet marker) {
@@ -57,6 +85,10 @@ public class LevelFive extends Level {
 		l4.draw(marker);
 		l5.draw(marker);
 		l6.draw(marker);
+		l7.draw(marker);
+		l8.draw(marker);
+		l9.draw(marker);
+		l10.draw(marker);
 
 		marker.push();
 		marker.fill(0);

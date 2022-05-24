@@ -37,9 +37,11 @@ public class DrawingSurface extends PApplet {
 	private HomeScreen homeScreen;
 	private int switchScreen;
 	private double x,y;
+
 	
 	private PImage zoomPicture;
 	private PImage popup;
+	private PImage youlose;
 	
 	private Ghost g1;
 	private Ghost g2;
@@ -80,7 +82,6 @@ public class DrawingSurface extends PApplet {
 		level = "";
 		coinCount = 0;
 		zoomPicture = new PImage();
-		
 		g1 = new Ghost(this);
 		g2 = new Ghost(this);
 		
@@ -89,6 +90,7 @@ public class DrawingSurface extends PApplet {
 		intersects = false;
 		
 		popup = new PImage();
+		youlose = new PImage();
 		
 		dist = 0;
 		highscore = "";
@@ -113,6 +115,8 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() { 
 		
+		
+		
 		try {
 			readFile("images/highscore.txt");
 		} catch (IOException e) {
@@ -134,7 +138,11 @@ public class DrawingSurface extends PApplet {
 		} else if (switchScreen == 1) {
 			background(255);
 			rules.draw();
-		} else if (switchScreen == 2) {// LEVEL 1 --------------------------------------
+		} 
+		
+		
+		
+		else if (switchScreen == 2) {// LEVEL 1 --------------------------------------
 			background(255);
 			
 			textSize(50);
@@ -405,12 +413,14 @@ public class DrawingSurface extends PApplet {
 			
 		}
 		
-		
+
 		if(switchScreen > 1) {
 			zoomPicture = this.loadImage("images/fullscreen.gif");
 			zoomPicture.resize(20, 20);
 			this.image(zoomPicture, 570, 10);
 		}
+		
+		
 		
 		if(switchScreen > 1) {
 			push();
@@ -425,10 +435,12 @@ public class DrawingSurface extends PApplet {
 			
 		}
 		
-		fill(0);
-		textSize(20);
-		text("HIGHSCORE: " + highscore, 400,30);
-
+		if(switchScreen > 1) {
+			fill(0);
+			textSize(20);
+			text("HIGHSCORE: " + highscore, 400,30);
+		}
+		
 		
 	}
 	

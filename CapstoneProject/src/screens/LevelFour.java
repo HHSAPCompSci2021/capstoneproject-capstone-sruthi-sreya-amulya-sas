@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import ameduri.shapes.Line;
+import ameduri.shapes.Rectangle;
 import processing.core.PApplet;
 
 public class LevelFour extends Level {
@@ -14,7 +15,11 @@ public class LevelFour extends Level {
 	private Line l4;
 	private Line l5;
 	private Line l6;
+	private Rectangle l7;
+	private Rectangle l8;
+	private Rectangle l9;
 	private ArrayList<Line> lines4;
+	private ArrayList<Rectangle> redLines;
 
 	
 	public LevelFour() {
@@ -32,8 +37,14 @@ public class LevelFour extends Level {
 		l4 =  new Line(300, 150, 300, 250); // down
 		l5 =  new Line(300, 250, 50, 250); // left
 		l6 =  new Line(50, 250, 50, 50);
+		l7 = new Rectangle(200,230,0,30);
+		l8 = new Rectangle(75,200, 50, 0);
+		l9 = new Rectangle(90,60,75,0);
 		l2.setStrokeColor(Color.RED);
 		l4.setStrokeColor(Color.RED);
+		l7.setStrokeColor(Color.RED);
+		l8.setStrokeColor(Color.RED);
+		l9.setStrokeColor(Color.RED);
 		lines4 = new ArrayList<Line>();
 		lines4.add(l1);
 		lines4.add(l2);
@@ -41,6 +52,10 @@ public class LevelFour extends Level {
 		lines4.add(l4);
 		lines4.add(l5);
 		lines4.add(l6);
+		redLines = new ArrayList<Rectangle>();
+		redLines.add(l7);
+		redLines.add(l8);
+		redLines.add(l9);
 
 	}
 	
@@ -48,9 +63,13 @@ public class LevelFour extends Level {
 		return lines4;
 	}
 	
+	
+	public ArrayList<Rectangle> getRedLines() {
+		return redLines;
+	}
+	
 	public void draw(PApplet marker) {
-		marker.fill(255);
-		
+		marker.fill(255);	
 		
 		l1.draw(marker);
 		l2.draw(marker);
@@ -58,6 +77,9 @@ public class LevelFour extends Level {
 		l4.draw(marker);
 		l5.draw(marker);
 		l6.draw(marker);
+		l7.draw(marker);
+		l8.draw(marker);
+		l9.draw(marker);
 
 		marker.push();
 		marker.fill(0);

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import ameduri.shapes.Line;
+import ameduri.shapes.Rectangle;
 import processing.core.PApplet;
 
 public class LevelTwo extends Level {
@@ -14,7 +15,10 @@ public class LevelTwo extends Level {
 	private Line l4;
 	private Line l5;
 	private Line l6;
+	private Rectangle l7;
+	private Rectangle l8;
 	private ArrayList<Line> lines2;
+	private ArrayList<Rectangle> redLines;
 
 	
 	public LevelTwo() {
@@ -32,9 +36,13 @@ public class LevelTwo extends Level {
 		l3 =  new Line(150, 150, 300, 150); // right
 		l4 =  new Line(300, 150, 300, 250); // down
 		l5 =  new Line(300, 250, 50, 250); // left
-		l6 =  new Line(50, 250, 50, 50);
+		l6 =  new Line(50, 250, 50, 50); // up
+		l7 = new Rectangle(200,230,0,30);
+		l8 = new Rectangle(75,200, 50, 0);
 		l2.setStrokeColor(Color.RED);
 		l4.setStrokeColor(Color.RED);
+		l7.setStrokeColor(Color.RED);
+		l8.setStrokeColor(Color.RED);
 		lines2 = new ArrayList<Line>();
 		lines2.add(l1);
 		lines2.add(l2);
@@ -42,6 +50,9 @@ public class LevelTwo extends Level {
 		lines2.add(l4);
 		lines2.add(l5);
 		lines2.add(l6);
+		redLines = new ArrayList<Rectangle>();
+		redLines.add(l7);
+		redLines.add(l8);
 
 	}
 	
@@ -49,6 +60,9 @@ public class LevelTwo extends Level {
 		return lines2;
 	}
 
+	public ArrayList<Rectangle> getRedLines() {
+		return redLines;
+	}
 	
 	public void draw(PApplet marker) {
 		marker.fill(255);
@@ -60,6 +74,8 @@ public class LevelTwo extends Level {
 		l4.draw(marker);
 		l5.draw(marker);
 		l6.draw(marker);
+		l7.draw(marker);
+		l8.draw(marker);
 
 		marker.push();
 		marker.fill(0);
