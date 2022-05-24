@@ -463,7 +463,7 @@ public class DrawingSurface extends PApplet {
 		if(switchScreen > 1) {
 			zoomPicture = this.loadImage("images/fullscreen.gif");
 			zoomPicture.resize(20, 20);
-			this.image(zoomPicture, 570, 10);
+			this.image(zoomPicture, 570, 550);
 		}
 		
 		
@@ -486,7 +486,7 @@ public class DrawingSurface extends PApplet {
 			textSize(20);
 			text("HIGHSCORE: " + highscore, 400,30);
 			textSize(15);
-			text("Click Z to zoom in,\nclick F to zoom out", 420,60);
+			text("Click Z to zoom in,\nClick F to zoom out", 440,520);
 		}
 		
 		
