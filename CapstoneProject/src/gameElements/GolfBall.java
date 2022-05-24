@@ -78,97 +78,7 @@ public class GolfBall{
 		
 		
 	}
-	/*
-	public boolean bounce(double x_diff, double y_diff, DrawingSurface surface) {
-
-		Line left = new Line(c.getX()- (surface.getDist() * 1.5 / 10), c.getY(), c.getX()-(surface.getDist() * 1.5 / 10), c.getY()+diameter);
-		Line right = new Line(c.getX()+diameter+(surface.getDist() * 1.5 / 10), c.getY(), c.getX()+diameter+(surface.getDist() * 1.5 / 10), c.getY()+diameter);
-		Line up = new Line(c.getX(), c.getY()-(surface.getDist() * 1.5 / 10), c.getX()+diameter, c.getY()-(surface.getDist() * 1.5 / 10));
-		Line down = new Line(c.getX(), c.getY()+diameter+(surface.getDist() * 1.5 / 10), c.getX()+diameter, c.getY()+diameter+(surface.getDist() * 1.5 / 10));
-		
-		if (surface.getScreen() == 2) {
-				LevelOne l1 = new LevelOne();
-				ArrayList<Line> lines = l1.getLines();
-				for (Line l : lines) {
-					if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down) || (x > 150 && y >= 50 && y <= 150) || (x > 300 && y >= 150 && y <= 250)) {
-						
-						if (l.getX() == l.getX2()) {
-							vx = -vx;
-						} else if (l.getY() == l.getY2()) {
-							vy = -vy;
-						}
-						return true;
-					}
-				}
-		} else if (surface.getScreen() == 3) {
-			LevelTwo l2 = new LevelTwo();
-			ArrayList<Line> lines = l2.getLines();
-			for (Line l : lines) {
-				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
-					if (l.getX() == l.getX2()) {
-						vx = -vx;
-					} else if (l.getY() == l.getY2()) {
-						vy = -vy;
-					}
-					return true;
-				}
-			}
-		} else if (surface.getScreen() == 4) {
-			LevelThree l3 = new LevelThree();
-			ArrayList<Line> lines = l3.getLines();
-			for (Line l : lines) {
-				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
-					if (l.getX() == l.getX2()) {
-						vx = -vx;
-					} else if (l.getY() == l.getY2()) {
-						vy = -vy;
-					}
-					return true;
-				}
-			}
-		} else if (surface.getScreen() == 5) {
-			LevelFour l4 = new LevelFour();
-			ArrayList<Line> lines = l4.getLines();
-			for (Line l : lines) {
-				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
-					if (l.getX() == l.getX2()) {
-						vx = -vx;
-					} else if (l.getY() == l.getY2()) {
-						vy = -vy;
-					}
-					return true;
-				}
-			}
-		} else if (surface.getScreen() == 6) {
-			LevelFive l5 = new LevelFive();
-			ArrayList<Line> lines = l5.getLines();
-			for (Line l : lines) {
-				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
-					if (l.getX() == l.getX2()) {
-						vx = -vx;
-					} else if (l.getY() == l.getY2()) {
-						vy = -vy;
-					}
-					return true;
-				}
-			}
-		} else if (surface.getScreen() == 7) {
-			LevelSix l6 = new LevelSix();
-			ArrayList<Line> lines = l6.getLines();
-			for (Line l : lines) {
-				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
-					if (l.getX() == l.getX2()) {
-						vx = -vx;
-					} else if (l.getY() == l.getY2()) {
-						vy = -vy;
-					}
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	*/
+	
 	/**
 	 * Checks whether or not the golf ball bumps into a boundary, and if it does, it
 	 * bounces off the boundary
@@ -280,10 +190,6 @@ public class GolfBall{
 		Rectangle r = new Rectangle(x, y, diameter, diameter);
 		Rectangle temp2 = new Rectangle(200, 200, 20, 20);
 
-//		marker.rect(100,150,20,20);
-//		marker.rect(200, 200, 20, 20);
-//		marker.rect(x, y, diameter, diameter);
-
 		if (temp.intersects(r) || temp2.intersects(r)) {
 			return true;
 		} else {
@@ -346,27 +252,41 @@ public class GolfBall{
 		return b;
 	}
 	
-	public void accelerate(double vx, double vy) {
-		this.vx += vx;
-		this.vy += vy;
-	}
-	
+	/**
+	 * Sets the x-velocity to a new value
+	 * @param x the new x-velocity value
+	 */
 	public void setVX(double x) {
 		this.vx = x;
 	}
 
+	/**
+	 * Sets the y-velocity to a new value
+	 * @param y the new y-velocity value
+	 */
 	public void setVY(double y) {
 		this.vy = y;
 	}
 	
+	/**
+	 * Gets the x-velocity
+	 * @return the x-velocity
+	 */
 	public double getVX() {
 		return vx;
 	}
 	
+	/**
+	 * Gets the y-velocity
+	 * @return the y-velocity
+	 */
 	public double getVY() {
 		return vy;
 	}
 
+	/**
+	 * Moves the x and y coordinates by incrementing them based on the x-velocity and y-velocity
+	 */
 	public void act() {
 		double x1 = x;
 		double y1 = y;
@@ -379,6 +299,10 @@ public class GolfBall{
 		setY(y1);
 	}
 	
+	/**
+	 * Gets the diameter of the golf ball
+	 * @return the diameter of the golf ball
+	 */
 	public double getDiameter() {
 		return diameter;
 	}

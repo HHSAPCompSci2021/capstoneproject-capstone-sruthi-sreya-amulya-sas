@@ -23,7 +23,9 @@ public class LevelFive extends Level {
 	private ArrayList<Line> lines5;
 	private ArrayList<Rectangle> redLines5;
 
-	
+	/**
+	 * Calls superclass constructor to assign a value to the scale instance variable. Objects, such as Lines and Rectangles, are instantiated.
+	 */
 	public LevelFive() {
 		super(true);
 //		l1 = new Line(50, 50, 150, 50); // horizontal (right)
@@ -71,6 +73,10 @@ public class LevelFive extends Level {
 		return lines5;
 	}
 	
+	/**
+	 * Gets the red lines that draw the obstacles in the golf course in a particular level
+	 * @return the red lines that draw the obstacles in the golf course
+	 */
 	public ArrayList<Rectangle> getRedLines() {
 		return redLines5;
 	}

@@ -16,6 +16,9 @@ public class LevelOne extends Level {
 	private Line l6;
 	private ArrayList<Line> lines1;
 	
+	/**
+	 * Calls superclass constructor to assign a value to the scale instance variable. Objects, such as Lines, are instantiated.
+	 */
 	public LevelOne() {
 		super(true);
 		

@@ -667,6 +667,11 @@ public class DrawingSurface extends PApplet {
 		
 	}
 	
+	/**
+	 * Reads a file that is inputed and saves it in a String instance variable
+	 * @param inputFile the data file that is inputed
+	 * @throws IOException
+	 */
 	public void readFile(String inputFile) throws IOException {
 		StringBuffer fileData = new StringBuffer();
 		
@@ -687,6 +692,12 @@ public class DrawingSurface extends PApplet {
 		highscore = fileData.toString();
 	}
 	
+	/**
+	 * Writes the data in the output file
+	 * @param data the data that will be added to the output file
+	 * @param outputFile the file that the data will be addded to
+	 * @throws IOException
+	 */
 	public void writeFile(String data, String outputFile) throws IOException {
 		
 		FileWriter fr = null;
@@ -706,35 +717,31 @@ public class DrawingSurface extends PApplet {
 		
 	}
 
-	
+	/**
+	 * Does different actions based on what key is pressed by the user.
+	 */
 	public void keyPressed() {
 		
-//		if(mouseX >= r.getX() && mouseX >= r.getY() + r.getWidth() && mouseY <= r.getY() && mouseY <= r.getY() + rect.getHeight()) {
 		if(keyCode == 'F') {
-//			System.out.println("You're in!");
 			l1.scaleDown();
 			l2.scaleDown();
 			l3.scaleDown();
 			l4.scaleDown();
 			l5.scaleDown();
 			l6.scaleDown();
-//			System.out.println(l1.returnZ());
 		}
 		
 		if(keyCode == 'Z') {
-//			System.out.println("You're out!");
 			l1.scaleUp();
 			l2.scaleUp();
 			l3.scaleUp();
 			l4.scaleUp();
 			l5.scaleUp();
 			l6.scaleUp();
-//			System.out.println(l1.returnZ());
 
 		}
 		
 		if(keyCode == 'S') {
-//			System.out.print("LEVEL");
 			ball3.setX(260);
 			ball3.setY(220);
 			ball4.setX(260);
@@ -754,8 +761,6 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		if(keyCode == 'R') {
-//			System.out.println("you reset");
-//			coinCount = 0;
 			switchScreen = 0;
 			homeScreen.draw(this);
 		}
@@ -764,15 +769,6 @@ public class DrawingSurface extends PApplet {
 
 			coinCount -= 5;
 			
-			
-//			popup = null;
-//			popup = new PImage();
-//			popup = this.loadImage("images/transparent.png");
-//			popup.resize(10, 10);
-//			this.image(popup, 35, 70);
-			
-					
-			
 		}
 		if(keyCode == '2') {
 
@@ -780,13 +776,20 @@ public class DrawingSurface extends PApplet {
 			ball.setX(260);
 			ball.setY(220);
 		}
-//		}
 	}
 		
+	/**
+	 * Gets the screen that the game is on
+	 * @return the screen that the game is on
+	 */
 	public int getScreen() {
 		return switchScreen;
 	}
 	
+	/**
+	 * Gets the distance of the line being drawn when the mouse is dragged
+	 * @return the distance of the line that is drawn when the mouse is dragged from the ball
+	 */
 	public double getDist() {
 		return dist;
 	}

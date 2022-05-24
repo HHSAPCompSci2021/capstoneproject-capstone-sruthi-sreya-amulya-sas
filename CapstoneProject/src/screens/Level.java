@@ -1,5 +1,8 @@
 package screens;
 
+import java.util.ArrayList;
+
+import ameduri.shapes.Line;
 import processing.core.PApplet;
 
 public abstract class Level {
@@ -8,7 +11,7 @@ public abstract class Level {
 
 	
 	/**
-	 * Instantiates new Coin ArrayList
+	 * Assigns a value to the scale instance variable based on the inputed parameter value
 	 */
 	public Level(boolean scale) {
 		this.scale = scale;
@@ -46,4 +49,10 @@ public abstract class Level {
 		scale = b;
 	}
 	
+	/**
+	 * Gets the lines that draw the golf course in a particular level
+	 * @return the lines that draw the golf course
+	 */
+	public abstract ArrayList<Line> getLines();
+		
 }
