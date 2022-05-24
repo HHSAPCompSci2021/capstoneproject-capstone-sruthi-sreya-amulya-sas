@@ -83,9 +83,6 @@ public class GolfBall{
 	 * @param p PApplet object used to draw the golf ball
 	 */
 	public void draw(PApplet marker) {
-//		img = surface.loadImage("images/golfball.gif");
-//		img.resize(20, 20);
-//		surface.image(img, 250, 220);
 		c = new Circle(x, y, diameter);
 
 		c.draw(marker);
@@ -323,14 +320,6 @@ public class GolfBall{
 		}
 
 	}
-
-//	public boolean bounceOff() {
-//		
-//	}
-	
-//	public void intersects(Line l) {
-//		l.inter
-//	}
 	
 	/**
 	 * This method is used to set the golf ball to an rgb color value
