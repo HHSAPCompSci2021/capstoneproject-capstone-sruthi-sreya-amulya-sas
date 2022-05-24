@@ -63,20 +63,7 @@ public class LevelOne extends Level {
 	}
 	
 	public void scaleUp() {
-//		
-//		l1.setPoint2(l1.getX2()*z, l1.getY2());
-//		
-//		l2.setPoint(l2.getX() * z, l2.getY());
-//		l2.setPoint2(l2.getX2() * z, l2.getY2() * z);
-//		l3.setPoint(l3.getX() * z, l3.getY() * z);
-//		l3.setPoint2(l3.getX2() * z, l3.getY2() * z);
-//		l4.setPoint(l4.getX() * z, l4.getY()* z);
-//		l4.setPoint2(l4.getX2() * z, l4.getY2() * z);
-//		l5.setPoint2(l5.getX2(), l5.getY2() * z);
-//		l5.setPoint(l5.getX() * z, l5.getY() * z);
-//		
-//		l6.setPoint(l6.getX(), l6.getY() * z);
-		
+
 		if(getScale() == true) {
 			l1.setPoint2(l1.getX2()*1.5, l1.getY2());
 			

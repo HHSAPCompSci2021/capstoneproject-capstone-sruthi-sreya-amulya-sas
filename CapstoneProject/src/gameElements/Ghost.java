@@ -9,8 +9,6 @@ public class Ghost {
 	private int y;
 	private int prevX;
 	private int prevY;
-	private double xVel;
-	private double yVel;
 	private PImage image;
 	
 	
@@ -84,16 +82,6 @@ public class Ghost {
 		
 		prevX = x;
 		prevY = y;
-	}
-	
-	/**
-	 * Changes the velocity of the golf ball to make it move
-	 * @param vx the change in x of the x velocity
-	 * @param vy the change in y of the y velocity
-	 */
-	public void accelerate(double vx, double vy) {
-		this.xVel = vx;
-		this.yVel = vy;
 	}
 	
 }

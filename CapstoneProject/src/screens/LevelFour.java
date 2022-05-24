@@ -26,12 +26,6 @@ public class LevelFour extends Level {
 	 */
 	public LevelFour() {
 		super(true);
-//		l1 = new Line(50, 50, 150, 50); // horizontal (right)
-//		l2 =  new Line(150, 50, 150, 150); // down
-//		l3 =  new Line(150, 150, 300, 150); // right
-//		l4 =  new Line(300, 150, 300, 250); // down
-//		l5 =  new Line(300, 250, 50, 250); // left
-//		l6 =  new Line(50, 250, 50, 50);
 		
 		l1 = new Line(50, 50, 150, 50); // horizontal (right)
 		l2 =  new Line(150, 50, 150, 150); // down
@@ -111,14 +105,6 @@ public class LevelFour extends Level {
 		l6.setPoint(l6.getX(), l6.getY() * 1.5);
 		setScale(false);
 		}
-//		l6.setPoint2(l6.getX2(), l6.getY2() * 1.5);
-//		l1.resize(2);
-//		l2.resize(2);
-//		l3.resize(2);
-//		l4.resize(2);
-//		l5.resize(2);
-//		l6.resize(2);
-		
 		
 	}
 	

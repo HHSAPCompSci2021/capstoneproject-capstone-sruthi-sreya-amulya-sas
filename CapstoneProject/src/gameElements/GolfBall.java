@@ -11,16 +11,11 @@ public class GolfBall{
 	private Circle c;
 	private float r,g,b;
 
-//	private DrawingSurface surface;
-//	private PImage img;
-//	private Circle c;
-
 	/**
 	 * Assigns values to the x and y coordinates of the golf ball and sets the
 	 * diameter of the golf ball
 	 */
 	public GolfBall() {
-//		this.surface = surface;
 		x = 260;
 		y = 220;
 		diameter = 15;
