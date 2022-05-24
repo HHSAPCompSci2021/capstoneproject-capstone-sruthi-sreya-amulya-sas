@@ -89,8 +89,100 @@ public class GolfBall{
 		c = new Circle(x, y, diameter);
 
 		c.draw(marker);
+		
+		
 	}
+	/*
+	public boolean bounce(double x_diff, double y_diff, DrawingSurface surface) {
 
+		Line left = new Line(c.getX()- (surface.getDist() * 1.5 / 10), c.getY(), c.getX()-(surface.getDist() * 1.5 / 10), c.getY()+diameter);
+		Line right = new Line(c.getX()+diameter+(surface.getDist() * 1.5 / 10), c.getY(), c.getX()+diameter+(surface.getDist() * 1.5 / 10), c.getY()+diameter);
+		Line up = new Line(c.getX(), c.getY()-(surface.getDist() * 1.5 / 10), c.getX()+diameter, c.getY()-(surface.getDist() * 1.5 / 10));
+		Line down = new Line(c.getX(), c.getY()+diameter+(surface.getDist() * 1.5 / 10), c.getX()+diameter, c.getY()+diameter+(surface.getDist() * 1.5 / 10));
+		
+		if (surface.getScreen() == 2) {
+				LevelOne l1 = new LevelOne();
+				ArrayList<Line> lines = l1.getLines();
+				for (Line l : lines) {
+					if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down) || (x > 150 && y >= 50 && y <= 150) || (x > 300 && y >= 150 && y <= 250)) {
+						
+						if (l.getX() == l.getX2()) {
+							vx = -vx;
+						} else if (l.getY() == l.getY2()) {
+							vy = -vy;
+						}
+						return true;
+					}
+				}
+		} else if (surface.getScreen() == 3) {
+			LevelTwo l2 = new LevelTwo();
+			ArrayList<Line> lines = l2.getLines();
+			for (Line l : lines) {
+				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					if (l.getX() == l.getX2()) {
+						vx = -vx;
+					} else if (l.getY() == l.getY2()) {
+						vy = -vy;
+					}
+					return true;
+				}
+			}
+		} else if (surface.getScreen() == 4) {
+			LevelThree l3 = new LevelThree();
+			ArrayList<Line> lines = l3.getLines();
+			for (Line l : lines) {
+				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					if (l.getX() == l.getX2()) {
+						vx = -vx;
+					} else if (l.getY() == l.getY2()) {
+						vy = -vy;
+					}
+					return true;
+				}
+			}
+		} else if (surface.getScreen() == 5) {
+			LevelFour l4 = new LevelFour();
+			ArrayList<Line> lines = l4.getLines();
+			for (Line l : lines) {
+				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					if (l.getX() == l.getX2()) {
+						vx = -vx;
+					} else if (l.getY() == l.getY2()) {
+						vy = -vy;
+					}
+					return true;
+				}
+			}
+		} else if (surface.getScreen() == 6) {
+			LevelFive l5 = new LevelFive();
+			ArrayList<Line> lines = l5.getLines();
+			for (Line l : lines) {
+				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					if (l.getX() == l.getX2()) {
+						vx = -vx;
+					} else if (l.getY() == l.getY2()) {
+						vy = -vy;
+					}
+					return true;
+				}
+			}
+		} else if (surface.getScreen() == 7) {
+			LevelSix l6 = new LevelSix();
+			ArrayList<Line> lines = l6.getLines();
+			for (Line l : lines) {
+				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
+					if (l.getX() == l.getX2()) {
+						vx = -vx;
+					} else if (l.getY() == l.getY2()) {
+						vy = -vy;
+					}
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	*/
 	/**
 	 * Checks whether or not the golf ball bumps into a boundary, and if it does, it
 	 * bounces off the boundary
@@ -102,81 +194,8 @@ public class GolfBall{
 	 * @return true or false depending on whether or not the golf ball intersects a
 	 *         boundary line
 	 */
-	public boolean bounce(double x_diff, double y_diff, DrawingSurface surface) {
-		Line left = new Line(c.getX(), c.getY(), c.getX(), c.getY()+diameter);
-		Line right = new Line(c.getX()+diameter, c.getY(), c.getX()+diameter, c.getY()+diameter);
-		Line up = new Line(c.getX(), c.getY(), c.getX()+diameter, c.getY());
-		Line down = new Line(c.getX(), c.getY()+diameter, c.getX()+diameter, c.getY()+diameter);
-		
-		
-		if (surface.getScreen() == 2) {
-			LevelOne l1 = new LevelOne();
-			ArrayList<Line> lines = l1.getLines();
-			for (Line l : lines) {
-				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
-					if (l.getX() == l.getX2()) {
-						vx = -vx;
-						act();
-					} else if (l.getY() == l.getY2()) {
-						vy = -vy;
-						act();
-					}
-					return true;
-				}
-			}
-		} else if (surface.getScreen() == 3) {
-			LevelTwo l2 = new LevelTwo();
-			ArrayList<Line> lines = l2.getLines();
-			for (Line l : lines) {
-				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
-					return true;
-				}
-			}
-		} else if (surface.getScreen() == 4) {
-			LevelThree l3 = new LevelThree();
-			ArrayList<Line> lines = l3.getLines();
-			for (Line l : lines) {
-				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
-					return true;
-				}
-			}
-		} else if (surface.getScreen() == 5) {
-			LevelFour l4 = new LevelFour();
-			ArrayList<Line> lines = l4.getLines();
-			for (Line l : lines) {
-				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
-					return true;
-				}
-			}
-		} else if (surface.getScreen() == 6) {
-			LevelFive l5 = new LevelFive();
-			ArrayList<Line> lines = l5.getLines();
-			for (Line l : lines) {
-				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
-					return true;
-				}
-			}
-		} else if (surface.getScreen() == 7) {
-			LevelSix l6 = new LevelSix();
-			ArrayList<Line> lines = l6.getLines();
-			for (Line l : lines) {
-				if (l.intersects(left) || l.intersects(right) || l.intersects(up) || l.intersects(down)) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	
 	public boolean bounce1(double x_diff, double y_diff) {
 
-		/*
-		 * Line invis1= new Line(50, 50, 150, 50); // right Line invis2 = new Line(150,
-		 * 50, 150, 150); // down Line invis3 = new Line(150, 150, 300, 150); // right
-		 * Line invis4 = new Line(300, 150, 300, 250); // down Line invis5 = new
-		 * Line(300, 250, 50, 250); // left Line invis6 = new Line(50, 250, 50, 50); //
-		 * up
-		 */
 
 		Rectangle r = new Rectangle(50, 50, 100, 0); // right
 		Rectangle r2 = new Rectangle(150, 50, 0, 100); // down
@@ -186,9 +205,7 @@ public class GolfBall{
 		Rectangle r6 = new Rectangle(50, 50, 0, 200); // up
 		Rectangle temp = new Rectangle(x, y, diameter, diameter);
 
-//		if(temp.getX() - 50 <= )
 		if (r.intersects(temp)) {
-			System.out.println("l");
 
 			this.setY((int) (50 + y_diff));
 			this.setX((int) (getX() + x_diff));
@@ -196,8 +213,6 @@ public class GolfBall{
 
 		}
 		if (r2.intersects(temp)) {
-			System.out.println("l2");
-//			this.move((int)(150 + x_diff), (int)(getY() + y_diff));
 
 			this.setY((int) (getY() + y_diff));
 			this.setX((int) (150 + x_diff));
@@ -207,24 +222,19 @@ public class GolfBall{
 		if (r3.intersects(temp)) {
 			vx -= -0.2;
 			vy += -0.2;
-			System.out.println("l3");
 			this.setY((int) (150 + y_diff));
 			this.setX((int) (getX() + x_diff));
 			return true;
 
 		}
 		if (r4.intersects(temp)) {
-			System.out.println("l4");
 			this.setX((int) (300 + x_diff));
 			this.setY((int) (getY() + y_diff));
 			return true;
 		}
 		if (r5.intersects(temp)) {
-			System.out.println("l5");
-//			this.setX((int)(250 + x_diff));
 			this.setX((int) (100 - x_diff));
 
-//			System.out.println(getX() - 50 - x_diff);
 
 			this.setY((int) (getY() + y_diff));
 			if (y_diff < 0)
@@ -232,7 +242,6 @@ public class GolfBall{
 			else
 				this.setY((int) (getY() - y_diff));
 
-//			System.out.println(y_diff);
 			return true;
 		}
 		if (r6.intersects(temp)) {
@@ -290,7 +299,6 @@ public class GolfBall{
 //		marker.rect(x, y, diameter, diameter);
 
 		if (temp.intersects(r) || temp2.intersects(r)) {
-//			System.out.println("coin");
 			return true;
 		} else {
 			return false;
@@ -308,7 +316,6 @@ public class GolfBall{
 		Rectangle temp2 = new Rectangle(two.getX(), two.getY(), 40, 40);
 		Rectangle r = new Rectangle(x, y, diameter, diameter);
 		if (temp.intersects(r) || temp2.intersects(r)) {
-//			System.out.println("coin");
 			return true;
 		} else {
 			return false;
@@ -373,6 +380,14 @@ public class GolfBall{
 	public void setVY(double y) {
 		this.vy = y;
 	}
+	
+	public double getVX() {
+		return vx;
+	}
+	
+	public double getVY() {
+		return vy;
+	}
 
 	public void act() {
 		double x1 = x;
@@ -384,6 +399,10 @@ public class GolfBall{
 		
 		setX(x1);
 		setY(y1);
+	}
+	
+	public double getDiameter() {
+		return diameter;
 	}
 
 

@@ -79,8 +79,9 @@ public class Ghost {
 	public void moveGhosts() {
 		prevX = 0;
 		prevY = 0;
-		x = (int) (Math.random() * 300);
-		y = (int) (Math.random() * 300);
+		x = 50 + (int) (Math.random() * 200);
+		y = 50 + (int) (Math.random() * 200);
+		
 		prevX = x;
 		prevY = y;
 	}

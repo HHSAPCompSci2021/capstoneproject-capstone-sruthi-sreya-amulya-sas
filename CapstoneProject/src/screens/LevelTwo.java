@@ -1,5 +1,6 @@
 package screens;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import ameduri.shapes.Line;
@@ -32,6 +33,8 @@ public class LevelTwo extends Level {
 		l4 =  new Line(300, 150, 300, 250); // down
 		l5 =  new Line(300, 250, 50, 250); // left
 		l6 =  new Line(50, 250, 50, 50);
+		l2.setStrokeColor(Color.RED);
+		l4.setStrokeColor(Color.RED);
 		lines2 = new ArrayList<Line>();
 		lines2.add(l1);
 		lines2.add(l2);

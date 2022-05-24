@@ -31,7 +31,6 @@ public class DrawingSurface extends PApplet {
 	private Timer time4;
 	private Timer time5;
 	private Timer time6;
-	private int numTries;
 	private Instructions rules;
 	private HomeScreen homeScreen;
 	private int switchScreen;
@@ -50,6 +49,8 @@ public class DrawingSurface extends PApplet {
 	private boolean intersects;
 	
 	private Rectangle rect;
+	
+	private double dist;
 		
 	/**
 	 * Creates new Levels, GolfBalls, Coins, Instructions, and a HomeScreen
@@ -74,7 +75,6 @@ public class DrawingSurface extends PApplet {
 		switchScreen = 0;
 		level = "";
 		coinCount = 0;
-		numTries = 0;
 		zoomPicture = new PImage();
 		
 		g1 = new Ghost(this);
@@ -85,6 +85,8 @@ public class DrawingSurface extends PApplet {
 		intersects = false;
 		
 		popup = new PImage();
+		
+		dist = 0;
 		
 	}
 	
@@ -193,12 +195,6 @@ public class DrawingSurface extends PApplet {
 
 			if (ball3.ghostIntersects(g1, g2)) {
 				intersects = true;
-				fill(0);
-				textSize(30);
-//				text("YOU HIT GHOST", 150, 150);
-				numTries = 0;
-				
-//				text("Press \'S\' to restart Level", 200, 100);
 			}
 			if (ball3.goal()) {
 				textSize(50);
@@ -209,7 +205,7 @@ public class DrawingSurface extends PApplet {
 			}
 			
 			if (intersects == true && seconds > 3) {
-				if(ball.ghostIntersects(g2, g1)) {
+				if(ball3.ghostIntersects(g2, g1)) {
 					popup = this.loadImage("images/You hit a ghost!.gif");
 					popup.resize(533, 300);
 					this.image(popup, 35, 70);
@@ -217,6 +213,7 @@ public class DrawingSurface extends PApplet {
 				}
 			}
 		}else if (switchScreen == 5) { // LEVEL 4 --------------------------------------
+			intersects = false;
 			background(255);
 			textSize(50);
 			fill(0);
@@ -248,33 +245,13 @@ public class DrawingSurface extends PApplet {
 				rect.draw(this);
 			}
 			
-			/*
-			if (time4.countUp(this) <= 5) {
-				fill(0);
-				text(time4.getTime(), 20, 20);
-				g1.moveGhosts();
-				g2.moveGhosts();
-			} else {
-				fill(0);
-				text("5.000", 20, 20);
-				seconds = 5;
-				g1.stopGhosts();
-				g2.stopGhosts();
-			}
-			*/
-			
-			
 			ball4.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
 
-			if (ball3.ghostIntersects(g1, g2)) {
-				fill(0);
-				textSize(30);
-				text("YOU HIT GHOST", 150, 150);
-				numTries = 0;
-				text("Press \'S\' to restart Level", 200, 100);
+			if (ball4.ghostIntersects(g1, g2)) {
+				intersects = true;
 			}
 			if (ball4.goal()) {
 				textSize(50);
@@ -283,8 +260,17 @@ public class DrawingSurface extends PApplet {
 				textSize(20);
 				text("Click enter to go to the next level!", 150, 300);
 			}
+			if (intersects == true && seconds > 3) {
+				if(ball4.ghostIntersects(g2, g1)) {
+					popup = this.loadImage("images/You hit a ghost!.gif");
+					popup.resize(533, 300);
+					this.image(popup, 35, 70);
+					
+				}
+			}
 
 		}else if (switchScreen == 6) { // LEVEL 5 --------------------------------------
+			intersects = false;
 			background(255);
 			textSize(50);
 			fill(0);
@@ -316,35 +302,13 @@ public class DrawingSurface extends PApplet {
 				rect.draw(this);
 			}
 
-			/*
-			if (time5.countUp(this) <= 5) {
-				fill(0);
-				text(time5.getTime(), 20, 20);
-				g1.moveGhosts();
-				g2.moveGhosts();
-			} else {
-				fill(0);
-				text("5.000", 20, 20);
-				seconds = 5;
-				g1.stopGhosts();
-				g2.stopGhosts();
-			}
-			*/
-			
 			ball5.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
-//			if(ball5.coinIntersects()){
-//				coinCount++;
-//			}
-			if (ball3.ghostIntersects(g1, g2)) {
-				fill(0);
-				textSize(30);
-				text("YOU HIT GHOST", 150, 150);
-//				coinCount = 0;
-				numTries = 0;
-				text("Press \'S\' to restart Level", 200, 100);
+
+			if (ball5.ghostIntersects(g1, g2)) {
+				intersects = true;
 			}
 			if (ball5.goal()) {
 				textSize(50);
@@ -353,8 +317,17 @@ public class DrawingSurface extends PApplet {
 				textSize(20);
 				text("Click enter to go to the next level!", 150, 300);
 			}
+			if (intersects == true && seconds > 3) {
+				if(ball5.ghostIntersects(g2, g1)) {
+					popup = this.loadImage("images/You hit a ghost!.gif");
+					popup.resize(533, 300);
+					this.image(popup, 35, 70);
+					
+				}
+			}
 
 		}else if (switchScreen == 7) { // LEVEL 6 --------------------------------------
+			intersects = false;
 			background(255);
 			textSize(50);
 			fill(0);
@@ -384,36 +357,14 @@ public class DrawingSurface extends PApplet {
 				rect.setFillColor(Color.BLACK);
 				rect.draw(this);
 			}
-
-			/*
-			if (time6.countUp(this) <= 5) {
-				fill(0);
-				text(time6.getTime(), 20, 20);
-				g1.moveGhosts();
-				g2.moveGhosts();
-			} else {
-				fill(0);
-				text("5.000", 20, 20);
-				seconds = 5;
-				g1.stopGhosts();
-				g2.stopGhosts();
-			}
-			*/
 			
 			ball6.draw(this);
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
-//			if(ball6.coinIntersects()){
-//				coinCount++;
-//			}
-			if (ball3.ghostIntersects(g1, g2)) {
-				fill(0);
-				textSize(30);
-				text("YOU HIT GHOST", 150, 150);
-//				coinCount = 0;
-				numTries = 0;
-				text("Press \'S\' to restart Level", 200, 100);
+
+			if (ball6.ghostIntersects(g1, g2)) {
+				intersects = true;
 			}
 			if (ball6.goal()) {
 				textSize(50);
@@ -421,6 +372,15 @@ public class DrawingSurface extends PApplet {
 				text("CONGRATS!!", 150, 250);
 				textSize(20);
 				text("YOU HAVE COMPLETED ALL THE LEVELS!!", 150, 300);
+			}
+			
+			if (intersects == true && seconds > 3) {
+				if(ball6.ghostIntersects(g2, g1)) {
+					popup = this.loadImage("images/You hit a ghost!.gif");
+					popup.resize(533, 300);
+					this.image(popup, 35, 70);
+					
+				}
 			}
 			
 		}
@@ -443,46 +403,7 @@ public class DrawingSurface extends PApplet {
 			switchScreen++;
 			keyCode = 0;
 			
-			numTries= 0;
 		}
-		
-//		if (switchScreen > 1) {
-//			fill(0);
-//			textSize(20);
-//			text("Coins: " + Integer.toString(coinCount), 50, 40);
-//
-//			if (coinCount == 5) {
-//				//stop();
-//				textSize(10);
-//				strokeWeight(10);
-//				text("Use Chance! Press \'S\' to use life line", 500, 20);
-//			}
-//		}
-		/*if(numTries == 7) {
-			textSize(20);
-			text("You lost!", 150, 300);
-			text("Press \'R\' restart", 150, 200);
-			//"hide" ball + debug
-			/*ball.setX(700); // out of screen
-			ball.setY(700); // out of screen
-			ball2.setX(700); // out of screen
-			ball2.setY(700); // out of screen
-			ball3.setX(700); // out of screen
-			ball3.setY(700); // out of screen
-			ball4.setX(700); // out of screen
-			ball4.setY(700); // out of screen
-			ball5.setX(700); // out of screen
-			ball5.setY(700); // out of screen
-			ball6.setX(700); // out of screen
-			ball6.setY(700); // out of screen 
-			ball.setRGB(255, 0, 0);
-			
-		}
-		else {
-			ball.setRGB(0, 0, 0);
-		}
-		
-		*/
 		
 	}
 	
@@ -528,9 +449,6 @@ public class DrawingSurface extends PApplet {
 		rect.moveBy(1200, 1200);
 		rect.draw(this);
 
-		numTries++;
-		text("Number of Tries: " + numTries, 450, 30);
-		System.out.println(numTries);
 		
 		if (level.equals("Level 1")) {
 			if(ball.coinIntersects()) {
@@ -541,21 +459,18 @@ public class DrawingSurface extends PApplet {
 			y = mouseY;
 			Line l = new Line(ball.getX(), ball.getY(), x, y);
 			l.draw(this);
-			
-			// USE FRAMERATE TO SLOW IT DOWN!
+		
 			double dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
 			double x_diff = (double)(ball.getX() - x)/(dist * 1.5 /10);
 			double y_diff = (double)(ball.getY() - y)/(dist * 1.5/10);
 			for (int i = 0; i < dist * 1.5/10; i++) {
-				if (!ball.bounce(x_diff, y_diff, this)) { // change to bounce method, not bounce1
-//					ball.setX((int)(ball.getX() + x_diff));
-//					ball.setY((int)(ball.getY() + y_diff));
-//					ball.goal();
-					ball.setVX(x_diff);
-					ball.setVY(y_diff);
-					ball.act();
+				if (!ball.bounce1(x_diff, y_diff)) {
+					ball.setX((int)(ball.getX() + x_diff));
+					ball.setY((int)(ball.getY() + y_diff));
+					ball.goal();
 				}
-			}
+			}	
+
 		}
 		else if (level.equals("Level 2")) {
 			if(ball2.coinIntersects()) {
@@ -576,7 +491,8 @@ public class DrawingSurface extends PApplet {
 					ball2.setY((int)(ball2.getY() + y_diff));
 					ball2.goal();
 				}
-			}
+			}	
+
 		}
 		else if (level.equals("Level 3")) {
 			if(ball3.coinIntersects()) {
@@ -597,7 +513,7 @@ public class DrawingSurface extends PApplet {
 					ball3.setY((int)(ball3.getY() + y_diff));
 					ball3.goal();
 				}
-			}
+			}	
 		}
 		else if (level.equals("Level 4")) {
 			if(ball4.coinIntersects()) {
@@ -618,7 +534,7 @@ public class DrawingSurface extends PApplet {
 					ball4.setY((int)(ball4.getY() + y_diff));
 					ball4.goal();
 				}
-			}
+			}	
 		}
 		else if (level.equals("Level 5")) {
 			if(ball5.coinIntersects()) {
@@ -639,7 +555,7 @@ public class DrawingSurface extends PApplet {
 					ball5.setY((int)(ball5.getY() + y_diff));
 					ball5.goal();
 				}
-			}
+			}	
 		}
 		else if (level.equals("Level 6")) {
 			if(ball6.coinIntersects()) {
@@ -660,23 +576,10 @@ public class DrawingSurface extends PApplet {
 					ball6.setY((int)(ball6.getY() + y_diff));
 					ball6.goal();
 				}
-			}
+			}	
 		}
 		
 		
-		double dist = ball.getDistance(ball.getX(), ball.getY(), x, y);
-		double x_diff = (double)(ball.getX() - x)/(dist * 1.5 /10);
-		double y_diff = (double)(ball.getY() - y)/(dist * 1.5/10);
-		for (int i = 0; i < dist * 1.5/10; i++) {
-			if (!ball.bounce1(x_diff, y_diff)) {
-				ball.setX((int)(ball.getX() + x_diff));
-				ball.setY((int)(ball.getY() + y_diff));
-				ball.goal();
-			}
-		}	
-		
-		
-	
 	}
 	
 	public void keyPressed() {
@@ -707,7 +610,6 @@ public class DrawingSurface extends PApplet {
 		
 		if(keyCode == 'S') {
 //			System.out.print("LEVEL");
-			numTries = 0;
 			ball3.setX(260);
 			ball3.setY(220);
 			ball4.setX(260);
@@ -728,7 +630,6 @@ public class DrawingSurface extends PApplet {
 		
 		if(keyCode == 'R') {
 //			System.out.println("you reset");
-			numTries = 0;
 //			coinCount = 0;
 			switchScreen = 0;
 			homeScreen.draw(this);
@@ -737,7 +638,6 @@ public class DrawingSurface extends PApplet {
 		if(keyCode == '1') {
 
 			coinCount -= 5;
-			switchScreen = 4;
 			
 			
 //			popup = null;
@@ -760,6 +660,10 @@ public class DrawingSurface extends PApplet {
 		
 	public int getScreen() {
 		return switchScreen;
+	}
+	
+	public double getDist() {
+		return dist;
 	}
 
 }
