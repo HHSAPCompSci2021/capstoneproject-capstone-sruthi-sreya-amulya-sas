@@ -1,8 +1,10 @@
 package core;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-
-import javax.swing.Popup;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
 import ameduri.shapes.Line;
 import ameduri.shapes.Rectangle;
@@ -51,6 +53,8 @@ public class DrawingSurface extends PApplet {
 	private Rectangle rect;
 	
 	private double dist;
+	
+	private String highscore;
 		
 	/**
 	 * Creates new Levels, GolfBalls, Coins, Instructions, and a HomeScreen
@@ -87,7 +91,7 @@ public class DrawingSurface extends PApplet {
 		popup = new PImage();
 		
 		dist = 0;
-		
+		highscore = "";
 	}
 	
 	/** The statements in the setup() function 
@@ -108,6 +112,22 @@ public class DrawingSurface extends PApplet {
 	 * switches to the next level.
 	 */
 	public void draw() { 
+		
+		try {
+			readFile("images/highscore.txt");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		int high = Integer.parseInt(highscore);
+		if (coinCount > high) {
+			highscore = highscore.replace(Integer.toString(high), Integer.toString(coinCount));
+			try {
+				writeFile(highscore, "images/highscore.txt");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		if (switchScreen == 0) {
 			homeScreen.draw(this);
 			scale(zoom);
@@ -405,6 +425,11 @@ public class DrawingSurface extends PApplet {
 			
 		}
 		
+		fill(0);
+		textSize(20);
+		text("HIGHSCORE: " + highscore, 400,30);
+
+		
 	}
 	
 	/**
@@ -581,6 +606,46 @@ public class DrawingSurface extends PApplet {
 		
 		
 	}
+	
+	public void readFile(String inputFile) throws IOException {
+		StringBuffer fileData = new StringBuffer();
+		
+		Scanner scan = null;
+		
+		try {
+			FileReader fr = new FileReader(inputFile);
+			scan = new Scanner(fr);
+			
+			while (scan.hasNextLine()) {
+				String line = scan.nextLine();
+				fileData.append(line);
+			}
+		} finally {
+			if (scan != null)
+				scan.close();
+		}
+		highscore = fileData.toString();
+	}
+	
+	public void writeFile(String data, String outputFile) throws IOException {
+		
+		FileWriter fr = null;
+		
+		try {
+			fr = new FileWriter(outputFile);
+			
+			fr.write(data);
+			
+			fr.flush();
+
+		} finally {
+			if (fr != null)
+				fr.close();
+		}
+		
+		
+	}
+
 	
 	public void keyPressed() {
 		
