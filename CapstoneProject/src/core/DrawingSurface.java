@@ -176,6 +176,14 @@ public class DrawingSurface extends PApplet {
 			fill(255,255,0);
 			coin1.draw(this);
 			coin2.draw(this);
+			
+			for (Rectangle red : l2.getRedLines()) {
+				if(red.isPointInside(ball2.getX(), ball2.getY()) || (ball2.getX() > 100 && ball2.getY() < 200)) {
+					youlose = this.loadImage("images/youlose!.gif");
+					youlose.resize(350, 350);
+					this.image(youlose, 35, 70);
+				}
+			}
 			if (ball2.goal()) {
 				textSize(50);
 				fill(0);
@@ -224,6 +232,14 @@ public class DrawingSurface extends PApplet {
 			if (ball3.ghostIntersects(g1, g2)) {
 				intersects = true;
 			}
+			for (Rectangle red : l3.getRedLines()) {
+				if(red.isPointInside(ball3.getX(), ball3.getY()) || (ball3.getX() > 100 && ball3.getY() < 200)) {
+					youlose = this.loadImage("images/youlose!.gif");
+					youlose.resize(350, 350);
+					this.image(youlose, 35, 70);
+				}
+			}
+
 			if (ball3.goal()) {
 				textSize(50);
 				fill(0);
@@ -281,6 +297,14 @@ public class DrawingSurface extends PApplet {
 			if (ball4.ghostIntersects(g1, g2)) {
 				intersects = true;
 			}
+			for (Rectangle red : l4.getRedLines()) {
+				if(red.isPointInside(ball4.getX(), ball4.getY()) || (ball4.getX() > 100 && ball4.getY() < 200)) {
+					youlose = this.loadImage("images/youlose!.gif");
+					youlose.resize(350, 350);
+					this.image(youlose, 35, 70);
+				}
+			}
+
 			if (ball4.goal()) {
 				textSize(50);
 				fill(0);
@@ -338,6 +362,14 @@ public class DrawingSurface extends PApplet {
 			if (ball5.ghostIntersects(g1, g2)) {
 				intersects = true;
 			}
+			for (Rectangle red : l5.getRedLines()) {
+				if(red.isPointInside(ball5.getX(), ball5.getY()) || (ball5.getX() > 100 && ball5.getY() < 200)) {
+					youlose = this.loadImage("images/youlose!.gif");
+					youlose.resize(350, 350);
+					this.image(youlose, 35, 70);
+				}
+			}
+
 			if (ball5.goal()) {
 				textSize(50);
 				fill(0);
@@ -394,6 +426,14 @@ public class DrawingSurface extends PApplet {
 			if (ball6.ghostIntersects(g1, g2)) {
 				intersects = true;
 			}
+			for (Rectangle red : l6.getRedLines()) {
+				if(red.isPointInside(ball6.getX(), ball6.getY()) || (ball6.getX() > 100 && ball6.getY() < 200)) {
+					youlose = this.loadImage("images/youlose!.gif");
+					youlose.resize(350, 350);
+					this.image(youlose, 35, 70);
+				}
+			}
+
 			if (ball6.goal()) {
 				textSize(50);
 				fill(0);

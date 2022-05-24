@@ -1,19 +1,8 @@
 package gameElements;
 
-import java.util.ArrayList;
-
-
 import ameduri.shapes.Circle;
-import ameduri.shapes.Line;
 import ameduri.shapes.Rectangle;
-import core.DrawingSurface;
 import processing.core.PApplet;
-import screens.LevelFive;
-import screens.LevelFour;
-import screens.LevelOne;
-import screens.LevelSix;
-import screens.LevelThree;
-import screens.LevelTwo;
 
 public class GolfBall{
 
