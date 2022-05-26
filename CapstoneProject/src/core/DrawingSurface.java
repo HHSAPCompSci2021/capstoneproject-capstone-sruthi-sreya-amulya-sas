@@ -136,14 +136,14 @@ public class DrawingSurface extends PApplet {
 			homeScreen.draw(this);
 			scale(zoom);
 		} else if (switchScreen == 1) {
-			background(255);
+			background(144, 238, 144);
 			rules.draw();
 		} 
 		
 		
 		
 		else if (switchScreen == 2) {// LEVEL 1 --------------------------------------
-			background(255);
+			background(144, 238, 144);
 			
 			textSize(50);
 			fill(0);
@@ -171,7 +171,7 @@ public class DrawingSurface extends PApplet {
 			
 		} else if (switchScreen == 3) { // LEVEL 2 --------------------------------------
 			
-			background(255);
+			background(144, 238, 144);
 			textSize(50);
 			fill(0);
 			level = "Level 2";
@@ -200,7 +200,7 @@ public class DrawingSurface extends PApplet {
 			
 		}
 		else if (switchScreen == 4) { // LEVEL 3 --------------------------------------
-			background(255);
+			background(144, 238, 144);
 			textSize(50);
 			fill(0);
 			level = "Level 3";
@@ -214,17 +214,17 @@ public class DrawingSurface extends PApplet {
 			
 			if (seconds <= 3) {
 				fill(0);
-				text(time3.getTime(), 20, 20);
+				text(" Time: " + time3.getTime(), 400, 60);
 				g1.moveGhosts();
 				g2.moveGhosts();
 			} else if (seconds <= 5) {
 				fill(0);
-				text(time3.getTime(), 20, 20);
+				text(" Time: " + time3.getTime(), 400, 60);
 				g1.stopGhosts();
 				g2.stopGhosts();
 			} else {
 				fill(0);
-				text("5.000", 20, 20);
+				text(" Time: " + "5.000", 400, 60);
 				rect.setFillColor(Color.BLACK);
 				rect.draw(this);
 			}
@@ -264,7 +264,7 @@ public class DrawingSurface extends PApplet {
 			}
 		}else if (switchScreen == 5) { // LEVEL 4 --------------------------------------
 			intersects = false;
-			background(255);
+			background(144, 238, 144);
 			textSize(50);
 			fill(0);
 			level = "Level 4";
@@ -279,18 +279,17 @@ public class DrawingSurface extends PApplet {
 			
 			if (seconds <= 3) {
 				fill(0);
-				text(time4.getTime(), 20, 20);
+				text(" Time: " + time4.getTime(), 400, 60);
 				g1.moveGhosts();
 				g2.moveGhosts();
 			} else if (seconds <= 5) {
 				fill(0);
-				text(time4.getTime(), 20, 20);
+				text(" Time: " + time4.getTime(), 400, 60);
 				g1.stopGhosts();
 				g2.stopGhosts();
 			} else {
 				fill(0);
-				text("5.000", 20, 20);
-				rect.moveBy(0, 0);
+				text(" Time: " + "5.000", 400, 60);
 				rect.setFillColor(Color.BLACK);
 				rect.draw(this);
 			}
@@ -329,7 +328,7 @@ public class DrawingSurface extends PApplet {
 
 		}else if (switchScreen == 6) { // LEVEL 5 --------------------------------------
 			intersects = false;
-			background(255);
+			background(144, 238, 144);
 			textSize(50);
 			fill(0);
 			level = "Level 5";
@@ -344,18 +343,17 @@ public class DrawingSurface extends PApplet {
 			
 			if (seconds <= 3) {
 				fill(0);
-				text(time5.getTime(), 20, 20);
+				text(" Time: " + time5.getTime(), 400, 60);
 				g1.moveGhosts();
 				g2.moveGhosts();
 			} else if (seconds <= 5) {
 				fill(0);
-				text(time5.getTime(), 20, 20);
+				text(" Time: " + time5.getTime(), 400, 60);
 				g1.stopGhosts();
 				g2.stopGhosts();
 			} else {
 				fill(0);
-				text("5.000", 20, 20);
-				rect.moveBy(0, 0);
+				text(" Time: " + "5.000", 400, 60);
 				rect.setFillColor(Color.BLACK);
 				rect.draw(this);
 			}
@@ -394,7 +392,7 @@ public class DrawingSurface extends PApplet {
 
 		}else if (switchScreen == 7) { // LEVEL 6 --------------------------------------
 			intersects = false;
-			background(255);
+			background(144, 238, 144);
 			textSize(50);
 			fill(0);
 			level = "Level 6";
@@ -408,18 +406,17 @@ public class DrawingSurface extends PApplet {
 			
 			if (seconds <= 3) {
 				fill(0);
-				text(time6.getTime(), 20, 20);
+				text(" Time: " + time6.getTime(), 400, 60);
 				g1.moveGhosts();
 				g2.moveGhosts();
 			} else if (seconds <= 5) {
 				fill(0);
-				text(time6.getTime(), 20, 20);
+				text(" Time: " + time6.getTime(), 400, 60);
 				g1.stopGhosts();
 				g2.stopGhosts();
 			} else {
 				fill(0);
-				text("5.000", 20, 20);
-				rect.moveBy(0, 0);
+				text(" Time: " + "5.000", 400, 60);
 				rect.setFillColor(Color.BLACK);
 				rect.draw(this);
 			}
@@ -471,7 +468,7 @@ public class DrawingSurface extends PApplet {
 		if(switchScreen > 1) {
 			push();
 			fill(0);
-			textSize(30);
+			textSize(20);
 			text("Coin: " + coinCount, 20, 35);
 			pop();
 		}

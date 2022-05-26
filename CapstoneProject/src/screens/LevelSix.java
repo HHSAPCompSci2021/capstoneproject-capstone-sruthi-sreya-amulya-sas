@@ -37,9 +37,14 @@ public class LevelSix extends Level {
 		l5 =  new Line(300, 250, 50, 250); // left
 		l6 =  new Line(50, 250, 50, 50);
 		l7 = new Rectangle(200,230,10,30);
+		l7.setFillColor(Color.RED);
 		l8 = new Rectangle(90,200, 75, 10);
+		l8.setFillColor(Color.RED);
 		l9 = new Rectangle(90,60,75,10);
+		l9.setFillColor(Color.RED);
 		l10 = new Rectangle(200,229,10,30);
+		l10.setFillColor(Color.RED);
+
 
 		l2.setStrokeColor(Color.RED);
 		l4.setStrokeColor(Color.RED);
